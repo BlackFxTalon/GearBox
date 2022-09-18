@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('../parts/head.html',{
+	"title":"Главная"
+	})
+	<body x-data="{headerFavoritesModal: false, headerFavoritesModalActive: false, tawkModal: false, askQuestionModal: false, askQuestionModalActive: false, callbackModal: false, callbackModalActive: false,projectSelectionModal: false, projectSelectionModalActive: false, headerMobileMenu: false, headerSearch: false, headerFavoritesMenu: false, headerMenuSubList: false, headerMegaMenu: false}" x-bind:class="{ 'overflow-hidden': headerFavoritesModal === true || tawkModal === true || headerMobileMenu === true }" class="loader-is-active">
+		<script src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js" defer></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+		@@include('../parts/header-index.html')
+		<script type="module">
+			import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js';
+
+			// indexPageSliders
+
+			function indexPageSliders() {
+				const indexPageDesktopWrapper = new Swiper('.index-page-desktop-wrapper', {
+            slidesPerView: 1,
+			autoHeight: true,
+			allowTouchMove: false,
+			 navigation: {
+    nextEl: '.index-page-desktop-wrapper__button-next',
+    prevEl: '.index-page-desktop-wrapper__button-prev',
+  },
+			});
+
+			function indexPageMobileWizardDevForm() {
+				const wizardDevForm = new Swiper('.wizard-dev-form', {
+				slidesPerView: 1,
+				allowTouchMove: false,
+				autoHeight:true,
+				pagination: {
+					el: '.wizard-dev-form__pagination',
+					clickable: true,
+					renderBullet: function (index, className) {
+            return `<span class="wizard-dev-form__pagination-bullet wizard-dev-form__pagination-bullet--${index + 1} ${className}">${index + 1}</span>`;
+          },
+				},
+			});
+
+			const toSlide2 = () => {
+				document.querySelector('.wizard-dev-form__btn--to-slide-2').addEventListener('click',()=>{
+                    wizardDevForm.slideTo(1);
+					document.querySelector('.wizard-dev-form__pagination-bullet--1').classList.add('wizard-dev-form__pagination-bullet--prev');
+				})
+			}
+
+			const toSlide3 = (el) => {
+				el.addEventListener('click',()=>{
+                    wizardDevForm.slideTo(2);
+
+					document.querySelectorAll('.wizard-dev-form__pagination-bullet--1,.wizard-dev-form__pagination-bullet--2').forEach((el)=> {
+						el.classList.add('wizard-dev-form__pagination-bullet--prev');
+				})
+				})
+			}
+			const toSlide4 = () => {
+				document.querySelector('.wizard-dev-form__btn--to-slide-4').addEventListener('click',()=>{
+                    wizardDevForm.slideTo(3);
+					document.querySelectorAll('.wizard-dev-form__pagination-bullet--1,.wizard-dev-form__pagination-bullet--2,.wizard-dev-form__pagination-bullet--3').forEach((el)=> {
+						el.classList.add('wizard-dev-form__pagination-bullet--prev');
+				})
+				})
+			}
+			toSlide2();
+			document.querySelectorAll('.wizard-dev-form__btn--to-slide-3').forEach(toSlide3);
+			toSlide4();
+
+			}
+
+			indexPageMobileWizardDevForm();
+
+			function indexPageDesktopWizardDevForm() {
+				const wizardDevForm = new Swiper('.wizard-dev-form-desktop', {
+				slidesPerView: 1,
+				allowTouchMove: false,
+				pagination: {
+					el: '.wizard-dev-form-desktop__pagination',
+					clickable: true,
+					renderBullet: function (index, className) {
+            return `<span class="wizard-dev-form-desktop__pagination-bullet wizard-dev-form-desktop__pagination-bullet--${index + 1} ${className}">${index + 1}</span>`;
+          },
+				},
+			});
+
+			const toSlide2 = () => {
+				document.querySelector('.wizard-dev-form-desktop__btn--to-slide-2').addEventListener('click',()=>{
+                    wizardDevForm.slideTo(1);
+					document.querySelector('.wizard-dev-form-desktop__pagination-bullet--1').classList.add('wizard-dev-form-desktop__pagination-bullet--prev');
+				})
+			}
+
+			const toSlide3 = (el) => {
+				el.addEventListener('click',()=>{
+                    wizardDevForm.slideTo(2);
+
+					document.querySelectorAll('.wizard-dev-form-desktop__pagination-bullet--1,.wizard-dev-form-desktop__pagination-bullet--2').forEach((el)=> {
+						el.classList.add('wizard-dev-form-desktop__pagination-bullet--prev');
+				})
+				})
+			}
+			const toSlide4 = () => {
+				document.querySelector('.wizard-dev-form-desktop__btn--to-slide-4').addEventListener('click',()=>{
+                    wizardDevForm.slideTo(3);
+					document.querySelectorAll('.wizard-dev-form-desktop__pagination-bullet--1,.wizard-dev-form-desktop__pagination-bullet--2,.wizard-dev-form-desktop__pagination-bullet--3').forEach((el)=> {
+						el.classList.add('wizard-dev-form-desktop__pagination-bullet--prev');
+				})
+				})
+			}
+			toSlide2();
+			document.querySelectorAll('.wizard-dev-form-desktop__btn--to-slide-3').forEach(toSlide3);
+			toSlide4();
+
+			}
+
+			indexPageDesktopWizardDevForm();
+		  
+			}
+
+			indexPageSliders();
+
+			// loader animation
+
+			function loaderAnimation() {
+				const gears_tl = gsap.timeline({
+  defaults: {
+    transformOrigin: "50% 50%",
+    duration: 10,
+    ease: "linear"
+  },
+  repeat: -1
+});
+
+gears_tl
+  .to(".loader__spinner-red-gear-icon", { rotate: -360 }, 0)
+  .to(".loader__spinner-dark-gear-icon", { rotate: 270 }, 0);
+
+  const apps_tl = gsap.timeline({
+  defaults: {
+    duration: 4,
+    ease: "none",
+    opacity: 0
+  },
+  repeat: -1,
+  stagger: 0.5
+});
+
+apps_tl
+  .to("#app-python", { x: 80, y: 80, rotation: 270 }, 0)
+  .to("#app-swift", { x: 80, y: -80, rotation: 720 }, 0.2)
+  .to("#app-javascript", { x: -80, y: -80, rotation: 210 }, 1.2)
+  .to("#app-clojure", { x: -80, y: 80, rotation: 160 }, 3)
+  .to("#app-php", { x: 0, y: -80, rotation: 340 }, 6);
+
+//   when document state is complete, hide loader and show body. and setTimeout for manual animation delay
+
+document.addEventListener('readystatechange',()=>{
+	if (document.readyState === "complete") {
+		// console.log('document readyState is complete');
+		setTimeout(() => {
+		document.querySelector(".loader").classList.add('non-active');
+        document.querySelector("body").classList.remove('loader-is-active');
+		}, 2000);
+    } 
+})
+}
+
+loaderAnimation();
+           
+			
+function randomToggleClassesOnPointBtns() {
+	let pointBtns = document.querySelectorAll('.index-page-desktop-wrapper .cta__advantages-point-btn');
+
+	let previousRandomClass = null;
+
+	function repeatRandomClass() {
+		if(previousRandomClass) {
+			previousRandomClass.classList.toggle('up');
+		}
+		let random = Math.floor(Math.random() * (pointBtns.length - 1)) + 0;
+		let randomClass = pointBtns[random];
+		randomClass.classList.toggle('up');
+		previousRandomClass = randomClass;
+		setTimeout(repeatRandomClass, 800);
+	}
+
+	repeatRandomClass();
+}
+
+randomToggleClassesOnPointBtns();
+
+
+(function () {
+// disable animation on disable animation browser settings
+
+  const safeToAnimate = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+ if (!safeToAnimate) return;
+  
+  // Get the elements that we need
+  const parallaxImg = document.querySelector('.index-page-desktop-wrapper__img');
+  
+  let xPosition;
+  let yPosition;
+
+  let storedXPosition;
+  let storedYPosition;
+
+  // Set up our coordinate mapping with GSAP utils!
+  let mapWidth;
+  let mapHeight;
+
+  function setMaps() {
+    mapWidth = gsap.utils.mapRange(0, innerWidth, -15, 15);
+    mapHeight = gsap.utils.mapRange(0, innerHeight, -15, 15);
+  }
+  window.addEventListener('resize', setMaps);
+  setMaps();
+
+  function movePointer() {
+    // only recalculating if the value changes
+    if (storedXPosition === xPosition && storedYPosition === yPosition) return;
+    
+    gsap.to(parallaxImg, {
+      x: -xPosition,
+      y: yPosition,
+      ease: 'none',
+    //   ease: 'power4.out',
+    //   ease: 'power4.in'
+    })
+
+    // update the stored positions with the current positions
+    storedXPosition = xPosition;
+    storedYPosition = yPosition;
+  }
+  // gsap's RAF, falls back to set timeout
+ gsap.ticker.add(movePointer);
+
+  // updating the mouse coordinates
+  function updateMouseCoords(event) {
+    xPosition = mapWidth(event.clientX);
+    yPosition = mapWidth(event.clientY);
+  }
+  window.addEventListener("mousemove", updateMouseCoords);
+})();
+
+window.addEventListener('load', () => {
+			  registerSW();
+			});
+		 
+			// Register the Service Worker
+			async function registerSW() {
+			  if ('serviceWorker' in navigator) {
+				try {
+				  await navigator
+						.serviceWorker
+						.register('serviceworker.js');
+				}
+				catch (e) {
+				  console.log('SW registration failed');
+				}
+			  }
+}
+</script>
+		<script src="js/main.min.js" defer></script>
+		<div class="swiper-button-prev index-page-desktop-wrapper__button-prev">
+			<svg width="32" height="24">
+				<use href="../resources/svgSprites/svgSprite.svg#slider-arrow"></use>
+			</svg> 
+		</div>
+		<div class="swiper-button-next index-page-desktop-wrapper__button-next">
+			<svg width="32" height="24">
+				<use href="../resources/svgSprites/svgSprite.svg#slider-arrow"></use>
+			</svg> 
+		</div>
+		<main>
+		<div class="index-page-mobile-wrapper">
+			<section class="cta" x-data="{stateAppearPointBtnModal1:false, stateLeavePointBtnModal1:'',stateAppearPointBtnModal2:false, stateLeavePointBtnModal2:'', stateAppearPointBtnModal3:false,
+				stateLeavePointBtnModal3: '', stateAppearPointBtnModal4:false,
+				stateLeavePointBtnModal4: '', stateAppearPointBtnModal5:false,
+				stateLeavePointBtnModal5:'',stateAppearPointBtnModal6:false, 
+				stateLeavePointBtnModal6:'' }">
+					<div class="container cta__container">
+					<h1 class="cta__title">РЕДУКТОР-ПРОЕКТ</h1>
+					<h2 class="cta__subtitle">Проектирование и изготовление промышленных редукторов</h2>
+					</div>
+					<div class="cta__advantages">
+						<img loading="lazy" decoding="async" src="resources/images/cta-bg-desktop.png" alt="image" width="1324" height="745" class="cta__advantages-img">
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--1" x-on:click="stateAppearPointBtnModal1 = true" x-bind:class="{ 'active': stateAppearPointBtnModal1 === true }">
+							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
+								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
+							</svg> 
+						</button>
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--2" x-on:click="stateAppearPointBtnModal2 = true" x-bind:class="{ 'active': stateAppearPointBtnModal2 === true }">
+							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
+								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
+							</svg> 
+						</button>
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--3" x-on:click="stateAppearPointBtnModal3 = true" x-bind:class="{ 'active': stateAppearPointBtnModal3 === true }">
+							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
+								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
+							</svg> 
+						</button>
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--4" x-on:click="stateAppearPointBtnModal4 = true"  x-bind:class="{ 'active': stateAppearPointBtnModal4 === true }">
+							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
+								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
+							</svg> 
+						</button>
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--5" x-on:click="stateAppearPointBtnModal5 = true"  x-bind:class="{ 'active': stateAppearPointBtnModal5 === true }">
+							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
+								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
+							</svg> 
+						</button>
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--6" x-on:click="stateAppearPointBtnModal6 = true"  x-bind:class="{ 'active': stateAppearPointBtnModal6 === true }">
+							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
+								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
+							</svg> 
+						</button>
+						<div class="point-btn-modal point-btn-modal-1" x-bind:class="{ 'state-appear': stateAppearPointBtnModal1 === true,'state-leave': stateLeavePointBtnModal1 === true }" x-on:animationend="stateLeavePointBtnModal1 = false">
+							<div class="point-btn-modal__content">
+								<div class="point-btn-modal__body">
+							  <button type="button" aria-label="button" class="point-btn-modal__close-btn" x-on:click="stateAppearPointBtnModal1 = false; stateLeavePointBtnModal1 = true">
+								<span></span>
+								<span></span>
+							  </button>
+							  <picture class="point-btn-modal__picture">
+								<img src="/resources/images/point-btn-modal-img-1.png" loading="lazy" decoding="async" alt="image" class="point-btn-modal__img" width="200" height="200">
+							  </picture>
+							  <h2 class="point-btn-modal__title">Какая-нибудь часть</h2>
+							  <template x-for="i in 5">
+								<p class="point-btn-modal__descr">Описание части на три строки.</p>
+							  </template>
+							</div>
+							</div>
+						</div>
+						<div class="point-btn-modal point-btn-modal-2" x-bind:class="{ 'state-appear': stateAppearPointBtnModal2 === true,'state-leave': stateLeavePointBtnModal2 === true }" x-on:animationend="stateLeavePointBtnModal2 = false">
+							<div class="point-btn-modal__content">
+								<div class="point-btn-modal__body">
+							  <button type="button" aria-label="button" class="point-btn-modal__close-btn" x-on:click="stateAppearPointBtnModal2 = false; stateLeavePointBtnModal2 = true">
+								<span></span>
+								<span></span>
+							  </button>
+							  <picture class="point-btn-modal__picture">
+								<img src="/resources/images/point-btn-modal-img-2.png" loading="lazy" decoding="async" alt="image" class="point-btn-modal__img" width="200" height="200">
+							  </picture>
+							  <h2 class="point-btn-modal__title">Какая-нибудь часть</h2>
+							  <template x-for="i in 5">
+								<p class="point-btn-modal__descr">Описание части на три строки.</p>
+							  
+							  </template>
+							</div>
+							</div>
+						</div>
+						<div class="point-btn-modal point-btn-modal-3" x-bind:class="{ 'state-appear': stateAppearPointBtnModal3 === true,'state-leave': stateLeavePointBtnModal3 === true }" x-on:animationend="stateLeavePointBtnModal3 = false">
+							<div class="point-btn-modal__content">
+								<div class="point-btn-modal__body">
+							  <button type="button" aria-label="button" class="point-btn-modal__close-btn" x-on:click="stateAppearPointBtnModal3 = false; stateLeavePointBtnModal3 = true">
+								<span></span>
+								<span></span>
+							  </button>
+							  <picture class="point-btn-modal__picture">
+								<img src="/resources/images/point-btn-modal-img-3.png" loading="lazy" decoding="async" alt="image" class="point-btn-modal__img" width="200" height="200">
+							  </picture>
+							  <h2 class="point-btn-modal__title">Какая-нибудь часть</h2>
+							  <template x-for="i in 5">
+								<p class="point-btn-modal__descr">Описание части на три строки.</p>
+							  
+							  </template>
+							</div>
+							</div>
+						</div>
+						<div class="point-btn-modal point-btn-modal-4" x-bind:class="{ 'state-appear': stateAppearPointBtnModal4 === true,'state-leave': stateLeavePointBtnModal4 === true }" x-on:animationend="stateLeavePointBtnModal4 = false">
+							<div class="point-btn-modal__content">
+								<div class="point-btn-modal__body">
+							  <button type="button" aria-label="button" class="point-btn-modal__close-btn" x-on:click="stateAppearPointBtnModal4 = false; stateLeavePointBtnModal4 = true">
+								<span></span>
+								<span></span>
+							  </button>
+							  <picture class="point-btn-modal__picture">
+								<img src="/resources/images/point-btn-modal-img-4.png" loading="lazy" decoding="async" alt="image" class="point-btn-modal__img" width="200" height="200">
+							  </picture>
+							  <h2 class="point-btn-modal__title">Какая-нибудь часть</h2>
+							  <template x-for="i in 5">
+								<p class="point-btn-modal__descr">Описание части на три строки.</p>
+							  
+							  </template>
+							</div>
+							</div>
+						</div>
+						<div class="point-btn-modal point-btn-modal-5" x-bind:class="{ 'state-appear': stateAppearPointBtnModal5 === true,'state-leave': stateLeavePointBtnModal5 === true }" x-on:animationend="stateLeavePointBtnModal5 = false">
+							<div class="point-btn-modal__content">
+								<div class="point-btn-modal__body">
+							  <button type="button" aria-label="button" class="point-btn-modal__close-btn" x-on:click="stateAppearPointBtnModal5 = false; stateLeavePointBtnModal5 = true">
+								<span></span>
+								<span></span>
+							  </button>
+							  <picture class="point-btn-modal__picture">
+								<img src="/resources/images/point-btn-modal-img-5.png" loading="lazy" decoding="async" alt="image" class="point-btn-modal__img" width="200" height="200">
+							  </picture>
+							  <h2 class="point-btn-modal__title">Какая-нибудь часть</h2>
+							  <template x-for="i in 5">
+								<p class="point-btn-modal__descr">Описание части на три строки.</p>
+							  
+							  </template>
+							</div>
+							</div>
+						</div>
+						<div class="point-btn-modal point-btn-modal-6" x-bind:class="{ 'state-appear': stateAppearPointBtnModal6 === true,'state-leave': stateLeavePointBtnModal6 === true }" x-on:animationend="stateLeavePointBtnModal6 = false">
+							<div class="point-btn-modal__content">
+								<div class="point-btn-modal__body">
+							  <button type="button" aria-label="button" class="point-btn-modal__close-btn" x-on:click="stateAppearPointBtnModal6 = false; stateLeavePointBtnModal6 = true">
+								<span></span>
+								<span></span>
+							  </button>
+							  <picture class="point-btn-modal__picture">
+								<img src="/resources/images/point-btn-modal-img-6.png" loading="lazy" decoding="async" alt="image" class="point-btn-modal__img" width="200" height="200">
+							  </picture>
+							  <h2 class="point-btn-modal__title">Какая-нибудь часть</h2>
+							  <template x-for="i in 5">
+								<p class="point-btn-modal__descr">Описание части на три строки.</p>
+							  
+							  </template>
+							</div>
+							</div>
+						</div>
+					</div>
+			</section>
+			<section class="dev-stages" x-data="{to2ListItem:false, to3ListItem:false, to4ListItem:false, to5ListItem:false}">
+				<div class="container dev-stages__container">
+					<h2 class="dev-stages__title">Этапы разработки</h2>
+					<div class="dev-stages__grid">
+						<div class="dev-stages__line">
+							<div class="dev-stages__line-part" x-bind:class="{ 'to-2-list-item': to2ListItem === true, 'to-3-list-item': to3ListItem === true, 'to-4-list-item': to4ListItem === true, 'to-5-list-item': to5ListItem === true }">
+						</div>
+						<div class="dev-stages__line-scroll-indicator" x-bind:class="{ 'to-2-list-item': to2ListItem === true, 'to-3-list-item': to3ListItem === true, 'to-4-list-item': to4ListItem === true, 'to-5-list-item': to5ListItem === true }"></div>
+					</div>
+					<ul role="list" class="dev-stages__list">
+						<li class="dev-stages__list-item" id="dev-stages__list-item-1">
+							<h3 class="dev-stages__list-title" data-aos="dev-list-title-color"><span>1. </span>Технического предложениe</h3>
+							<div class="dev-stages__list-info">
+								<p class="dev-stages__list-descr">с обоснованием предлагаемого варианта решения по реализации задания.</p>
+								<picture class="dev-stages__list-picture">
+								  <img src="/resources/images/dev-stages-list-img-1.jpg" loading="lazy" decoding="async" alt="image" width="293" height="260" class="dev-stages__list-img" data-aos="dev-list-img-fading">
+								</picture>
+							</div>
+						</li>
+						<li class="dev-stages__list-item dev-stages__list-item-2" id="dev-stages__list-item-2" x-intersect:enter="to2ListItem = true" x-intersect:leave="to2ListItem = false">
+							<h3 class="dev-stages__list-title" data-aos="dev-list-title-color"><span>2. </span>Эскизный проект</h3>
+							<div class="dev-stages__list-info">
+								<p class="dev-stages__list-descr">дает принципиальное конструктивное решение и общее представление об устройстве и принципе работы изделия, о его габаритах и основных параметрах.</p>
+								<picture class="dev-stages__list-picture">
+								  <img src="/resources/images/dev-stages-list-img-1.jpg" loading="lazy" decoding="async" alt="image" width="293" height="260" class="dev-stages__list-img" data-aos="dev-list-img-fading">
+								</picture>
+							</div>
+						</li>
+						<li class="dev-stages__list-item" id="dev-stages__list-item-3" x-intersect:enter="to3ListItem = true" x-intersect:leave="to3ListItem = false">
+							<h3 class="dev-stages__list-title" data-aos="dev-list-title-color"><span>3. </span>Технический проект</h3>
+							<div class="dev-stages__list-info">
+								<p class="dev-stages__list-descr">предусматривает оформление всех конструкторских документов, необходимых для изготовления изделия: чертежи деталей, сборочные, монтажные и габаритные чертежи, спецификация, ведомости покупных изделий и т.д.</p>
+								<picture class="dev-stages__list-picture">
+								  <img src="/resources/images/dev-stages-list-img-1.jpg" loading="lazy" decoding="async" alt="image" width="293" height="260" class="dev-stages__list-img" data-aos="dev-list-img-fading">
+								</picture>
+							</div>
+						</li>
+						<li class="dev-stages__list-item" id="dev-stages__list-item-4" x-intersect:enter="to4ListItem = true" x-intersect:leave="to4ListItem = false">
+							<h3 class="dev-stages__list-title" data-aos="dev-list-title-color"><span>4. </span>Рабочий проект</h3>
+							<div class="dev-stages__list-info">
+								<p class="dev-stages__list-descr"> дает на основе разработанных чертежей сборочных единиц и общих видов полное представление об устройстве изделия и исходные данные для разработки рабочих чертежей.</p>
+								<picture class="dev-stages__list-picture">
+								  <img src="/resources/images/dev-stages-list-img-1.jpg" loading="lazy" decoding="async" alt="image" width="293" height="260" class="dev-stages__list-img" data-aos="dev-list-img-fading">
+								</picture>
+							</div>
+						</li>
+						<li class="dev-stages__list-item" id="dev-stages__list-item-5" x-intersect:enter="to5ListItem = true" x-intersect:leave="to5ListItem = false">
+							<h3 class="dev-stages__list-title" data-aos="dev-list-title-color"><span>5. </span>Пояснительная записка</h3>
+							<div class="dev-stages__list-info">
+								<p class="dev-stages__list-descr"> содержит описание конструкции, а также расчеты, обосновывающие ее работоспособность.</p>
+								<picture class="dev-stages__list-picture">
+								  <img src="/resources/images/dev-stages-list-img-1.jpg" loading="lazy" decoding="async" alt="image" width="293" height="260" class="dev-stages__list-img" data-aos="dev-list-img-fading">
+								</picture>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<div class="wizard-dev-form-wrapper">
+				<div class="swiper-pagination wizard-dev-form__pagination"></div>
+			<div class="wizard-dev-form swiper">
+				<ul class="swiper-wrapper wizard-dev-form__wrapper" role="list">
+					<li class="swiper-slide wizard-dev-form__slide wizard-dev-form__slide-1">
+						<h2 class="wizard-dev-form__slide-title wizard-dev-form__slide-title--slide-1">
+							Хотите заказать разработку редуктора?
+						</h2>
+						<picture class="wizard-dev-form__picture">
+							<source media="(min-width:768px)" srcset="/resources/images/wizard-form-img-1-tablet.png">
+							<img loading="lazy" decoding="async" src="/resources/images/wizard-form-img-1.png" alt="image" width="343" height="164" class="wizard-dev-form__img wizard-dev-form__img--slide-1">
+						</picture>
+						<ul role="list" class="wizard-dev-form__btn-group">
+							<li class="wizard-dev-form__btn-group-item">
+								<button type="button" aria-label="button" class="wizard-dev-form__btn wizard-dev-form__btn--to-slide-3">Да</button>
+							</li>
+							<li class="wizard-dev-form__btn-group-item">
+								<button type="button" aria-label="button" class="wizard-dev-form__btn wizard-dev-form__btn--to-slide-2">Я не уверен, нужна ли мне разработка</button>
+							</li>
+							<li class="wizard-dev-form__btn-group-item">
+								<button type="button" aria-label="button" class="wizard-dev-form__btn" x-on:click="askQuestionModalActive = false; askQuestionModal = true">Нет</button>
+							</li>
+						</ul>
+					</li>
+					<li class="swiper-slide wizard-dev-form__slide wizard-dev-form__slide-2">
+						<h2 class="wizard-dev-form__slide-title wizard-dev-form__slide-title--slide-2">
+							Нужна ли вам помощь специалистов в подборе редуктора?
+						</h2>
+						<picture class="wizard-dev-form__picture">
+							<source media="(min-width:768px)" srcset="/resources/images/wizard-form-img-2-tablet.png">
+							<img loading="lazy" decoding="async" src="/resources/images/wizard-form-img-2.png" alt="image" width="350" height="194" class="wizard-dev-form__img wizard-dev-form__img--slide-2">
+						</picture>
+						<ul role="list" class="wizard-dev-form__btn-group">
+							<li class="wizard-dev-form__btn-group-item">
+								<button type="button" aria-label="button" class="wizard-dev-form__btn wizard-dev-form__btn--to-slide-3">Да</button>
+							</li>
+							<li class="wizard-dev-form__btn-group-item">
+								<button type="button" aria-label="button" class="wizard-dev-form__btn" x-on:click="askQuestionModalActive = false; askQuestionModal = true">Нет</button>
+							</li>
+						</ul>
+					</li>
+					<li class="swiper-slide wizard-dev-form__slide wizard-dev-form__slide-3">
+						<h2 class="wizard-dev-form__slide-title wizard-dev-form__slide-title--slide-3">
+							Какой тип разработки вам необходим?
+						</h2>
+						<nav class="wizard-dev-form__dev-descr-nav">
+						<ul role="list" class="wizard-dev-form__dev-descr">
+							<li><h4 class="wizard-dev-form__dev-descr-title">Готовое решение</h4></li>
+							<li>Готовый проект с полным комплектом конструкторской документации, редукторы по которому ранее выпускались нашей компанией. </li>
+						</ul>
+						<ul role="list" class="wizard-dev-form__dev-descr">
+							<li><h4 class="wizard-dev-form__dev-descr-title">Индивидуальный проект</h4></li>
+							<li>Проект, который мы разрабатываем с учетом Ваших требований под конкретные условия эксплуатации.</li>
+						</ul>
+					    </nav>
+						<ul role="list" class="wizard-dev-form__btn-group">
+							<li class="wizard-dev-form__btn-group-item">
+								<button type="button" aria-label="button" class="wizard-dev-form__btn wizard-dev-form__btn--to-next-slide wizard-dev-form__btn--to-slide-4">Готовое решение</button>
+							</li>
+							<li class="wizard-dev-form__btn-group-item">
+								<button type="button" aria-label="button" class="wizard-dev-form__btn" x-on:click="callbackModalActive = false; callbackModal = true">Индивидуальный проект</button>
+							</li>
+						</ul>
+					</li>
+					<li class="swiper-slide wizard-dev-form__slide wizard-dev-form__slide-4">
+						<h2 class="wizard-dev-form__slide-title wizard-dev-form__slide-title--slide-4">
+							Хотите подобрать проект самостоятельно?
+						</h2>
+						<picture class="wizard-dev-form__picture">
+							<source media="(min-width:768px)" srcset="/resources/images/wizard-form-img-3-tablet.png">
+							<img loading="lazy" decoding="async" src="/resources/images/wizard-form-img-3.png" alt="image" width="361" height="222" class="wizard-dev-form__img wizard-dev-form__img--slide-4">
+						</picture>
+						<ul role="list" class="wizard-dev-form__btn-group">
+							<li class="wizard-dev-form__btn-group-item">
+								<button type="button" aria-label="button" class="wizard-dev-form__btn" x-on:click="projectSelectionModalActive = false; projectSelectionModal = true">Да</button>
+							</li>
+							<li class="wizard-dev-form__btn-group-item">
+								<button type="button" aria-label="button" class="wizard-dev-form__btn" x-on:click="callbackModalActive = false; callbackModal = true">Нет</button>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		    </div>
+			<section class="all-news">
+				<div class="container all-news__container">
+					<h2 class="all-news__title">Новости</h2>
+					<a href="#" class="all-news__link">
+                        <span>Все новости</span>
+						<svg class="all-news__icon" width="24" height="24">
+							<use href="../resources/svgSprites/svgSprite.svg#icon-link"></use>
+						</svg> 
+					</a>
+					<ul role="list" class="all-news__list" x-data="{activeLink: ''}" x-on:click.outside="activeLink = ''">
+						<template x-for="i in 5">
+							<li class="all-news__list-item">
+								<a href="#" class="all-news__list-link" x-on:click="activeLink = i" x-bind:class="{ 'active': activeLink === i }">
+								 <div class="all-news__list-info">
+									<time datetime="2022.06.17" class="all-news__list-datetime">17.06.2022</time>
+									<h3 class="all-news__list-title">Заголовок новости</h3>
+								 </div>  
+								 <picture class="all-news__list-picture">
+								   <img src="/resources/images/news-category-img.jpg" loading="lazy" decoding="async" alt="image" width="448" height="200" class="all-news__list-img">
+								 </picture> 
+								</a>
+							</li>
+						</template>
+					</ul>
+				</div>
+			</section>
+		</div>
+		<div class="index-page-desktop-wrapper swiper">
+           <ul role="list" class="swiper-wrapper index-page-desktop-wrapper__swiper-wrapper">
+			<li class="swiper-slide index-page-desktop-wrapper__section-page">
+			<div class="index-page-desktop-wrapper__parallax-img-container">
+				<picture class="index-page-desktop-wrapper__picture">
+				  <img src="/resources/images/parallax-img-index.png" loading="lazy" decoding="async" alt="image" width="1912" height="997" class="index-page-desktop-wrapper__img">
+				</picture>
+			</div>
+				<section class="cta" x-data="{stateAppearPointBtnModal1:false, stateLeavePointBtnModal1:'',stateAppearPointBtnModal2:false, stateLeavePointBtnModal2:'', stateAppearPointBtnModal3:false,
+				stateLeavePointBtnModal3: '', stateAppearPointBtnModal4:false,
+				stateLeavePointBtnModal4: '', stateAppearPointBtnModal5:false,
+				stateLeavePointBtnModal5:'',stateAppearPointBtnModal6:false, 
+				stateLeavePointBtnModal6:'' }">
+					<div class="container cta__container">
+					<h1 class="cta__title">РЕДУКТОР-ПРОЕКТ</h1>
+					<h2 class="cta__subtitle">Проектирование и изготовление промышленных редукторов</h2>
+					</div>
+					<div class="cta__advantages cta__advantages--desktop" x-bind:class="{ 'increased': stateAppearPointBtnModal1 === true || stateAppearPointBtnModal2 === true || stateAppearPointBtnModal3 === true || stateAppearPointBtnModal4 === true || stateAppearPointBtnModal5 === true || stateAppearPointBtnModal6 === true}">
+						<picture class="cta__advantages-picture">
+							<source media="(min-width:1920px)" srcset="resources/images/cta-bg-desktop-2.png">
+							<img loading="lazy" decoding="async" src="resources/images/cta-bg-desktop.png" alt="image" width="1324" height="745" class="cta__advantages-img">
+						</picture>
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--1" x-on:click="stateAppearPointBtnModal1 = true" x-bind:class="{ 'active': stateAppearPointBtnModal1 === true }">
+							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
+								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
+							</svg> 
+						</button>
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--2" x-on:click="stateAppearPointBtnModal2 = true" x-bind:class="{ 'active': stateAppearPointBtnModal2 === true }">
+							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
+								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
+							</svg> 
+						</button>
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--3" x-on:click="stateAppearPointBtnModal3 = true" x-bind:class="{ 'active': stateAppearPointBtnModal3 === true }">
+							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
+								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
+							</svg> 
+						</button>
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--4" x-on:click="stateAppearPointBtnModal4 = true" x-bind:class="{ 'active': stateAppearPointBtnModal4 === true }">
+							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
+								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
+							</svg> 
+						</button>
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--5" x-on:click="stateAppearPointBtnModal5 = true"  x-bind:class="{ 'active': stateAppearPointBtnModal5 === true }">
+							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
+								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
+							</svg> 
+						</button>
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--6" x-on:click="stateAppearPointBtnModal6 = true"  x-bind:class="{ 'active': stateAppearPointBtnModal6 === true }">
+							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
+								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
+							</svg> 
+						</button>
+						<div class="point-btn-modal point-btn-modal-1" x-bind:class="{ 'state-appear': stateAppearPointBtnModal1 === true,'state-leave': stateLeavePointBtnModal1 === true }" x-on:animationend="stateLeavePointBtnModal1 = false">
+							<div class="point-btn-modal__content">
+								<div class="point-btn-modal__body">
+							  <button type="button" aria-label="button" class="point-btn-modal__close-btn" x-on:click="stateAppearPointBtnModal1 = false; stateLeavePointBtnModal1 = true">
+								<span></span>
+								<span></span>
+							  </button>
+							  <picture class="point-btn-modal__picture">
+								<img src="/resources/images/point-btn-modal-img-1.png" loading="lazy" decoding="async" alt="image" class="point-btn-modal__img" width="200" height="200">
+							  </picture>
+							  <h2 class="point-btn-modal__title">Какая-нибудь часть</h2>
+							  <template x-for="i in 5">
+								<p class="point-btn-modal__descr">Описание части на три строки.</p>
+							  </template>
+							</div>
+							</div>
+						</div>
+						<div class="point-btn-modal point-btn-modal-2" x-bind:class="{ 'state-appear': stateAppearPointBtnModal2 === true,'state-leave': stateLeavePointBtnModal2 === true }" x-on:animationend="stateLeavePointBtnModal2 = false">
+							<div class="point-btn-modal__content">
+								<div class="point-btn-modal__body">
+							  <button type="button" aria-label="button" class="point-btn-modal__close-btn" x-on:click="stateAppearPointBtnModal2 = false; stateLeavePointBtnModal2 = true">
+								<span></span>
+								<span></span>
+							  </button>
+							  <picture class="point-btn-modal__picture">
+								<img src="/resources/images/point-btn-modal-img-2.png" loading="lazy" decoding="async" alt="image" class="point-btn-modal__img" width="200" height="200">
+							  </picture>
+							  <h2 class="point-btn-modal__title">Какая-нибудь часть</h2>
+							  <template x-for="i in 5">
+								<p class="point-btn-modal__descr">Описание части на три строки.</p>
+							  
+							  </template>
+							</div>
+							</div>
+						</div>
+						<div class="point-btn-modal point-btn-modal-3" x-bind:class="{ 'state-appear': stateAppearPointBtnModal3 === true,'state-leave': stateLeavePointBtnModal3 === true }" x-on:animationend="stateLeavePointBtnModal3 = false">
+							<div class="point-btn-modal__content">
+								<div class="point-btn-modal__body">
+							  <button type="button" aria-label="button" class="point-btn-modal__close-btn" x-on:click="stateAppearPointBtnModal3 = false; stateLeavePointBtnModal3 = true">
+								<span></span>
+								<span></span>
+							  </button>
+							  <picture class="point-btn-modal__picture">
+								<img src="/resources/images/point-btn-modal-img-3.png" loading="lazy" decoding="async" alt="image" class="point-btn-modal__img" width="200" height="200">
+							  </picture>
+							  <h2 class="point-btn-modal__title">Какая-нибудь часть</h2>
+							  <template x-for="i in 5">
+								<p class="point-btn-modal__descr">Описание части на три строки.</p>
+							  
+							  </template>
+							</div>
+							</div>
+						</div>
+						<div class="point-btn-modal point-btn-modal-4" x-bind:class="{ 'state-appear': stateAppearPointBtnModal4 === true,'state-leave': stateLeavePointBtnModal4 === true }" x-on:animationend="stateLeavePointBtnModal4 = false">
+							<div class="point-btn-modal__content">
+								<div class="point-btn-modal__body">
+							  <button type="button" aria-label="button" class="point-btn-modal__close-btn" x-on:click="stateAppearPointBtnModal4 = false; stateLeavePointBtnModal4 = true">
+								<span></span>
+								<span></span>
+							  </button>
+							  <picture class="point-btn-modal__picture">
+								<img src="/resources/images/point-btn-modal-img-4.png" loading="lazy" decoding="async" alt="image" class="point-btn-modal__img" width="200" height="200">
+							  </picture>
+							  <h2 class="point-btn-modal__title">Какая-нибудь часть</h2>
+							  <template x-for="i in 5">
+								<p class="point-btn-modal__descr">Описание части на три строки.</p>
+							  
+							  </template>
+							</div>
+							</div>
+						</div>
+						<div class="point-btn-modal point-btn-modal-5" x-bind:class="{ 'state-appear': stateAppearPointBtnModal5 === true,'state-leave': stateLeavePointBtnModal5 === true }" x-on:animationend="stateLeavePointBtnModal5 = false">
+							<div class="point-btn-modal__content">
+								<div class="point-btn-modal__body">
+							  <button type="button" aria-label="button" class="point-btn-modal__close-btn" x-on:click="stateAppearPointBtnModal5 = false; stateLeavePointBtnModal5 = true">
+								<span></span>
+								<span></span>
+							  </button>
+							  <picture class="point-btn-modal__picture">
+								<img src="/resources/images/point-btn-modal-img-5.png" loading="lazy" decoding="async" alt="image" class="point-btn-modal__img" width="200" height="200">
+							  </picture>
+							  <h2 class="point-btn-modal__title">Какая-нибудь часть</h2>
+							  <template x-for="i in 5">
+								<p class="point-btn-modal__descr">Описание части на три строки.</p>
+							  
+							  </template>
+							</div>
+							</div>
+						</div>
+						<div class="point-btn-modal point-btn-modal-6" x-bind:class="{ 'state-appear': stateAppearPointBtnModal6 === true,'state-leave': stateLeavePointBtnModal6 === true }" x-on:animationend="stateLeavePointBtnModal6 = false">
+							<div class="point-btn-modal__content">
+								<div class="point-btn-modal__body">
+							  <button type="button" aria-label="button" class="point-btn-modal__close-btn" x-on:click="stateAppearPointBtnModal6 = false; stateLeavePointBtnModal6 = true">
+								<span></span>
+								<span></span>
+							  </button>
+							  <picture class="point-btn-modal__picture">
+								<img src="/resources/images/point-btn-modal-img-6.png" loading="lazy" decoding="async" alt="image" class="point-btn-modal__img" width="200" height="200">
+							  </picture>
+							  <h2 class="point-btn-modal__title">Какая-нибудь часть</h2>
+							  <template x-for="i in 5">
+								<p class="point-btn-modal__descr">Описание части на три строки.</p>
+							  
+							  </template>
+							</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</li>
+			<li class="swiper-slide index-page-desktop-wrapper__section-page">
+				<section class="dev-stages-desktop" x-data="{item1:false, item2:false, item3:false, item4:false, item5: false}">
+					<div class="container dev-stages-desktop__container">
+						<h2 class="dev-stages-desktop__title">Этапы разработки</h2>
+						<ul role="list" class="dev-stages-desktop__list">
+							<li class="dev-stages-desktop__list-item dev-stages-desktop__list-item-1">
+								<h3 class="dev-stages-desktop__list-title" @mouseover="item1 = true" @mouseout="item1 = false" x-bind:class="{ 'active': item1 === true || item2 === true || item3 === true || item4 === true || item5 === true }"><span>1. </span>Технического предложениe</h3>
+								<div class="dev-stages-desktop__list-info">
+									<p class="dev-stages-desktop__list-descr">с обоснованием предлагаемого варианта решения по реализации задания.</p>
+									<picture class="dev-stages-desktop__list-picture dev-stages-desktop__list-picture--item-1" x-bind:class="{ 'active': item1 === true }">
+									  <img src="/resources/images/dev-stages-desktop-list-img-1.jpg" loading="lazy" decoding="async" alt="image" width="360" height="320" class="dev-stages-desktop__list-img">
+									</picture>
+								</div>
+							</li>
+							<li class="dev-stages-desktop__list-item dev-stages-desktop__list-item-2">
+								<h3 class="dev-stages-desktop__list-title" @mouseover="item2 = true" @mouseout="item2 = false" x-bind:class="{ 'active': item2 === true || item3 === true || item4 === true || item5 === true }"><span>2. </span>Эскизный проект</h3>
+								<div class="dev-stages-desktop__list-info">
+									<p class="dev-stages-desktop__list-descr">дает принципиальное конструктивное решение и общее представление об устройстве и принципе работы изделия, о его габаритах и основных параметрах.</p>
+									<picture class="dev-stages-desktop__list-picture dev-stages-desktop__list-picture--item-2" x-bind:class="{ 'active': item2 === true }">
+										<img src="/resources/images/dev-stages-desktop-list-img-1.jpg" loading="lazy" decoding="async" alt="image" width="360" height="320" class="dev-stages-desktop__list-img">
+									  </picture>
+								</div>
+							</li>
+							<li class="dev-stages-desktop__list-item dev-stages-desktop__list-item-3">
+								<h3 class="dev-stages-desktop__list-title" @mouseover="item3 = true" @mouseout="item3 = false" x-bind:class="{ 'active': item3 === true || item4 === true || item5 === true }"><span>3. </span>Технический проект</h3>
+								<div class="dev-stages-desktop__list-info">
+									<p class="dev-stages-desktop__list-descr">предусматривает оформление всех конструкторских документов, необходимых для изготовления изделия: чертежи деталей, сборочные, монтажные и габаритные чертежи, спецификация, ведомости покупных изделий и т.д.</p>
+									<picture class="dev-stages-desktop__list-picture dev-stages-desktop__list-picture--item-3" x-bind:class="{ 'active': item3 === true }">
+										<img src="/resources/images/dev-stages-desktop-list-img-1.jpg" loading="lazy" decoding="async" alt="image" width="360" height="320" class="dev-stages-desktop__list-img">
+									  </picture>
+								</div>
+							</li>
+							<li class="dev-stages-desktop__list-item dev-stages-desktop__list-item-4">
+								<h3 class="dev-stages-desktop__list-title" @mouseover="item4 = true" @mouseout="item4 = false" x-bind:class="{ 'active': item4 === true || item5 === true }"><span>4. </span>Рабочий проект</h3>
+								<div class="dev-stages-desktop__list-info">
+									<p class="dev-stages-desktop__list-descr"> дает на основе разработанных чертежей сборочных единиц и общих видов полное представление об устройстве изделия и исходные данные для разработки рабочих чертежей.</p>
+									<picture class="dev-stages-desktop__list-picture dev-stages-desktop__list-picture--item-4" x-bind:class="{ 'active': item4 === true }">
+										<img src="/resources/images/dev-stages-desktop-list-img-1.jpg" loading="lazy" decoding="async" alt="image" width="360" height="320" class="dev-stages-desktop__list-img">
+									  </picture>
+								</div>
+							</li>
+							<li class="dev-stages-desktop__list-item dev-stages-desktop__list-item-5">
+								<h3 class="dev-stages-desktop__list-title" @mouseover="item5 = true" @mouseout="item5 = false" x-bind:class="{ 'active': item5 === true }"><span>5. </span>Пояснительная записка</h3>
+								<div class="dev-stages-desktop__list-info">
+									<p class="dev-stages-desktop__list-descr"> содержит описание конструкции, а также расчеты, обосновывающие ее работоспособность.</p>
+									<picture class="dev-stages-desktop__list-picture dev-stages-desktop__list-picture--item-5" x-bind:class="{ 'active': item5 === true }">
+										<img src="/resources/images/dev-stages-desktop-list-img-1.jpg" loading="lazy" decoding="async" alt="image" width="360" height="320" class="dev-stages-desktop__list-img">
+									  </picture>
+								</div>
+							</li>
+						</ul>
+						<div class="dev-stages-desktop__line">
+						<svg width="1322" height="430" viewBox="0 0 1322 430" fill="none" xmlns="http://www.w3.org/2000/svg" class="dev-stages-desktop__main-line">
+							<path d="M1 1H1271C1298.61 1 1321 23.3858 1321 51V165C1321 192.614 1298.61 215 1271 215H51C23.3858 215 1 237.386 1 265V379C1 406.614 23.3858 429 51 429H1321" stroke="#364161" stroke-width="2" stroke-linecap="round"/>
+							</svg>
+							<svg width="606" height="2" viewBox="0 0 606 2" fill="none" xmlns="http://www.w3.org/2000/svg" class="dev-stages-desktop__aside-line dev-stages-desktop__aside-line-1" x-bind:class="{ 'active': item1 === true }">
+								<path d="M605 2C605.552 2 606 1.55228 606 1C606 0.447715 605.552 0 605 0V2ZM1 0C0.447715 0 0 0.447715 0 1C0 1.55228 0.447715 2 1 2V0ZM1 2H605V0H1V2Z" fill="#C22347"/>
+								</svg>
+								<svg width="1104" height="2" viewBox="0 0 1104 2" fill="none" xmlns="http://www.w3.org/2000/svg" class="dev-stages-desktop__aside-line dev-stages-desktop__aside-line-2" x-bind:class="{ 'active': item2 === true }">
+									<path d="M1103 2C1103.55 2 1104 1.55228 1104 1C1104 0.447715 1103.55 0 1103 0V2ZM1 0C0.447715 0 0 0.447715 0 1C0 1.55228 0.447715 2 1 2V0ZM1 2H1103V0H1V2Z" fill="#D8274F"/>
+								</svg>
+								<svg width="1322" height="216" viewBox="0 0 1322 216" fill="none" xmlns="http://www.w3.org/2000/svg" class="dev-stages-desktop__aside-line dev-stages-desktop__aside-line-3" x-bind:class="{ 'active': item3 === true }">
+									<path d="M1 0C0.447715 0 0 0.447715 0 1C0 1.55228 0.447715 2 1 2V0ZM733 214C732.448 214 732 214.448 732 215C732 215.552 732.448 216 733 216V214ZM1 2H1271V0H1V2ZM733 216H1271V214H733V216ZM1320 51V165H1322V51H1320ZM1271 216C1299.17 216 1322 193.167 1322 165H1320C1320 192.062 1298.06 214 1271 214V216ZM1271 2C1298.06 2 1320 23.938 1320 51H1322C1322 22.8335 1299.17 0 1271 0V2Z" fill="#D8274F"/>
+                                 </svg>	
+								 <svg width="1322" height="216" viewBox="0 0 1322 216" fill="none" xmlns="http://www.w3.org/2000/svg" class="dev-stages-desktop__aside-line dev-stages-desktop__aside-line-4" x-bind:class="{ 'active': item4 === true }">
+									<path d="M1 0C0.447715 0 0 0.447715 0 1C0 1.55228 0.447715 2 1 2V0ZM113 214C112.448 214 112 214.448 112 215C112 215.552 112.448 216 113 216V214ZM1 2H1271V0H1V2ZM113 216H1271V214H113V216ZM1320 51V165H1322V51H1320ZM1271 216C1299.17 216 1322 193.167 1322 165H1320C1320 192.062 1298.06 214 1271 214V216ZM1271 2C1298.06 2 1320 23.938 1320 51H1322C1322 22.8335 1299.17 0 1271 0V2Z" fill="#D8274F"/>
+								</svg>
+								<svg width="1322" height="430" viewBox="0 0 1322 430" fill="none" xmlns="http://www.w3.org/2000/svg" class="dev-stages-desktop__aside-line dev-stages-desktop__aside-line-5" x-bind:class="{ 'active': item5 === true }">
+									<path d="M1 1H1271C1298.61 1 1321 23.3858 1321 51V165C1321 192.614 1298.61 215 1271 215H51C23.3858 215 1 237.386 1 265V379C1 406.614 23.3858 429 51 429H1321" stroke="#D8274F" stroke-width="2" stroke-linecap="round"/>
+									</svg>
+									
+					   </div>
+					</div>
+				</section>
+			</li>
+			<li class="swiper-slide index-page-desktop-wrapper__section-page">
+				<div class="wizard-dev-form-desktop-wrapper">
+					<div class="swiper-pagination wizard-dev-form-desktop__pagination"></div>
+				<div class="wizard-dev-form-desktop swiper">
+					<ul class="swiper-wrapper wizard-dev-form-desktop__wrapper" role="list">
+						<li class="swiper-slide wizard-dev-form-desktop__slide wizard-dev-form-desktop__slide-1">
+							<h2 class="wizard-dev-form-desktop__slide-title wizard-dev-form-desktop__slide-title--slide-1">
+								Хотите заказать разработку редуктора?
+							</h2>
+							<picture class="wizard-dev-form-desktop__picture">
+								<img loading="lazy" decoding="async" src="/resources/images/wizard-form-desktop-img-1.png" alt="image" width="844" height="259" class="wizard-dev-form-desktop__img wizard-dev-form-desktop__img--slide-1">
+							</picture>
+							<ul role="list" class="wizard-dev-form-desktop__btn-group">
+								<li class="wizard-dev-form-desktop__btn-group-item">
+									<button type="button" aria-label="button" class="wizard-dev-form-desktop__btn wizard-dev-form-desktop__btn--to-slide-3">Да</button>
+								</li>
+								<li class="wizard-dev-form-desktop__btn-group-item">
+									<button type="button" aria-label="button" class="wizard-dev-form-desktop__btn wizard-dev-form-desktop__btn--to-slide-2">Я не уверен, нужна ли мне разработка</button>
+								</li>
+								<li class="wizard-dev-form-desktop__btn-group-item">
+									<button type="button" aria-label="button" class="wizard-dev-form-desktop__btn" x-on:click="askQuestionModalActive = false; askQuestionModal = true">Нет</button>
+								</li>
+							</ul>
+						</li>
+						<li class="swiper-slide wizard-dev-form-desktop__slide wizard-dev-form-desktop__slide-2">
+							<h2 class="wizard-dev-form-desktop__slide-title wizard-dev-form-desktop__slide-title--slide-2">
+								Нужна ли вам помощь специалистов в подборе редуктора?
+							</h2>
+							<picture class="wizard-dev-form-desktop__picture">
+								<source media="(min-width:768px)" srcset="/resources/images/wizard-form-img-2-tablet.png">
+								<img loading="lazy" decoding="async" src="/resources/images/wizard-form-img-2.png" alt="image" width="350" height="194" class="wizard-dev-form-desktop__img wizard-dev-form-desktop__img--slide-2">
+							</picture>
+							<ul role="list" class="wizard-dev-form-desktop__btn-group">
+								<li class="wizard-dev-form-desktop__btn-group-item">
+									<button type="button" aria-label="button" class="wizard-dev-form-desktop__btn wizard-dev-form-desktop__btn--to-slide-3">Да</button>
+								</li>
+								<li class="wizard-dev-form-desktop__btn-group-item">
+									<button type="button" aria-label="button" class="wizard-dev-form-desktop__btn" x-on:click="askQuestionModalActive = false; askQuestionModal = true">Нет</button>
+								</li>
+							</ul>
+						</li>
+						<li class="swiper-slide wizard-dev-form-desktop__slide wizard-dev-form-desktop__slide-3">
+							<h2 class="wizard-dev-form-desktop__slide-title wizard-dev-form-desktop__slide-title--slide-3">
+								Какой тип разработки вам необходим?
+							</h2>
+							<nav class="wizard-dev-form-desktop__dev-descr-nav">
+							<ul role="list" class="wizard-dev-form-desktop__dev-descr">
+								<li>
+									<svg class="wizard-dev-form-desktop__dev-descr-icon" width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+										<mask id="path-1-inside-1_1611_22355" fill="white">
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M77.3728 53.4842C77.4264 53.2589 77.6276 53.1 77.8592 53.1H101.241C101.472 53.1 101.674 53.2589 101.727 53.4842L106.72 74.4542C106.743 74.5488 106.809 74.6266 106.899 74.6638C106.989 74.7011 107.091 74.6932 107.174 74.6422L125.533 63.3444C125.73 63.2231 125.985 63.253 126.148 63.4167L142.682 79.95C142.845 80.1137 142.875 80.3684 142.754 80.5656L131.458 98.9219C131.406 99.0062 131.398 99.1102 131.436 99.2016C131.473 99.2929 131.553 99.3608 131.649 99.3837L152.616 104.376C152.842 104.43 153 104.631 153 104.862V128.244C153 128.475 152.842 128.677 152.616 128.73L131.637 133.725C131.545 133.747 131.469 133.812 131.432 133.9C131.396 133.988 131.404 134.087 131.453 134.168L142.756 152.534C142.877 152.731 142.847 152.986 142.683 153.15L126.15 169.683C125.986 169.847 125.732 169.877 125.534 169.755L107.173 158.456C107.088 158.403 106.982 158.395 106.889 158.434C106.807 158.468 106.745 158.54 106.725 158.627L101.727 179.616C101.674 179.841 101.472 180 101.241 180H77.8593C77.6278 180 77.4265 179.841 77.3729 179.616L72.3769 158.633C72.3551 158.541 72.2904 158.465 72.2033 158.429C72.1161 158.393 72.0168 158.401 71.9365 158.45L53.5655 169.755C53.3683 169.877 53.1136 169.847 52.9499 169.683L36.4167 153.15C36.2529 152.986 36.223 152.731 36.3444 152.534L47.65 134.163C47.699 134.083 47.7065 133.985 47.6708 133.899C47.635 133.812 47.5602 133.748 47.4695 133.727L26.4848 128.73C26.2595 128.677 26.1006 128.476 26.1006 128.244L26.1006 104.862C26.1006 104.631 26.2595 104.43 26.4848 104.376L47.4575 99.3825C47.5521 99.36 47.63 99.2933 47.6673 99.2035C47.7045 99.1136 47.6966 99.0113 47.6456 98.9284L36.3461 80.5667C36.2248 80.3696 36.2547 80.1149 36.4184 79.9511L52.9517 63.4179C53.1154 63.2542 53.3701 63.2242 53.5673 63.3456L71.9269 74.6438C72.0094 74.6946 72.1114 74.7025 72.201 74.6654C72.2905 74.6282 72.3569 74.5506 72.3794 74.4564L77.3728 53.4842ZM89.5502 134.673C99.5624 134.673 107.679 126.557 107.679 116.544C107.679 106.532 99.5624 98.4158 89.5502 98.4158C79.5381 98.4158 71.4217 106.532 71.4217 116.544C71.4217 126.557 79.5381 134.673 89.5502 134.673Z"/>
+										</mask>
+										<path fill-rule="evenodd" clip-rule="evenodd" d="M77.3728 53.4842C77.4264 53.2589 77.6276 53.1 77.8592 53.1H101.241C101.472 53.1 101.674 53.2589 101.727 53.4842L106.72 74.4542C106.743 74.5488 106.809 74.6266 106.899 74.6638C106.989 74.7011 107.091 74.6932 107.174 74.6422L125.533 63.3444C125.73 63.2231 125.985 63.253 126.148 63.4167L142.682 79.95C142.845 80.1137 142.875 80.3684 142.754 80.5656L131.458 98.9219C131.406 99.0062 131.398 99.1102 131.436 99.2016C131.473 99.2929 131.553 99.3608 131.649 99.3837L152.616 104.376C152.842 104.43 153 104.631 153 104.862V128.244C153 128.475 152.842 128.677 152.616 128.73L131.637 133.725C131.545 133.747 131.469 133.812 131.432 133.9C131.396 133.988 131.404 134.087 131.453 134.168L142.756 152.534C142.877 152.731 142.847 152.986 142.683 153.15L126.15 169.683C125.986 169.847 125.732 169.877 125.534 169.755L107.173 158.456C107.088 158.403 106.982 158.395 106.889 158.434C106.807 158.468 106.745 158.54 106.725 158.627L101.727 179.616C101.674 179.841 101.472 180 101.241 180H77.8593C77.6278 180 77.4265 179.841 77.3729 179.616L72.3769 158.633C72.3551 158.541 72.2904 158.465 72.2033 158.429C72.1161 158.393 72.0168 158.401 71.9365 158.45L53.5655 169.755C53.3683 169.877 53.1136 169.847 52.9499 169.683L36.4167 153.15C36.2529 152.986 36.223 152.731 36.3444 152.534L47.65 134.163C47.699 134.083 47.7065 133.985 47.6708 133.899C47.635 133.812 47.5602 133.748 47.4695 133.727L26.4848 128.73C26.2595 128.677 26.1006 128.476 26.1006 128.244L26.1006 104.862C26.1006 104.631 26.2595 104.43 26.4848 104.376L47.4575 99.3825C47.5521 99.36 47.63 99.2933 47.6673 99.2035C47.7045 99.1136 47.6966 99.0113 47.6456 98.9284L36.3461 80.5667C36.2248 80.3696 36.2547 80.1149 36.4184 79.9511L52.9517 63.4179C53.1154 63.2542 53.3701 63.2242 53.5673 63.3456L71.9269 74.6438C72.0094 74.6946 72.1114 74.7025 72.201 74.6654C72.2905 74.6282 72.3569 74.5506 72.3794 74.4564L77.3728 53.4842ZM89.5502 134.673C99.5624 134.673 107.679 126.557 107.679 116.544C107.679 106.532 99.5624 98.4158 89.5502 98.4158C79.5381 98.4158 71.4217 106.532 71.4217 116.544C71.4217 126.557 79.5381 134.673 89.5502 134.673Z" fill="#F5F5F6"/>
+										<path d="M72.3794 74.4564L74.325 74.9196L72.3794 74.4564ZM71.9269 74.6438L70.8787 76.3471L71.9269 74.6438ZM52.9517 63.4179L51.5374 62.0037L52.9517 63.4179ZM53.5673 63.3456L52.5191 65.0489L53.5673 63.3456ZM36.3461 80.5667L38.0494 79.5185L36.3461 80.5667ZM36.4184 79.9511L35.0042 78.5369L36.4184 79.9511ZM47.6456 98.9284L49.3489 97.8802L47.6456 98.9284ZM47.4575 99.3825L47.9208 101.328L47.4575 99.3825ZM26.4848 104.376L26.948 106.322L26.4848 104.376ZM47.4695 133.727L47.9327 131.781L47.4695 133.727ZM36.4167 153.15L35.0024 154.564L36.4167 153.15ZM36.3444 152.534L38.0477 153.582L36.3444 152.534ZM53.5655 169.755L52.5173 168.052L53.5655 169.755ZM52.9499 169.683L54.3641 168.269L52.9499 169.683ZM71.9365 158.45L72.9847 160.154L71.9365 158.45ZM72.3769 158.633L74.3225 158.169L72.3769 158.633ZM77.3729 179.616L75.4273 180.079L77.3729 179.616ZM101.727 179.616L103.673 180.079L101.727 179.616ZM106.725 158.627L108.67 159.09L106.725 158.627ZM107.173 158.456L106.125 160.159L107.173 158.456ZM125.534 169.755L124.486 171.459L125.534 169.755ZM142.756 152.534L144.459 151.486L142.756 152.534ZM131.453 134.168L129.75 135.216L131.453 134.168ZM131.637 133.725L131.174 131.78L131.637 133.725ZM152.616 128.73L152.153 126.785L152.616 128.73ZM152.616 104.376L152.153 106.322L152.616 104.376ZM131.649 99.3837L131.186 101.329L131.649 99.3837ZM131.458 98.9219L129.754 97.8737L131.458 98.9219ZM142.682 79.95L141.267 81.3642L142.682 79.95ZM142.754 80.5656L144.457 81.6138L142.754 80.5656ZM125.533 63.3444L124.484 61.6411L125.533 63.3444ZM126.148 63.4167L124.734 64.8309L126.148 63.4167ZM107.174 74.6422L108.222 76.3455L107.174 74.6422ZM106.72 74.4542L108.666 73.991L106.72 74.4542ZM77.3728 53.4842L79.3184 53.9474L77.3728 53.4842ZM47.65 134.163L45.9467 133.114L47.65 134.163ZM101.727 53.4842L103.673 53.0209L101.727 53.4842ZM101.241 51.1H77.8592V55.1H101.241V51.1ZM108.666 73.991L103.673 53.0209L99.7815 53.9474L104.774 74.9175L108.666 73.991ZM124.484 61.6411L106.126 72.9389L108.222 76.3455L126.581 65.0477L124.484 61.6411ZM144.096 78.5358L127.562 62.0025L124.734 64.8309L141.267 81.3642L144.096 78.5358ZM133.161 99.9701L144.457 81.6138L141.05 79.5174L129.754 97.8737L133.161 99.9701ZM153.08 102.43L132.112 97.4381L131.186 101.329L152.153 106.322L153.08 102.43ZM155 128.244V104.862H151V128.244H155ZM132.1 135.671L153.08 130.676L152.153 126.785L131.174 131.78L132.1 135.671ZM144.459 151.486L133.157 133.12L129.75 135.216L141.052 153.582L144.459 151.486ZM127.564 171.097L144.097 154.564L141.269 151.736L124.736 168.269L127.564 171.097ZM106.125 160.159L124.486 171.459L126.583 168.052L108.221 156.753L106.125 160.159ZM103.673 180.079L108.67 159.09L104.779 158.163L99.7817 179.153L103.673 180.079ZM77.8593 182H101.241V178H77.8593V182ZM70.4313 159.096L75.4273 180.079L79.3185 179.153L74.3225 158.169L70.4313 159.096ZM54.6137 171.459L72.9847 160.154L70.8883 156.747L52.5173 168.052L54.6137 171.459ZM35.0024 154.564L51.5357 171.097L54.3641 168.269L37.8309 151.736L35.0024 154.564ZM45.9467 133.114L34.6411 151.486L38.0477 153.582L49.3533 135.211L45.9467 133.114ZM26.0215 130.676L47.0062 135.672L47.9327 131.781L26.948 126.785L26.0215 130.676ZM24.1006 104.862L24.1006 128.244H28.1006L28.1006 104.862H24.1006ZM46.9943 97.4369L26.0215 102.43L26.948 106.322L47.9208 101.328L46.9943 97.4369ZM34.6428 81.6149L45.9423 99.9766L49.3489 97.8802L38.0494 79.5185L34.6428 81.6149ZM51.5374 62.0037L35.0042 78.5369L37.8326 81.3653L54.3659 64.8321L51.5374 62.0037ZM72.975 72.9405L54.6154 61.6423L52.5191 65.0489L70.8787 76.3471L72.975 72.9405ZM75.4271 53.0209L70.4338 73.9931L74.325 74.9196L79.3184 53.9474L75.4271 53.0209ZM105.679 116.544C105.679 125.452 98.4578 132.673 89.5502 132.673V136.673C100.667 136.673 109.679 127.661 109.679 116.544H105.679ZM89.5502 100.416C98.4578 100.416 105.679 107.637 105.679 116.544H109.679C109.679 105.428 100.667 96.4158 89.5502 96.4158V100.416ZM73.4217 116.544C73.4217 107.637 80.6427 100.416 89.5502 100.416V96.4158C78.4335 96.4158 69.4217 105.428 69.4217 116.544H73.4217ZM89.5502 132.673C80.6427 132.673 73.4217 125.452 73.4217 116.544H69.4217C69.4217 127.661 78.4335 136.673 89.5502 136.673V132.673ZM72.9672 76.5128C73.6453 76.2315 74.1531 75.6414 74.325 74.9196L70.4338 73.9931C70.5607 73.4598 70.9356 73.025 71.4348 72.8179L72.9672 76.5128ZM70.8787 76.3471C71.5109 76.7362 72.288 76.7944 72.9672 76.5128L71.4348 72.8179C71.9348 72.6106 72.508 72.6531 72.975 72.9405L70.8787 76.3471ZM54.3659 64.8321C53.8747 65.3232 53.1106 65.4129 52.5191 65.0489L54.6154 61.6423C53.6295 61.0356 52.356 61.1851 51.5374 62.0037L54.3659 64.8321ZM38.0494 79.5185C38.4135 80.1101 38.3237 80.8742 37.8326 81.3653L35.0042 78.5369C34.1856 79.3555 34.0361 80.629 34.6428 81.6149L38.0494 79.5185ZM49.5148 99.9694C49.7964 99.29 49.7381 98.5127 49.3489 97.8802L45.9423 99.9766C45.6551 99.5099 45.6126 98.9372 45.8197 98.4376L49.5148 99.9694ZM47.9208 101.328C48.6431 101.156 49.2335 100.648 49.5148 99.9694L45.8197 98.4376C46.0266 97.9386 46.4612 97.5639 46.9943 97.4369L47.9208 101.328ZM28.1006 104.862C28.1006 105.557 27.6237 106.161 26.948 106.322L26.0215 102.43C24.8954 102.699 24.1006 103.705 24.1006 104.862H28.1006ZM26.948 126.785C27.6237 126.946 28.1006 127.549 28.1006 128.244H24.1006C24.1006 129.402 24.8954 130.408 26.0215 130.676L26.948 126.785ZM49.5181 133.132C49.2382 132.457 48.6509 131.952 47.9327 131.781L47.0062 135.672C46.4696 135.545 46.0318 135.167 45.8234 134.665L49.5181 133.132ZM37.8309 151.736C38.322 152.227 38.4117 152.991 38.0477 153.582L34.6411 151.486C34.0343 152.472 34.1839 153.745 35.0024 154.564L37.8309 151.736ZM52.5173 168.052C53.1089 167.688 53.873 167.778 54.3641 168.269L51.5357 171.097C52.3543 171.916 53.6278 172.065 54.6137 171.459L52.5173 168.052ZM72.9694 156.582C72.2926 156.301 71.5182 156.359 70.8883 156.747L72.9847 160.154C72.5155 160.442 71.9396 160.485 71.4372 160.277L72.9694 156.582ZM74.3225 158.169C74.1513 157.45 73.6453 156.862 72.9694 156.582L71.4372 160.277C70.9354 160.069 70.5589 159.632 70.4313 159.096L74.3225 158.169ZM77.8593 178C78.5539 178 79.1576 178.477 79.3185 179.153L75.4273 180.079C75.6954 181.205 76.7017 182 77.8593 182V178ZM99.7817 179.153C99.9426 178.477 100.546 178 101.241 178V182C102.399 182 103.405 181.205 103.673 180.079L99.7817 179.153ZM106.127 156.585C105.45 156.864 104.949 157.451 104.779 158.163L108.67 159.09C108.542 159.628 108.163 160.072 107.652 160.283L106.127 156.585ZM108.221 156.753C107.588 156.363 106.807 156.302 106.12 156.587L107.658 160.28C107.157 160.489 106.587 160.444 106.125 160.159L108.221 156.753ZM124.736 168.269C125.227 167.778 125.991 167.688 126.583 168.052L124.486 171.459C125.472 172.065 126.746 171.916 127.564 171.097L124.736 168.269ZM141.052 153.582C140.688 152.991 140.778 152.227 141.269 151.736L144.097 154.564C144.916 153.745 145.066 152.472 144.459 151.486L141.052 153.582ZM129.585 133.134C129.304 133.811 129.362 134.586 129.75 135.216L133.157 133.12C133.445 133.589 133.488 134.164 133.28 134.666L129.585 133.134ZM131.174 131.78C130.454 131.951 129.865 132.457 129.585 133.134L133.28 134.666C133.072 135.167 132.635 135.544 132.1 135.671L131.174 131.78ZM151 128.244C151 127.549 151.477 126.946 152.153 126.785L153.08 130.676C154.206 130.408 155 129.402 155 128.244H151ZM152.153 106.322C151.477 106.161 151 105.557 151 104.862H155C155 103.705 154.206 102.698 153.08 102.43L152.153 106.322ZM129.588 99.9675C129.87 100.648 130.462 101.157 131.186 101.329L132.112 97.4381C132.644 97.5646 133.077 97.9382 133.283 98.4357L129.588 99.9675ZM129.754 97.8737C129.364 98.5076 129.306 99.2867 129.588 99.9675L133.283 98.4357C133.49 98.9337 133.447 99.5047 133.161 99.9701L129.754 97.8737ZM141.267 81.3642C140.776 80.873 140.686 80.1089 141.05 79.5174L144.457 81.6138C145.064 80.6278 144.914 79.3543 144.096 78.5358L141.267 81.3642ZM126.581 65.0477C125.989 65.4118 125.225 65.3221 124.734 64.8309L127.562 62.0025C126.744 61.1839 125.47 61.0344 124.484 61.6411L126.581 65.0477ZM106.133 76.5113C106.812 76.793 107.59 76.7347 108.222 76.3455L106.126 72.9389C106.592 72.6516 107.165 72.6091 107.665 72.8163L106.133 76.5113ZM104.774 74.9175C104.946 75.6396 105.454 76.23 106.133 76.5113L107.665 72.8163C108.164 73.0232 108.539 73.4579 108.666 73.991L104.774 74.9175ZM77.8592 51.1C76.7015 51.1 75.6953 51.8948 75.4271 53.0209L79.3184 53.9474C79.1575 54.6231 78.5538 55.1 77.8592 55.1V51.1ZM49.3533 135.211C49.7405 134.582 49.7985 133.808 49.5181 133.132L45.8234 134.665C45.6146 134.161 45.6574 133.584 45.9467 133.114L49.3533 135.211ZM101.241 55.1C100.546 55.1 99.9424 54.6231 99.7815 53.9474L103.673 53.0209C103.405 51.8948 102.398 51.1 101.241 51.1V55.1Z" fill="#0F1937" mask="url(#path-1-inside-1_1611_22355)"/>
+										<path d="M140.8 12.4632C141.099 11.5419 142.402 11.5419 142.702 12.4632L146.514 24.1946C146.915 25.4307 148.067 26.2675 149.367 26.2675H161.702C162.671 26.2675 163.073 27.5071 162.29 28.0765L152.31 35.327C151.259 36.0909 150.819 37.445 151.221 38.6811L155.032 50.4125C155.332 51.3338 154.277 52.0999 153.493 51.5305L143.514 44.2801C142.463 43.5162 141.039 43.5162 139.987 44.2801L130.008 51.5305C129.224 52.0999 128.17 51.3338 128.469 50.4125L132.281 38.6811C132.683 37.445 132.243 36.0909 131.191 35.327L121.212 28.0765C120.428 27.5071 120.831 26.2675 121.8 26.2675H134.135C135.434 26.2675 136.586 25.4307 136.988 24.1946L140.8 12.4632Z" fill="#C22347" stroke="#C22347" stroke-width="2"/>
+										</svg>			
+								</li>
+								<li><h4 class="wizard-dev-form-desktop__dev-descr-title">Готовое решение</h4></li>
+								<li>Готовый проект с полным комплектом конструкторской документации, редукторы по которому ранее выпускались нашей компанией. </li>
+							</ul>
+							<ul role="list" class="wizard-dev-form-desktop__dev-descr">
+								<li>
+									<svg class="wizard-dev-form-desktop__dev-descr-icon" width="180" height="180">
+										<use href="../resources/svgSprites/svgSprite.svg#wizard-dev-descr-ico-2"></use>
+									</svg> 
+								</li>
+								<li><h4 class="wizard-dev-form-desktop__dev-descr-title">Индивидуальный проект</h4></li>
+								<li>Проект, который мы разрабатываем с учетом Ваших требований под конкретные условия эксплуатации.</li>
+							</ul>
+							</nav>
+							<ul role="list" class="wizard-dev-form-desktop__btn-group">
+								<li class="wizard-dev-form-desktop__btn-group-item">
+									<button type="button" aria-label="button" class="wizard-dev-form-desktop__btn wizard-dev-form-desktop__btn--to-next-slide wizard-dev-form-desktop__btn--to-slide-4">Готовое решение</button>
+								</li>
+								<li class="wizard-dev-form-desktop__btn-group-item">
+									<button type="button" aria-label="button" class="wizard-dev-form-desktop__btn" x-on:click="callbackModalActive = false; callbackModal = true">Индивидуальный проект</button>
+								</li>
+							</ul>
+						</li>
+						<li class="swiper-slide wizard-dev-form-desktop__slide wizard-dev-form-desktop__slide-4">
+							<h2 class="wizard-dev-form-desktop__slide-title wizard-dev-form-desktop__slide-title--slide-4">
+								Хотите подобрать проект самостоятельно?
+							</h2>
+							<picture class="wizard-dev-form-desktop__picture">
+								<source media="(min-width:768px)" srcset="/resources/images/wizard-form-img-3-tablet.png">
+								<img loading="lazy" decoding="async" src="/resources/images/wizard-form-img-3.png" alt="image" width="361" height="222" class="wizard-dev-form-desktop__img wizard-dev-form-desktop__img--slide-4">
+							</picture>
+							<ul role="list" class="wizard-dev-form-desktop__btn-group">
+								<li class="wizard-dev-form-desktop__btn-group-item">
+									<button type="button" aria-label="button" class="wizard-dev-form-desktop__btn" x-on:click="projectSelectionModalActive = false; projectSelectionModal = true">Да</button>
+								</li>
+								<li class="wizard-dev-form-desktop__btn-group-item">
+									<button type="button" aria-label="button" class="wizard-dev-form-desktop__btn" x-on:click="callbackModalActive = false; callbackModal = true">Нет</button>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				</div>
+			</li>
+			<li class="swiper-slide index-page-desktop-wrapper__section-page">
+				<section class="all-news">
+					<div class="container all-news__container">
+						<h2 class="all-news__title">Новости</h2>
+						<a href="#" class="all-news__link">
+							<span>Все новости</span>
+							<svg class="all-news__icon" width="24" height="24">
+								<use href="../resources/svgSprites/svgSprite.svg#icon-link"></use>
+							</svg> 
+						</a>
+						<ul role="list" class="all-news__list" x-data="{activeLink: ''}" x-on:click.outside="activeLink = ''">
+							<template x-for="i in 5">
+								<li class="all-news__list-item">
+									<a href="#" class="all-news__list-link" x-on:click="activeLink = i" x-bind:class="{ 'active': activeLink === i }">
+									 <div class="all-news__list-info">
+										<time datetime="2022.06.17" class="all-news__list-datetime">17.06.2022</time>
+										<h3 class="all-news__list-title">Заголовок новости</h3>
+									 </div>  
+									 <picture class="all-news__list-picture">
+									   <img src="/resources/images/news-category-img.jpg" loading="lazy" decoding="async" alt="image" width="448" height="200" class="all-news__list-img">
+									 </picture> 
+									</a>
+								</li>
+							</template>
+						</ul>
+					</div>
+				</section>
+				
+<footer class="footer">
+    <div class="container footer__container">
+      <a href="#" class="footer__logo">
+        <svg width="40" height="40">
+          <use href="../resources/svgSprites/svgSprite.svg#footer-logo"></use>
+         </svg>  
+         <h2>РЕДУКТОР ПРОЕКТ</h2>
+        </a>
+      <ul role="list" class="footer__social-media">
+        <li>
+          <a href="#" class="footer__social-media-link">
+          <svg width="19" height="15">
+            <use href="../resources/svgSprites/svgSprite.svg#tg-icon"></use>
+           </svg>  
+          </a>
+        </li>
+        <li>
+          <a href="#" class="footer__social-media-link">
+          <svg width="24" height="14">
+            <use href="../resources/svgSprites/svgSprite.svg#vk-icon"></use>
+           </svg>  
+          </a>
+        </li>
+      </ul>
+      <p class="footer__copyright">Copyright © 2006 -2022, Company Name. All rights reserved.</p>
+    </div>
+</footer>
+			</li>
+		   </ul>
+		</div>
+		</main>
+		<div class="loader">
+			<div class="loader__spinner">
+				<div class="loader__icons">
+				<svg class="loader__spinner-red-gear-icon" width="35" height="36">
+					<use href="../resources/svgSprites/svgSprite.svg#loader-red-gear-icon"></use>
+				</svg> 
+				<svg class="loader__spinner-dark-gear-icon" width="29" height="30">
+					<use href="../resources/svgSprites/svgSprite.svg#loader-dark-gear-icon"></use>
+				</svg> 
+			</div>
+			<div class="loader__app-logo" id="app-python">
+				<svg width="23" height="23" viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
+				  <path fill="#8EB7D7" fill-rule="evenodd" d="M9.47 5.1C8.23 5.3 8 5.75 8 6.6v.9h3V8H7c-.85 0-1.56.6-1.8 1.58-.26 1.1-.27 1.8 0 2.95.2.87.7 1.47 1.57 1.47H8v-1.22c0-.96.84-1.8 1.83-1.8h2.7c.82 0 1.47-.68 1.47-1.48V6.63c0-.8-.67-1.38-1.47-1.5C12.03 5.03 11.5 5 11 5s-1.1.02-1.52.1zM9 6h1v1H9V6zm4.53 11.9c1.24-.2 1.47-.66 1.47-1.5v-.9h-3V15h4c.85 0 1.56-.6 1.8-1.58.26-1.1.27-1.8 0-2.95C17.6 9.6 17.1 9 16.23 9H15v1.22c0 .96-.84 1.8-1.83 1.8h-2.7c-.82 0-1.47.68-1.47 1.48v2.87c0 .8.67 1.38 1.47 1.5.5.1 1.02.13 1.52.13s1.1-.02 1.52-.1zM14 17h-1v-1h1v1z"></path>
+				</svg>
+			</div>
+			<div class="loader__app-logo" id="app-swift">
+				<svg width="23" height="23" viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
+				  <path fill="#8EB7D7" fill-rule="evenodd" d="M17.66 13.5s.7.78 1.03 1.77c.32 1 .32 2.2.26 2.23-.07.03-.87-1.37-2.28-1.37-1.42 0-2.13 1.37-4.63 1.37-5.6 0-8.05-4.7-8.05-4.7s2.48 1.8 5.07 1.74c2.6-.07 3.3-.83 3.3-.83s-1.15-.97-3.15-2.96C7.22 8.74 5.35 6 5.35 6s3 2.44 3.97 3.15c.97.72 1.93 1.36 1.93 1.36s-.93-1-1.6-1.83C9 7.83 7.33 5.34 7.33 5.34s2.57 2.38 3.75 3.32c1.17.94 3.42 2.54 3.42 2.54s1.36-3.16-1.27-7.2c6.38 4.2 4.43 9.5 4.43 9.5z"></path>
+				</svg>
+			  </div>
+			  <div class="loader__app-logo" id="app-javascript">
+				<svg width="23" height="23" viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
+				  <path fill="#8EB7D7" fill-rule="evenodd" d="M5 6c0-.55.45-1 1-1h11c.55 0 1 .45 1 1v11c0 .55-.45 1-1 1H6c-.55 0-1-.45-1-1V6zm7.07 9.2v.26l-.03.1v.06l-.02.1-.02.06v.07l-.04.08-.02.06-.03.05v.07l-.05.07-.04.07-.04.06-.05.07-.04.07-.05.05-.04.06-.06.05-.08.05-.06.04-.07.04-.1.04-.06.04-.07.04-.08.02-.1.03-.07.02-.08.02-.07.02H10.44l-.08.03h-.1l-.08.02h-.5l-.08-.02H9.5l-.1-.02h-.2l-.05-.03-.02-.08v-.1l-.02-.07v-.1l-.03-.07-.02-.08v-.17l-.02-.07v-.1l-.03-.07V16L9 15.92v-.08l-.02-.1.07.03.08.02h.25l.07.03h.48l.08-.02h.1l.07-.04.07-.03.07-.04.08-.05.05-.05.04-.04.04-.07.04-.08.02-.08.03-.1v-4.18h1.48v4.16-.02zm5.28 0v.2l-.02.1v.08l-.02.08v.17l-.05.07-.03.08-.02.06-.05.08-.04.08-.05.06-.04.07-.04.06-.06.05-.07.06-.06.06-.06.05-.05.05-.06.05-.08.04-.05.05h-.07l-.07.04-.07.03-.07.03-.08.03-.1.03h-.07l-.07.03h-.23l-.08.03h-.08l-.1.02h-.7l-.07-.02h-.08l-.08-.03h-.17l-.07-.03-.07-.03H14l-.08-.03h-.08l-.08-.03h-.08l-.07-.04-.06-.02-.08-.02-.07-.03-.1-.03-.06-.03-.07-.03-.08-.03-.08-.03.03-.07v-.08l.02-.08.02-.1v-.25l.03-.08.02-.08v-.08l.03-.1v-.1l.03-.07v-.08l.03-.08.08.03.08.05.07.03.08.04.07.03.06.03.08.03.07.05.1.02.07.04.08.03.07.03.1.02.08.03.08.03.08.02.08.02.1.02H14.87l.08.03h.44l.1-.02h.07l.07-.04.1-.02.05-.04.07-.06.05-.06.03-.06.04-.07.02-.08v-.26l-.05-.05-.04-.07-.04-.07-.07-.05-.07-.03-.05-.04-.07-.04-.06-.04-.07-.04-.06-.02-.06-.03-.07-.02-.08-.03-.1-.04-.1-.02-.1-.03-.06-.03-.08-.04-.08-.02-.08-.03-.07-.04-.08-.03-.08-.02-.06-.04-.06-.02-.05-.03-.07-.04H14l-.07-.05-.08-.05-.06-.04-.1-.06-.04-.04-.07-.05-.07-.03-.06-.06-.05-.06-.06-.06-.04-.07-.04-.06-.05-.07-.03-.08-.02-.07-.03-.08v-.07l-.03-.08V13l-.02-.07v-.43l.02-.08.02-.07v-.07l.04-.08.02-.07.03-.07.03-.06.04-.08.04-.06.04-.07.05-.08.05-.06.05-.06.06-.04.05-.06.07-.05.06-.05.05-.04.08-.05h.1l.07-.04.08-.04.08-.03.08-.04.1-.03h.08l.08-.03h.08l.08-.03.1-.02h.25l.1-.02h.43l.1.02h.16l.08.03H16l.1.02.07.02h.07l.08.02.07.02.05.02.08.03h.08l.08.05.07.03.07.02.07.03.07.03.07.03v.06l-.03.1V11.7l-.03.1-.02.07v.1l-.02.08-.02.08v.08l-.02.1-.03.07v.08l-.02.1-.02.07-.06-.04-.08-.05-.07-.04-.07-.04-.08-.03-.07-.03-.08-.03-.08-.03-.07-.02-.07-.03-.08-.04-.1-.03h-.06l-.08-.04h-.1l-.07-.03-.07-.02h-.6l-.06.03h-.07l-.06.04-.06.04-.07.05-.03.07-.03.06-.02.08v.2l.02.06.02.06.03.05.04.06.08.06.05.02.07.04.08.04.1.05.06.04h.07l.08.04.1.03.08.04.1.04.1.03.1.03.07.05.1.03.07.03.08.06.08.03.07.02.07.04.07.04.08.03.07.05.1.04.06.03.08.04.06.04.05.04.05.05.06.06.07.03.06.07.06.06.04.07.03.07.05.08.04.07.03.07v.06l.03.07v.08l.02.08v.1l.02.07v.18l-.02-.05z"></path>
+				</svg>
+			  </div>
+			  <div class="loader__app-logo" id="app-clojure">
+				<svg width="23" height="23" viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
+				  <path fill="#8EB7D7" fill-rule="evenodd" d="M14.24 5.58c2.44 1.12 4.05 3.86 3.72 6.57-.16 1.84-1.23 3.47-2.62 4.6-1.86.72-3.12-9.4-5.7-11.48 1.52-.4 3.17-.38 4.6.3zm-6.5.52c1.4.7 2.96 4.1 2.8 4.5-.97 2.07-2.6 4.24-2.95 6.03-1.23-1-2.2-2.38-2.48-3.98-.52-2.45.63-5.07 2.6-6.55h.02zm3.53 6.33c.36 1.88.8 3.7 2.26 5.33-1.37.36-2.87.3-4.22-.1-.2-1.97 1.14-4.15 1.98-5.23z"></path>
+				</svg>
+			  </div>
+			  <div class="loader__app-logo" id="app-php">
+				<svg width="23" height="23" viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
+				  <path fill="#8EB7D7" fill-rule="evenodd" d="M1 11.5C1 14.54 5.68 17 11.46 17c5.77 0 10.45-2.46 10.45-5.5S17.24 6 11.47 6C5.68 6 1 8.46 1 11.5zm3.3 3.2c-.04 0-.07-.02-.1-.05l-.02-.1 1.08-5.5c0-.06.05-.1.1-.1H7.7c.72 0 1.26.2 1.6.6.34.38.45.93.3 1.6-.04.3-.13.55-.26.8-.13.22-.3.43-.5.63-.26.23-.55.4-.86.5-.3.1-.7.15-1.15.15h-.93L5.6 14.6c0 .05-.05.1-.1.1H4.3zm2.38-2.57c.46 0 .8-.08 1-.25.23-.16.37-.45.45-.84.07-.37.05-.63-.08-.77-.13-.15-.4-.22-.83-.22H6.5l-.4 2.08h.58zm5.67 1.1c-.04 0-.07-.02-.1-.04 0-.04-.02-.07 0-.1l.46-2.45c.05-.23.04-.4-.02-.46-.04-.06-.16-.13-.52-.13h-.85l-.6 3.07c0 .05-.05.1-.1.1H9.4c-.03 0-.06-.03-.08-.05-.02-.04-.03-.07-.02-.1l1.07-5.52c0-.05.05-.1.1-.1h1.2c.03 0 .07.02.1.05 0 .03.02.06 0 .1l-.25 1.32h.93c.7 0 1.18.13 1.45.38.3.26.38.68.27 1.24l-.5 2.57c0 .05-.06.1-.1.1h-1.22zm1.32 1.46c-.04 0-.07-.02-.1-.05 0-.02-.02-.06 0-.1l1.06-5.5c0-.06.05-.1.1-.1h2.32c.72 0 1.26.2 1.6.6.34.38.45.93.32 1.6-.06.3-.15.55-.28.8-.14.22-.3.43-.52.63-.25.23-.54.4-.84.5-.3.1-.7.15-1.16.15h-.93l-.27 1.37c0 .05-.06.1-.1.1h-1.2zm2.38-2.57c.46 0 .8-.08 1-.25.23-.16.37-.45.45-.84.07-.37.05-.63-.08-.77-.13-.15-.4-.22-.83-.22h-.74l-.4 2.08h.6z"></path>
+				</svg>
+			  </div>
+			</div>
+		</div>
+		<div class="pwa-install-toast">Установите как приложение на айфон: нажмите на <img loading="lazy" decoding="async" src="/resources/images/ios-share-icon.png" alt="image" width="15" height="15">, затем добавьте на главный экран</div>
+		<div class="ask-question">
+			<div class="container ask-question__container">
+			<div class="ask-question__left"></div>
+			 <div class="ask-question__center">
+			<button type="button" aria-label="button" class="primary-btn ask-question__modal-btn" x-on:click="askQuestionModalActive = false; askQuestionModal = true">
+			  <span>Задать вопрос</span>
+			</button>
+			 </div>
+			 <div class="ask-question__right">
+			  <button type="button" aria-label="button" class="ask-question__to-up-btn" x-on:click="window.scrollTo(0,0)">
+				<svg width="20" height="24">
+				  <use class="ask-question__to-up-btn-icon" href="../resources/svgSprites/svgSprite.svg#icon-pageup"></use>
+				  <use class="ask-question__to-up-btn-icon-hover" href="../resources/svgSprites/svgSprite.svg#icon-pageup-hover"></use>
+				 </svg>  
+			   </button>
+				<button type="button" aria-label="button" class="ask-question__tawk-btn" x-on:click="tawkModal = !tawkModal" x-bind:class="{ 'active': tawkModal === true }">
+				  <svg width="28" height="24">
+					<use class="ask-question__tawk-btn-icon" href="../resources/svgSprites/svgSprite.svg#tawk-icon"></use>
+					<use class="ask-question__tawk-btn-icon-hover" href="../resources/svgSprites/svgSprite.svg#tawk-icon-hover"></use>
+				</svg>  
+				</button>
+			 </div>
+			</div>
+		  </div>
+		  <div class="modal header-favorites-modal" x-bind:class="{ 'active': headerFavoritesModal === true, 'out': headerFavoritesModalActive === true}">
+			<div class="modal-background" x-on:click.self="headerFavoritesModalActive = true">
+			  <div class="modal-content header-favorites-modal__content">
+				<div class="header-favorites-modal__top">
+				<div class="modal__title-wrapper header-favorites-modal__title-wrapper">
+				  <h3 class="modal__title header-favorites-modal__title">Вы выбрали</h3>
+				  <button type="button" aria-label="button" class="modal__close-btn header-favorites-modal__close-btn" x-on:click="headerFavoritesModalActive = true">
+					  <span></span>
+					  <span></span>
+				  </button>
+				</div>
+				<ul role="list" class="header-favorites-modal__list" x-data="{items: ['КЦ2-1000','КЦ2-250Н','КЦ2ВН-250','A-700x1000','Если название очень очень очень очень очень очень очень длинное']}">
+				  <template x-for="item in items">
+					  <li class="header-favorites-modal__list-item" x-bind:class="{ 'non-active': deleteFavoritesItem === false }" x-data="{deleteFavoritesItem: true}">
+						  <div class="header-favorites-modal__list-item-info">
+							  <img loading="lazy" decoding="async" src="/resources/images/header__favorites-menu-img.png" alt="image" width="80" height="52">
+							  <h4 class="header-favorites-modal__list-title" x-text="item">КЦ2-1000</h4>
+						  </div>
+						  <button type="button" aria-label="button" class="header-favorites-modal__delete-btn" x-on:click="deleteFavoritesItem = !deleteFavoritesItem">
+							  <svg width="15" height="17">
+								  <use class="header-favorites-modal__delete-btn-icon" href="../resources/svgSprites/svgSprite.svg#favorites-menu-delete-icon"></use>
+								  <use class="header-favorites-modal__delete-btn-icon-hover" href="../resources/svgSprites/svgSprite.svg#favorites-menu-delete-icon-hover"></use>
+							  </svg>  
+						  </button>
+					  </li>
+				  </template>
+				</ul>
+				</div>
+				<div class="header-favorites-modal__bottom">
+				   <form action="#" method="post" class="modal__form header-favorites-modal__form">
+					  <fieldset class="header-favorites-modal__fieldset">
+						<div class="form-controls-wrapper header-favorites-modal__form-controls-wrapper">
+						  <input type="text" name="headerFavoritesModalName" id="headerFavoritesModalName">
+						  <label for="headerFavoritesModalName">Имя <sup>*</sup></label>
+						  <svg class="icon-error" width="28" height="28">
+							  <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+						  </svg>
+						  <svg class="icon-correct" width="28" height="28">
+							  <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+						  </svg>
+					  </div>
+					  <div class="form-controls-wrapper header-favorites-modal__form-controls-wrapper">
+						<input type="email" name="headerFavoritesModalEmail" id="headerFavoritesModalEmail">
+						<label for="headerFavoritesModalEmail">E-mail <sup>*</sup></label>
+						<svg class="icon-error" width="28" height="28">
+							<use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+						</svg>
+						<svg class="icon-correct" width="28" height="28">
+							<use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+						</svg>
+					  </div>
+					  <div class="form-controls-wrapper header-favorites-modal__form-controls-wrapper">
+						<textarea placeholder="Ваш комментарий..."></textarea>
+					  </div>
+					   <button type="submit" class="primary-btn modal__submit-btn header-favorites-modal__submit-btn"><span>Отправить заявку</span></button>
+					  </fieldset>
+				   </form>
+			  </div>
+			</div>
+		  </div>
+		  </div>
+		  <div class="modal ask-question-modal" x-bind:class="{ 'active': askQuestionModal === true, 'out': askQuestionModalActive === true}">
+			<div class="modal-background" x-on:click.self="askQuestionModalActive = true">
+			  <div class="modal-content ask-question-modal__content">
+				<div class="modal__title-wrapper ask-question-modal__title-wrapper">
+					<h3 class="modal__title ask-question-modal__title">Задать вопрос</h3>
+					<button type="button" aria-label="button" class="modal__close-btn ask-question-modal__close-btn" x-on:click="askQuestionModalActive = true">
+						<span></span>
+						<span></span>
+					</button>
+				  </div>
+				   <form action="#" method="post" class="modal__form ask-question-modal__form">
+					  <fieldset class="ask-question-modal__fieldset">
+						<div class="form-controls-wrapper ask-question-modal__form-controls-wrapper">
+						  <input type="text" name="askQuestionModalName" id="askQuestionModalName">
+						  <label for="askQuestionModalName">Имя <sup>*</sup></label>
+						  <svg class="icon-error" width="28" height="28">
+							  <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+						  </svg>
+						  <svg class="icon-correct" width="28" height="28">
+							  <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+						  </svg>
+					  </div>
+					  <div class="form-controls-wrapper ask-question-modal__form-controls-wrapper">
+						<input type="email" name="askQuestionModalEmail" id="askQuestionModalEmail">
+						<label for="askQuestionModalEmail">E-mail <sup>*</sup></label>
+						<svg class="icon-error" width="28" height="28">
+							<use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+						</svg>
+						<svg class="icon-correct" width="28" height="28">
+							<use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+						</svg>
+					  </div>
+					  <div class="form-controls-wrapper ask-question-modal__form-controls-wrapper">
+						<input type="tel" name="askQuestionModalPhone" id="askQuestionModalPhone">
+						<label for="askQuestionModalPhone">Телефон</label>
+						<svg class="icon-error" width="28" height="28">
+							<use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+						</svg>
+						<svg class="icon-correct" width="28" height="28">
+							<use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+						</svg>
+					  </div>
+					  <div class="form-controls-wrapper ask-question-modal__form-controls-wrapper">
+						<textarea placeholder="Ваш комментарий..."></textarea>
+					  </div>
+					   <button type="submit" class="primary-btn modal__submit-btn ask-question-modal__submit-btn"><span>Отправить заявку</span></button>
+					  </fieldset>
+				   </form>
+			</div>
+		  </div>
+		  </div>
+		  <div class="modal callback-modal" x-bind:class="{ 'active': callbackModal === true, 'out': callbackModalActive === true}">
+			<div class="modal-background" x-on:click.self="callbackModalActive = true">
+			  <div class="modal-content callback-modal__content">
+				<div class="modal__title-wrapper callback-modal__title-wrapper">
+					<h3 class="modal__title callback-modal__title">Заявка</h3>
+					<button type="button" aria-label="button" class="modal__close-btn callback-modal__close-btn" x-on:click="callbackModalActive = true">
+						<span></span>
+						<span></span>
+					</button>
+				  </div>
+				   <form action="#" method="post" class="modal__form callback-modal__form">
+					  <fieldset class="callback-modal__fieldset">
+						<div class="form-controls-wrapper callback-modal__form-controls-wrapper">
+						  <input type="text" name="callbackModalName" id="callbackModalName">
+						  <label for="callbackModalName">Имя <sup>*</sup></label>
+						  <svg class="icon-error" width="28" height="28">
+							  <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+						  </svg>
+						  <svg class="icon-correct" width="28" height="28">
+							  <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+						  </svg>
+					  </div>
+					  <div class="form-controls-wrapper callback-modal__form-controls-wrapper">
+						<input type="email" name="callbackModalEmail" id="callbackModalEmail">
+						<label for="callbackModalEmail">E-mail <sup>*</sup></label>
+						<svg class="icon-error" width="28" height="28">
+							<use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+						</svg>
+						<svg class="icon-correct" width="28" height="28">
+							<use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+						</svg>
+					  </div>
+					  <div class="form-controls-wrapper callback-modal__form-controls-wrapper">
+						<input type="tel" name="callbackModalPhone" id="callbackModalPhone">
+						<label for="callbackModalPhone">Телефон</label>
+						<svg class="icon-error" width="28" height="28">
+							<use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+						</svg>
+						<svg class="icon-correct" width="28" height="28">
+							<use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+						</svg>
+					  </div>
+					  <div class="form-controls-wrapper callback-modal__form-controls-wrapper">
+						<textarea placeholder="Ваш комментарий..."></textarea>
+					  </div>
+					   <button type="submit" class="primary-btn modal__submit-btn callback-modal__submit-btn"><span>Отправить заявку</span></button>
+					  </fieldset>
+				   </form>
+			</div>
+		  </div>
+		  </div>
+		  <div class="modal project-selection-modal" x-bind:class="{ 'active': projectSelectionModal === true, 'out': projectSelectionModalActive === true}">
+			<div class="modal-background" x-on:click.self="projectSelectionModalActive = true">
+			  <div class="modal-content project-selection-modal__content">
+				<div class="modal__title-wrapper project-selection-modal__title-wrapper">
+					<button type="button" aria-label="button" class="modal__close-btn project-selection-modal__close-btn" x-on:click="projectSelectionModalActive = true">
+						<span></span>
+						<span></span>
+					</button>
+				  </div>
+				  <h3 class="modal__title project-selection-modal__title">Подбор проекта</h3>
+				   <p class="project-selection-modal__text">Стандартную разработку вы можете подобрать в нашем порфтолио проектов по ссылке ниже.</p>
+				   <a href="#" class="primary-btn project-selection-modal__link-btn"><span>Смотреть проекты</span></a>
+			</div>
+		  </div>
+		  </div>
+		  <div class="tawk-modal" x-bind:class="{ 'active': tawkModal === true }">
+			<div class="tawk-modal__content">
+			  <div class="tawk-modal__top">
+				<button type="button" aria-label="button" class="tawk-modal__btn">
+				  <span></span>
+				  <span></span>
+				  <span></span>
+				</button>
+				<button type="button" aria-label="button" class="tawk-modal__close-btn" x-on:click="tawkModal = false">
+				  <span></span>
+				  <span></span>
+				</button>
+			  </div>
+			  <div class="tawk-modal__title">
+				<strong>Добрый день!</strong>
+				<p>Есть вопрос?</p>
+			  </div>
+			  <form action="#" method="post" class="tawk-modal__form">
+				<fieldset class="tawk-modal__fieldset">
+				  <div class="form-controls-wrapper tawk-modal__form-controls-wrapper">
+					<input type="text" name="tawkModalName" id="tawkModalName">
+					<label for="tawkModalName">Имя <sup>*</sup></label>
+					<svg class="icon-error" width="28" height="28">
+						<use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+					</svg>
+					<svg class="icon-correct" width="28" height="28">
+						<use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+					</svg>
+				  </div>
+				  <div class="form-controls-wrapper tawk-modal__form-controls-wrapper">
+					<input type="email" name="tawkModalEmail" id="tawkModalEmail">
+					<label for="tawkModalEmail">E-mail <sup>*</sup></label>
+					<svg class="icon-error" width="28" height="28">
+						<use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+					</svg>
+					<svg class="icon-correct" width="28" height="28">
+						<use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+					</svg>
+				  </div>
+				  <div class="form-controls-wrapper tawk-modal__form-controls-wrapper">
+					<input type="email" name="tawkModalPhone" id="tawkModalPhone">
+					<label for="tawkModalPhone">Телефон<sup>*</sup></label>
+					<svg class="icon-error" width="28" height="28">
+						<use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+					</svg>
+					<svg class="icon-correct" width="28" height="28">
+						<use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+					</svg>
+				  </div>
+				  <div class="form-controls-wrapper header-favorites-modal__form-controls-wrapper">
+					<textarea placeholder="Введите ваш вопрос..."></textarea>
+				  </div>
+				  <button type="submit" class="secondary-btn tawk-modal__submit-btn"><span>Отправить</span></button>
+				</fieldset>
+			  </form>
+			</div>
+		  </div>
+		  <footer class="footer footer--index-page-mobile">
+			<div class="container footer__container">
+			  <a href="#" class="footer__logo">
+				<svg width="40" height="40">
+				  <use href="../resources/svgSprites/svgSprite.svg#footer-logo"></use>
+				 </svg>  
+				 <h2>РЕДУКТОР ПРОЕКТ</h2>
+				</a>
+			  <ul role="list" class="footer__social-media">
+				<li>
+				  <a href="#" class="footer__social-media-link">
+				  <svg width="19" height="15">
+					<use href="../resources/svgSprites/svgSprite.svg#tg-icon"></use>
+				   </svg>  
+				  </a>
+				</li>
+				<li>
+				  <a href="#" class="footer__social-media-link">
+				  <svg width="24" height="14">
+					<use href="../resources/svgSprites/svgSprite.svg#vk-icon"></use>
+				   </svg>  
+				  </a>
+				</li>
+			  </ul>
+			  <p class="footer__copyright">Copyright © 2006 -2022, Company Name. All rights reserved.</p>
+			</div>
+		</footer>
+	</body>
+</html>

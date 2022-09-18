@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('../parts/head.html',{
+	"title":"Страница Вакансия"
+	})
+	<body x-data="{headerFavoritesModal: false, headerFavoritesModalActive: false, tawkModal: false, askQuestionModal: false, askQuestionModalActive: false, callbackModal: false, callbackModalActive: false,projectSelectionModal: false, projectSelectionModalActive: false, headerMobileMenu: false, headerSearch: false, headerFavoritesMenu: false, headerMenuSubList: false, headerMegaMenu: false}" x-bind:class="{ 'overflow-hidden': headerFavoritesModal === true || tawkModal === true || headerMobileMenu === true }"  class="off-shadow-header">
+		<script src="js/main.min.js" defer></script>
+		@@include('../parts/header.html')
+        @@include('../parts/breadcrumbs.html')
+        @@include('../parts/previous-page-link.html')
+		<main>
+           <section class="vacancy-page">
+            <div class="container vacancy-page__container">
+                <h1 class="section-title vacancy-page__section-title">Инженер-конструктор</h1>
+                <div class="vacancy-page__bottom">
+                    <time datetime="2022.06.16" class="vacancy-page__time">16.06.2022</time>
+                <ul role="list" class="vacancy-page__tags-list">
+                    <li class="vacancy-page__tags-list-item">
+                        теги
+                    </li>
+                    <li class="vacancy-page__tags-list-item">
+                        теги
+                    </li>
+                    <li class="vacancy-page__tags-list-item">
+                        очень длинные теги тоже
+                    </li>
+                </ul>
+            </div>
+            </div>
+            <div class="vacancy-page__info">
+                <div class="vacancy-page__info-container container">
+                <nav class="vacancy-page__info-nav">
+                 <h2>Обязанности</h2>
+                 <p>Разработка редукторов. Включает в себя:</p>
+               <ul role="list" class="vacancy-page__info-list">
+                 <li class="vacancy-page__info-list-item">
+                   Определение типа, компоновки, составление кинематической схемы редуктора;
+                 </li>
+                 <li class="vacancy-page__info-list-item">
+                   Определение и расчёт технических характеристик (мощность, частота вращения быстроходного вала, крутящий момент на тихоходном валу, передаточное отношение);
+                 </li>
+                 <li class="vacancy-page__info-list-item">
+                   Расчёт зубчатых зацеплений;
+                 </li>
+                 <li class="vacancy-page__info-list-item">
+                   Конструирование, расчёт деталей и узлов редуктора: валов, корпуса, подшипников, уплотнений и др.;
+                 </li>
+                 <li class="vacancy-page__info-list-item">
+                   3d-моделирование;
+                 </li>
+                 <li class="vacancy-page__info-list-item">
+                   Разработка чертежей.
+                 </li>
+               </ul>
+              </nav>   
+              <nav class="vacancy-page__info-nav">
+               <h2>Требования</h2>
+             <ul role="list" class="vacancy-page__info-list">
+               <li class="vacancy-page__info-list-item">
+                   Высшее техническое образование;
+               </li>
+               <li class="vacancy-page__info-list-item">
+                   Навык работы в CAD-программах, приветствуется навык решения инженерных задач в CAE-программах;
+               </li>
+               <li class="vacancy-page__info-list-item">
+                   Опыт конструкторской работы в области машиностроения.
+               </li>
+             </ul>
+            </nav> 
+            <nav class="vacancy-page__info-nav">
+               <h2>Условия</h2>
+             <ul role="list" class="vacancy-page__info-list">
+               <li class="vacancy-page__info-list-item">
+                   <span>
+                   <strong>Заработная плата от 60000 руб.</strong>
+                   на испытательный срок (до 3-х мес.) размер заработной платы обсуждается индивидуально; по результатам успешной работы обсуждается повышение заработной платы;
+                   </span>
+               </li>
+               <li class="vacancy-page__info-list-item">
+                  <span>
+                   <strong>Навык работы в CAD-программах, приветствуется навык решения инженерных задач в CAE-программах;</strong>
+                   обучим базовым приёмам работы с данными программами; предоставим техническую литературу по редукторостроению;
+                  </span>
+               </li>
+               <li class="vacancy-page__info-list-item">
+                <span>
+                   <strong>Работа в офисе</strong>
+                   по адресу ул. Машиностроителей, д. 19, оф. 603;
+                </span>
+               </li>
+               <li class="vacancy-page__info-list-item">
+                <span>
+                   <strong>График работы 5/2, с 09:00 до 18:00</strong>
+                   с перерывом; возможно согласование другого временного интервала.
+                </span>
+               </li>
+             </ul>
+            </nav> 
+               </div>
+              </div>
+           </section>
+		</main>
+		<div class="ask-question">
+      <div class="container ask-question__container">
+      <div class="ask-question__left"></div>
+       <div class="ask-question__center">
+      <button type="button" aria-label="button" class="primary-btn ask-question__modal-btn" x-on:click="callbackModalActive = false; callbackModal = true">
+        <span>Откликнуться</span>
+      </button>
+       </div>
+       <div class="ask-question__right">
+        <button type="button" aria-label="button" class="ask-question__to-up-btn" x-on:click="window.scrollTo(0,0)">
+          <svg width="20" height="24">
+            <use class="ask-question__to-up-btn-icon" href="../resources/svgSprites/svgSprite.svg#icon-pageup"></use>
+            <use class="ask-question__to-up-btn-icon-hover" href="../resources/svgSprites/svgSprite.svg#icon-pageup-hover"></use>
+           </svg>  
+         </button>
+          <button type="button" aria-label="button" class="ask-question__tawk-btn" x-on:click="tawkModal = !tawkModal" x-bind:class="{ 'active': tawkModal === true }">
+            <svg width="28" height="24">
+              <use class="ask-question__tawk-btn-icon" href="../resources/svgSprites/svgSprite.svg#tawk-icon"></use>
+              <use class="ask-question__tawk-btn-icon-hover" href="../resources/svgSprites/svgSprite.svg#tawk-icon-hover"></use>
+          </svg>  
+          </button>
+       </div>
+      </div>
+    </div>
+    <div class="modal header-favorites-modal" x-bind:class="{ 'active': headerFavoritesModal === true, 'out': headerFavoritesModalActive === true}">
+      <div class="modal-background" x-on:click.self="headerFavoritesModalActive = true">
+        <div class="modal-content header-favorites-modal__content">
+          <div class="header-favorites-modal__top">
+          <div class="modal__title-wrapper header-favorites-modal__title-wrapper">
+            <h3 class="modal__title header-favorites-modal__title">Вы выбрали</h3>
+            <button type="button" aria-label="button" class="modal__close-btn header-favorites-modal__close-btn" x-on:click="headerFavoritesModalActive = true">
+                <span></span>
+                <span></span>
+            </button>
+          </div>
+          <ul role="list" class="header-favorites-modal__list" x-data="{items: ['КЦ2-1000','КЦ2-250Н','КЦ2ВН-250','A-700x1000','Если название очень очень очень очень очень очень очень длинное']}">
+            <template x-for="item in items">
+                <li class="header-favorites-modal__list-item" x-bind:class="{ 'non-active': deleteFavoritesItem === false }" x-data="{deleteFavoritesItem: true}">
+                    <div class="header-favorites-modal__list-item-info">
+                        <img loading="lazy" decoding="async" src="/resources/images/header__favorites-menu-img.png" alt="image" width="80" height="52">
+                        <h4 class="header-favorites-modal__list-title" x-text="item">КЦ2-1000</h4>
+                    </div>
+                    <button type="button" aria-label="button" class="header-favorites-modal__delete-btn" x-on:click="deleteFavoritesItem = !deleteFavoritesItem">
+                        <svg width="15" height="17">
+                            <use class="header-favorites-modal__delete-btn-icon" href="../resources/svgSprites/svgSprite.svg#favorites-menu-delete-icon"></use>
+                            <use class="header-favorites-modal__delete-btn-icon-hover" href="../resources/svgSprites/svgSprite.svg#favorites-menu-delete-icon-hover"></use>
+                        </svg>  
+                    </button>
+                </li>
+            </template>
+          </ul>
+          </div>
+          <div class="header-favorites-modal__bottom">
+             <form action="#" method="post" class="modal__form header-favorites-modal__form">
+                <fieldset class="header-favorites-modal__fieldset">
+                  <div class="form-controls-wrapper header-favorites-modal__form-controls-wrapper">
+                    <input type="text" name="headerFavoritesModalName" id="headerFavoritesModalName">
+                    <label for="headerFavoritesModalName">Имя <sup>*</sup></label>
+                    <svg class="icon-error" width="28" height="28">
+                        <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+                    </svg>
+                    <svg class="icon-correct" width="28" height="28">
+                        <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+                    </svg>
+                </div>
+                <div class="form-controls-wrapper header-favorites-modal__form-controls-wrapper">
+                  <input type="email" name="headerFavoritesModalEmail" id="headerFavoritesModalEmail">
+                  <label for="headerFavoritesModalEmail">E-mail <sup>*</sup></label>
+                  <svg class="icon-error" width="28" height="28">
+                      <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+                  </svg>
+                  <svg class="icon-correct" width="28" height="28">
+                      <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+                  </svg>
+                </div>
+                <div class="form-controls-wrapper header-favorites-modal__form-controls-wrapper">
+                  <textarea placeholder="Ваш комментарий..."></textarea>
+                </div>
+                 <button type="submit" class="primary-btn modal__submit-btn header-favorites-modal__submit-btn"><span>Отправить заявку</span></button>
+                </fieldset>
+             </form>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="modal ask-question-modal" x-bind:class="{ 'active': askQuestionModal === true, 'out': askQuestionModalActive === true}">
+      <div class="modal-background" x-on:click.self="askQuestionModalActive = true">
+        <div class="modal-content ask-question-modal__content">
+          <div class="modal__title-wrapper ask-question-modal__title-wrapper">
+              <h3 class="modal__title ask-question-modal__title">Задать вопрос</h3>
+              <button type="button" aria-label="button" class="modal__close-btn ask-question-modal__close-btn" x-on:click="askQuestionModalActive = true">
+                  <span></span>
+                  <span></span>
+              </button>
+            </div>
+             <form action="#" method="post" class="modal__form ask-question-modal__form">
+                <fieldset class="ask-question-modal__fieldset">
+                  <div class="form-controls-wrapper ask-question-modal__form-controls-wrapper">
+                    <input type="text" name="askQuestionModalName" id="askQuestionModalName">
+                    <label for="askQuestionModalName">Имя <sup>*</sup></label>
+                    <svg class="icon-error" width="28" height="28">
+                        <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+                    </svg>
+                    <svg class="icon-correct" width="28" height="28">
+                        <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+                    </svg>
+                </div>
+                <div class="form-controls-wrapper ask-question-modal__form-controls-wrapper">
+                  <input type="email" name="askQuestionModalEmail" id="askQuestionModalEmail">
+                  <label for="askQuestionModalEmail">E-mail <sup>*</sup></label>
+                  <svg class="icon-error" width="28" height="28">
+                      <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+                  </svg>
+                  <svg class="icon-correct" width="28" height="28">
+                      <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+                  </svg>
+                </div>
+                <div class="form-controls-wrapper ask-question-modal__form-controls-wrapper">
+                  <input type="tel" name="askQuestionModalPhone" id="askQuestionModalPhone">
+                  <label for="askQuestionModalPhone">Телефон</label>
+                  <svg class="icon-error" width="28" height="28">
+                      <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+                  </svg>
+                  <svg class="icon-correct" width="28" height="28">
+                      <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+                  </svg>
+                </div>
+                <div class="form-controls-wrapper ask-question-modal__form-controls-wrapper">
+                  <textarea placeholder="Ваш комментарий..."></textarea>
+                </div>
+                 <button type="submit" class="primary-btn modal__submit-btn ask-question-modal__submit-btn"><span>Отправить заявку</span></button>
+                </fieldset>
+             </form>
+      </div>
+    </div>
+    </div>
+    <div class="modal callback-modal" x-bind:class="{ 'active': callbackModal === true, 'out': callbackModalActive === true}">
+      <div class="modal-background" x-on:click.self="callbackModalActive = true">
+        <div class="modal-content callback-modal__content">
+          <div class="modal__title-wrapper callback-modal__title-wrapper">
+              <h3 class="modal__title callback-modal__title">Заявка</h3>
+              <button type="button" aria-label="button" class="modal__close-btn callback-modal__close-btn" x-on:click="callbackModalActive = true">
+                  <span></span>
+                  <span></span>
+              </button>
+            </div>
+             <form action="#" method="post" class="modal__form callback-modal__form">
+                <fieldset class="callback-modal__fieldset">
+                  <div class="form-controls-wrapper callback-modal__form-controls-wrapper">
+                    <input type="text" name="callbackModalName" id="callbackModalName">
+                    <label for="callbackModalName">Имя <sup>*</sup></label>
+                    <svg class="icon-error" width="28" height="28">
+                        <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+                    </svg>
+                    <svg class="icon-correct" width="28" height="28">
+                        <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+                    </svg>
+                </div>
+                <div class="form-controls-wrapper callback-modal__form-controls-wrapper">
+                  <input type="email" name="callbackModalEmail" id="callbackModalEmail">
+                  <label for="callbackModalEmail">E-mail <sup>*</sup></label>
+                  <svg class="icon-error" width="28" height="28">
+                      <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+                  </svg>
+                  <svg class="icon-correct" width="28" height="28">
+                      <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+                  </svg>
+                </div>
+                <div class="form-controls-wrapper callback-modal__form-controls-wrapper">
+                  <input type="tel" name="callbackModalPhone" id="callbackModalPhone">
+                  <label for="callbackModalPhone">Телефон</label>
+                  <svg class="icon-error" width="28" height="28">
+                      <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+                  </svg>
+                  <svg class="icon-correct" width="28" height="28">
+                      <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+                  </svg>
+                </div>
+                <div class="form-controls-wrapper callback-modal__form-controls-wrapper">
+                  <textarea placeholder="Ваш комментарий..."></textarea>
+                </div>
+                 <button type="submit" class="primary-btn modal__submit-btn callback-modal__submit-btn"><span>Отправить заявку</span></button>
+                </fieldset>
+             </form>
+      </div>
+    </div>
+    </div>
+    <div class="modal project-selection-modal" x-bind:class="{ 'active': projectSelectionModal === true, 'out': projectSelectionModalActive === true}">
+      <div class="modal-background" x-on:click.self="projectSelectionModalActive = true">
+        <div class="modal-content project-selection-modal__content">
+          <div class="modal__title-wrapper project-selection-modal__title-wrapper">
+              <button type="button" aria-label="button" class="modal__close-btn project-selection-modal__close-btn" x-on:click="projectSelectionModalActive = true">
+                  <span></span>
+                  <span></span>
+              </button>
+            </div>
+            <h3 class="modal__title project-selection-modal__title">Подбор проекта</h3>
+             <p class="project-selection-modal__text">Стандартную разработку вы можете подобрать в нашем порфтолио проектов по ссылке ниже.</p>
+             <a href="#" class="primary-btn project-selection-modal__link-btn"><span>Смотреть проекты</span></a>
+      </div>
+    </div>
+    </div>
+    <div class="tawk-modal" x-bind:class="{ 'active': tawkModal === true }">
+      <div class="tawk-modal__content">
+        <div class="tawk-modal__top">
+          <button type="button" aria-label="button" class="tawk-modal__btn">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <button type="button" aria-label="button" class="tawk-modal__close-btn" x-on:click="tawkModal = false">
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <div class="tawk-modal__title">
+          <strong>Добрый день!</strong>
+          <p>Есть вопрос?</p>
+        </div>
+        <form action="#" method="post" class="tawk-modal__form">
+          <fieldset class="tawk-modal__fieldset">
+            <div class="form-controls-wrapper tawk-modal__form-controls-wrapper">
+              <input type="text" name="tawkModalName" id="tawkModalName">
+              <label for="tawkModalName">Имя <sup>*</sup></label>
+              <svg class="icon-error" width="28" height="28">
+                  <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+              </svg>
+              <svg class="icon-correct" width="28" height="28">
+                  <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+              </svg>
+            </div>
+            <div class="form-controls-wrapper tawk-modal__form-controls-wrapper">
+              <input type="email" name="tawkModalEmail" id="tawkModalEmail">
+              <label for="tawkModalEmail">E-mail <sup>*</sup></label>
+              <svg class="icon-error" width="28" height="28">
+                  <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+              </svg>
+              <svg class="icon-correct" width="28" height="28">
+                  <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+              </svg>
+            </div>
+            <div class="form-controls-wrapper tawk-modal__form-controls-wrapper">
+              <input type="email" name="tawkModalPhone" id="tawkModalPhone">
+              <label for="tawkModalPhone">Телефон<sup>*</sup></label>
+              <svg class="icon-error" width="28" height="28">
+                  <use xlink:href="resources/svgSprites/svgSprite.svg#icon-error"></use>
+              </svg>
+              <svg class="icon-correct" width="28" height="28">
+                  <use xlink:href="resources/svgSprites/svgSprite.svg#icon-correct"></use>
+              </svg>
+            </div>
+            <div class="form-controls-wrapper header-favorites-modal__form-controls-wrapper">
+              <textarea placeholder="Введите ваш вопрос..."></textarea>
+            </div>
+            <button type="submit" class="secondary-btn tawk-modal__submit-btn"><span>Отправить</span></button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <footer class="footer">
+        <div class="container footer__container">
+          <a href="#" class="footer__logo">
+            <svg width="40" height="40">
+              <use href="../resources/svgSprites/svgSprite.svg#footer-logo"></use>
+             </svg>  
+             <h2>РЕДУКТОР ПРОЕКТ</h2>
+            </a>
+          <ul role="list" class="footer__social-media">
+            <li>
+              <a href="#" class="footer__social-media-link">
+              <svg width="19" height="15">
+                <use href="../resources/svgSprites/svgSprite.svg#tg-icon"></use>
+               </svg>  
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer__social-media-link">
+              <svg width="24" height="14">
+                <use href="../resources/svgSprites/svgSprite.svg#vk-icon"></use>
+               </svg>  
+              </a>
+            </li>
+          </ul>
+          <p class="footer__copyright">Copyright © 2006 -2022, Company Name. All rights reserved.</p>
+        </div>
+    </footer>
+	</body>
+</html>

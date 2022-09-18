@@ -1,0 +1,18 @@
+{
+    "name":"РЕДУКТОР ПРОЕКТ",
+    "short_name":"РП",
+    "start_url":"/",
+    "display":"standalone",
+    "background_color":"white",
+    "theme_color":"black",
+    "scope": ".",
+    "description":"Проектирование и изготовление промышленных редукторов",
+    "icons":[
+    {
+    "src":"favicon.svg",                     
+    "sizes":"48x48 72x72 96x96 128x128 256x256 512x512",
+    "type":"image/svg+xml",
+    "purpose": "any"
+    }
+  ]
+}

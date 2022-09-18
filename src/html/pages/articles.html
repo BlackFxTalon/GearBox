@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('../parts/head.html',{
+	"title":"Специальные редукторы"
+	})
+	<body x-data="{headerFavoritesModal: false, headerFavoritesModalActive: false, tawkModal: false, askQuestionModal: false, askQuestionModalActive: false, callbackModal: false, callbackModalActive: false,projectSelectionModal: false, projectSelectionModalActive: false, headerMobileMenu: false, headerSearch: false, headerFavoritesMenu: false, headerMenuSubList: false, headerMegaMenu: false}" x-bind:class="{ 'overflow-hidden': headerFavoritesModal === true || tawkModal === true || headerMobileMenu === true }"  class="off-shadow-header">
+		<link rel="stylesheet" href="https://simeydotme.github.io/jQuery-ui-Slider-Pips/dist/css/jqueryui.min.css">
+		<link rel="stylesheet" href="https://simeydotme.github.io/jQuery-ui-Slider-Pips/dist/css/jquery-ui-slider-pips.min.css">
+		<script src="https://simeydotme.github.io/jQuery-ui-Slider-Pips/dist/js/jquery-plus-ui.min.js"></script>
+        <script src="https://simeydotme.github.io/jQuery-ui-Slider-Pips/dist/js/jquery-ui-slider-pips.js"></script>
+		<script src="js/main.min.js" defer></script>
+		@@include('../parts/header.html')
+		@@include('../parts/breadcrumbs.html')
+        <div class="filter" x-data="{toggleFilter: false}">
+            <div class="filter__top" x-on:click.self="toggleFilter = !toggleFilter">
+                <div class="container filter__top-container" x-on:click.self="toggleFilter = !toggleFilter">
+                <p class="filter__toggler" x-on:click.self="toggleFilter = !toggleFilter">
+                    Фильтры
+                    <svg class="filter__toggler-arrow" x-bind:class="{ 'active': toggleFilter === true }" width="14" height="8">
+                        <use href="../resources/svgSprites/svgSprite.svg#filter-arrow"></use>
+                    </svg> 
+                </p>
+                <div class="filter__clear-filters" x-data="{filtersCount: 2}">
+                    <p class="filter__clear-filters-title" x-bind:class="{ 'non-active': filtersCount === null }">
+                        Выбрано
+                    </p>
+                    <p class="filter__clear-filters-count" x-bind:class="{ 'non-active': filtersCount === null }">/<span x-text="filtersCount">2</span>/</p>
+                    <button type="button" aria-label="button" class="filter__clear-filters-btn" x-on:click="filtersCount = null">
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                </div>
+            </div>
+            <form action="#" method="post" class="filter__main" x-bind:class="{'active': toggleFilter === true}" x-ref="filterMain" x-bind:style="toggleFilter === true ? 'height: ' + $refs.filterMain.scrollHeight + 'px' : ''" >
+                <fieldset class="filter__main-fieldset filter__main-fieldset--tags">
+                 <ul role="list" class="filter__tags-list filter__tags-list--1">
+                    <li class="filter__tag filter__tag--very-wide" x-data="{clearFilterTag: false}" x-bind:class="{ 'active': clearFilterTag === false }">
+                        <input type="text" disabled value="Очень длинный тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                        <span></span>
+                        <span></span>
+                        </button>
+                    </li>
+                    <li class="filter__tag filter__tag--short" x-data="{clearFilterTag: false}" x-bind:class="{ 'active': clearFilterTag === false }">
+                        <input type="text" disabled value="Тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--very-wide" x-data="{clearFilterTag: false}" x-bind:class="{ 'active': clearFilterTag === false }">
+                        <input type="text" disabled value="Очень длинный тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--short" x-data="{clearFilterTag: false}" x-bind:class="{ 'active': clearFilterTag === false }">
+                        <input type="text" disabled value="Тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--very-wide" x-data="{clearFilterTag: false}" x-bind:class="{ 'active': clearFilterTag === false }">
+                        <input type="text" disabled value="Очень длинный тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--very-wide" x-data="{clearFilterTag: false}" x-bind:class="{ 'active': clearFilterTag === false }">
+                        <input type="text" disabled value="Очень длинный тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--short" x-bind:class="{ 'active': clearFilterTag === false }" x-data="{clearFilterTag: false}">
+                        <input type="text" disabled value="Тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--short" x-bind:class="{ 'active': clearFilterTag === false }" x-data="{clearFilterTag: false}">
+                        <input type="text" disabled value="Тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--short" x-bind:class="{ 'active': clearFilterTag === false }" x-data="{clearFilterTag: false}">
+                        <input type="text" disabled value="Тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--short" x-bind:class="{ 'active': clearFilterTag === false }" x-data="{clearFilterTag: false}">
+                        <input type="text" disabled value="Тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--short" x-bind:class="{ 'active': clearFilterTag === false }" x-data="{clearFilterTag: false}">
+                        <input type="text" disabled value="Тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--wide" x-bind:class="{ 'active': clearFilterTag === false }" x-data="{clearFilterTag: false}">
+                        <input type="text" disabled value="Длинный тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                 </ul>
+                 <ul role="list" class="filter__tags-list filter__tags-list--2">
+                    <li class="filter__tag filter__tag--very-wide" x-data="{clearFilterTag: false}" x-bind:class="{ 'active': clearFilterTag === false }">
+                        <input type="text" disabled value="Очень длинный тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                        <span></span>
+                        <span></span>
+                        </button>
+                    </li>
+                    <li class="filter__tag filter__tag--short" x-data="{clearFilterTag: false}" x-bind:class="{ 'active': clearFilterTag === false }">
+                        <input type="text" disabled value="Тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--very-wide" x-data="{clearFilterTag: false}" x-bind:class="{ 'active': clearFilterTag === false }">
+                        <input type="text" disabled value="Очень длинный тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--short" x-data="{clearFilterTag: false}" x-bind:class="{ 'active': clearFilterTag === false }">
+                        <input type="text" disabled value="Тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--very-wide" x-data="{clearFilterTag: false}" x-bind:class="{ 'active': clearFilterTag === false }">
+                        <input type="text" disabled value="Очень длинный тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--very-wide" x-data="{clearFilterTag: false}" x-bind:class="{ 'active': clearFilterTag === false }">
+                        <input type="text" disabled value="Очень длинный тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--short" x-bind:class="{ 'active': clearFilterTag === false }" x-data="{clearFilterTag: false}">
+                        <input type="text" disabled value="Тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--short" x-bind:class="{ 'active': clearFilterTag === false }" x-data="{clearFilterTag: false}">
+                        <input type="text" disabled value="Тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--short" x-bind:class="{ 'active': clearFilterTag === false }" x-data="{clearFilterTag: false}">
+                        <input type="text" disabled value="Тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--short" x-bind:class="{ 'active': clearFilterTag === false }" x-data="{clearFilterTag: false}">
+                        <input type="text" disabled value="Тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--short" x-bind:class="{ 'active': clearFilterTag === false }" x-data="{clearFilterTag: false}">
+                        <input type="text" disabled value="Тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                    <li class="filter__tag filter__tag--wide" x-bind:class="{ 'active': clearFilterTag === false }" x-data="{clearFilterTag: false}">
+                        <input type="text" disabled value="Длинный тег" class="filter__tag-input">
+                        <button type="button" aria-label="button" class="filter__tag-clear-btn" x-on:click="clearFilterTag = true">
+                            <span></span>
+                            <span></span>
+                            </button>
+                    </li>
+                 </ul>
+                 <button type="button" aria-label="button" class="clear-filters-btn" x-on:click="hideFilterTags()">
+                    <div class="clear-filters-btn__clear-filters-icon">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <p>Удалить всё</p>
+                   </button>
+               </fieldset>
+            </form>
+            <script>
+                function hideFilterTags() {
+                    const filterTags = document.querySelectorAll('.filter__tag');
+                    filterTags.forEach(element => {
+                        element.classList.remove('active');
+                    });
+                }
+            </script>
+         </div>
+		<main>
+			<section class="articles-page">
+				<div class="container articles-page__container">
+                <h1 class="section-title articles-page__section-title">Статьи</h1>
+                <ul role="list" class="articles-page__list">
+                    <template x-for="i in 9">
+                       <li class="articles-page__list-item">
+                        <a href="#" class="articles-page__list-link" x-bind:class="{ 'active': toggleCard === true }" x-data="{toggleCard: false}" x-on:click="toggleCard = !toggleCard" x-on:click.outside="toggleCard = false">
+                            <ul role="list" class="articles-page__list-tags">
+                                <li class="articles-page__list-tag articles-page__list-tag--short">теги</li>
+                                <li class="articles-page__list-tag articles-page__list-tag--short">теги</li>
+                                <li class="articles-page__list-tag articles-page__list-tag--very-long">очень длинные теги тоже</li>
+                                <li class="articles-page__list-tag articles-page__list-tag--short">теги</li>
+                                <li class="articles-page__list-tag articles-page__list-tag--short">теги</li>
+                            </ul>
+                            <time datetime="2022.05.12" class="articles-page__list-datetime">12.05.2022</time>
+                                <h3 class="articles-page__list-title">РЕДУКТОР ПРИВОДА ПЕРВИЧНОГО СМЕСИТЕЛЯ</h3>
+                        </a>
+                       </li>
+                    </template>
+                </ul>
+				
+				<div class="spinner" data-aos="spinner-fade-out" data-aos-once="true">
+                    <svg width="76" height="66" viewBox="0 0 76 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="33" cy="33" r="32.5" stroke="#364161"/>
+                        <circle cx="66" cy="33" r="10" fill="#C22347"/>
+                        </svg>
+                    </div>
+
+                    <ul role="list" class="articles-page__list" data-aos="fade-up" data-aos-once="true">
+                        <template x-for="i in 9">
+                           <li class="articles-page__list-item">
+                            <a href="#" class="articles-page__list-link" x-bind:class="{ 'active': toggleCard === true }" x-data="{toggleCard: false}" x-on:click="toggleCard = !toggleCard" x-on:click.outside="toggleCard = false">
+                                <ul role="list" class="articles-page__list-tags">
+                                    <li class="articles-page__list-tag articles-page__list-tag--short">теги</li>
+                                    <li class="articles-page__list-tag articles-page__list-tag--short">теги</li>
+                                    <li class="articles-page__list-tag articles-page__list-tag--very-long">очень длинные теги тоже</li>
+                                    <li class="articles-page__list-tag articles-page__list-tag--short">теги</li>
+                                    <li class="articles-page__list-tag articles-page__list-tag--short">теги</li>
+                                </ul>
+                                <time datetime="2022.05.12" class="articles-page__list-datetime">12.05.2022</time>
+                                    <h3 class="articles-page__list-title">РЕДУКТОР ПРИВОДА ПЕРВИЧНОГО СМЕСИТЕЛЯ</h3>
+                            </a>
+                           </li>
+                        </template>
+                    </ul>
+			   </div>
+			</section>
+		</main>
+		@@include('../parts/footer.html')
+	</body>
+</html>

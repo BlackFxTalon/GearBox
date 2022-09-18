@@ -1,0 +1,267 @@
+<header class="header" x-on:click.outside="headerSearch = false; headerFavoritesMenu = false" x-on:mouseleave="headerMenuSubList = false; headerMegaMenu = false">
+    <div class="container header__container">
+        <div class="header__left">
+        <div class="header__mobile-menu-btn-wrapper" x-bind:class="{ 'active': headerMobileMenu === true }">
+        <button class="header__mobile-menu-btn" x-on:click="headerSearch = false; headerFavoritesMenu = false; headerMobileMenu = !headerMobileMenu" x-bind:class="{'active': headerMobileMenu === true}">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        </div>
+        <a href="#" class="header__logo header__logo--index">
+            <svg width="40" height="40">
+                <use href="../resources/svgSprites/svgSprite.svg#header-logo"></use>
+            </svg> 
+        </a>
+        <ul role="list" class="header__menu">
+            <li class="header__menu-item" x-bind:class="{ 'active': headerMegaMenu === true }" @mouseover.self="headerMenuSubList = false;headerMegaMenu = true">
+                <a>Проекты</a>
+            </li>
+            <li class="header__menu-item">
+                <a href="#">Статьи</a>
+            </li>
+            <li class="header__menu-item" @mouseover.self="headerMegaMenu = false;headerMenuSubList = true" x-bind:class="{ 'active': headerMenuSubList === true }">
+                <a>О компании</a>
+                <ul role="list" class="header__menu-sublist" x-bind:class="{ 'active': headerMenuSubList === true }" @mouseover="headerMenuSubList = true">
+                    <li class="header__menu-sublist-item"><a href="#">О нас</a></li>
+                    <li class="header__menu-sublist-item"><a href="#">Новости</a></li>
+                    <li class="header__menu-sublist-item"><a href="#">Вакансии</a></li>
+                </ul>
+            </li>
+            <li class="header__menu-item">
+                <a>Контакты</a>
+            </li>
+        </ul>
+        <button class="header__search-btn header__search-btn--desktop" type="button" aria-label="button" x-on:click="headerSearch = !headerSearch; headerMobileMenu = false; headerFavoritesMenu = false; headerMegaMenu = false; headerMenuSubList = false" x-bind:class="{'active': headerSearch === true}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none">
+                <path fill="#0F1937" stroke="#0F1937" d="M26.54 26.54a.64.64 0 0 1-.9 0l-9.7-9.7a8.13 8.13 0 0 1-2.75 1.63c-1.05.37-2.1.55-3.15.55a8.74 8.74 0 0 1-6.4-2.62A8.67 8.67 0 0 1 1 10.01a8.7 8.7 0 0 1 2.62-6.39A8.68 8.68 0 0 1 10 1c2.5 0 4.64.87 6.4 2.62a8.67 8.67 0 0 1 2.63 6.4 9.22 9.22 0 0 1-2.22 5.94l9.73 9.67c.25.25.26.66 0 .91Zm-16.5-8.75a7.6 7.6 0 0 0 5.55-2.24A7.5 7.5 0 0 0 17.84 10c0-2.2-.75-4.05-2.25-5.56a7.54 7.54 0 0 0-5.55-2.26c-2.2 0-4.05.76-5.55 2.26A7.56 7.56 0 0 0 2.23 10c0 2.2.75 4.04 2.26 5.54a7.57 7.57 0 0 0 5.55 2.24Z"/>
+              </svg>
+        </button>
+        </div>
+        <a href="tel:+7(343) 236–44–44" class="header__phone header__phone--desktop">
+            +7(343) 236–44–44
+        </a>
+        <div class="header__right">
+            <button class="header__search-btn header__search-btn--mobile" type="button" aria-label="button" x-on:click="headerSearch = !headerSearch; headerMobileMenu = false; headerFavoritesMenu = false" x-bind:class="{'active': headerSearch === true}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none">
+                    <path fill="#0F1937" stroke="#0F1937" d="M26.54 26.54a.64.64 0 0 1-.9 0l-9.7-9.7a8.13 8.13 0 0 1-2.75 1.63c-1.05.37-2.1.55-3.15.55a8.74 8.74 0 0 1-6.4-2.62A8.67 8.67 0 0 1 1 10.01a8.7 8.7 0 0 1 2.62-6.39A8.68 8.68 0 0 1 10 1c2.5 0 4.64.87 6.4 2.62a8.67 8.67 0 0 1 2.63 6.4 9.22 9.22 0 0 1-2.22 5.94l9.73 9.67c.25.25.26.66 0 .91Zm-16.5-8.75a7.6 7.6 0 0 0 5.55-2.24A7.5 7.5 0 0 0 17.84 10c0-2.2-.75-4.05-2.25-5.56a7.54 7.54 0 0 0-5.55-2.26c-2.2 0-4.05.76-5.55 2.26A7.56 7.56 0 0 0 2.23 10c0 2.2.75 4.04 2.26 5.54a7.57 7.57 0 0 0 5.55 2.24Z"/>
+                  </svg>
+            </button>
+            <a href="tel:+7(343) 236–44–44" class="header__phone header__phone--mobile">
+                <svg width="28" height="28">
+                    <use class="header__phone-icon" href="../resources/svgSprites/svgSprite.svg#icon-phone"></use>
+                    <use class="header__phone-icon-hover" href="../resources/svgSprites/svgSprite.svg#icon-phone-hover"></use>
+                </svg> 
+            </a>
+            <button type="button" aria-label="button" class="header__favorites-btn" x-on:click="headerFavoritesMenu = !headerFavoritesMenu; headerMobileMenu = false; headerSearch = false; headerMegaMenu = false; headerMenuSubList = false" x-bind:class="{'active': headerFavoritesMenu === true}">
+            <span class="header__favorites-star" x-bind:class="{'active': headerFavoritesMenu === true}">
+                <svg width="28" height="28">
+                    <use class="header__favorites-btn-star-icon" href="../resources/svgSprites/svgSprite.svg#star-icon"></use>
+                    <use class="header__favorites-btn-star-icon-hover" href="../resources/svgSprites/svgSprite.svg#star-icon-hover"></use>
+                    <use class="header__favorites-btn-star-icon-fill" href="../resources/svgSprites/svgSprite.svg#star-icon-fill"></use>
+                </svg>   
+            </span>            
+            </button>
+            <div class="header__lang-change-dropdown header__lang-change-dropdown--desktop" x-data="{items:['rus','eng','中国'], headerLangChangeText: 'rus', toggleLangChangeDropdown: false}" x-bind:class="{'active': toggleLangChangeDropdown === true}">
+                <div class="header__lang-change-dropdown-top" x-on:click="toggleLangChangeDropdown = !toggleLangChangeDropdown" x-on:click.outside="toggleLangChangeDropdown = false">
+                    <svg width="24" height="24" class="header__lang-icon" x-bind:class="{ 'active': toggleLangChangeDropdown === true }">
+                        <use class="header__lang-icon-unfill" href="../resources/svgSprites/svgSprite.svg#icon-lang"></use>
+                        <use class="header__lang-icon-fill" href="../resources/svgSprites/svgSprite.svg#icon-lang-fill"></use>
+                    </svg> 
+                <div class="header__lang-change-dropdown-title">
+                    <p x-text="headerLangChangeText" x-bind:class="{ 'active': toggleLangChangeDropdown === true }"></p>
+                    <svg class="header__lang-change-expand-icon" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" x-bind:class="{ 'active': toggleLangChangeDropdown === true }">
+                        <path d="M1 1L5 5L9 1" stroke="#0F1937" stroke-linecap="round"/>
+                        </svg>  
+                </div>
+                </div>
+                <nav class="header__lang-change-dropdown-list-nav" x-ref="headerLangChangeDropdownListNav" x-bind:style="toggleLangChangeDropdown === true ? 'height: ' + $refs.headerLangChangeDropdownListNav.scrollHeight + 'px' : ''" x-bind:class="{'active': toggleLangChangeDropdown === true}">
+                <ul role="list" class="header__lang-change-dropdown-list">
+                    <template x-for="item in items">
+                        <li class="header__lang-change-dropdown-list-item" x-text="item" x-on:click="headerLangChangeText = item" x-bind:class="{'active': headerLangChangeText === item}"></li>
+                    </template>
+                </ul>
+                </nav>
+              </div>
+        </div>
+        <button class="header__auth-btn header__auth-btn--desktop" type="button" x-on:click="toggleAuthBtn = !toggleAuthBtn" x-data="{toggleAuthBtn:false}" x-on:click.outside="toggleAuthBtn = false" x-bind:class="{ 'active': toggleAuthBtn === true }">
+            <svg width="32" height="32">
+                <use class="header__auth-icon" href="../resources/svgSprites/svgSprite.svg#icon-profile"></use>
+                <use class="header__auth-icon-hover" href="../resources/svgSprites/svgSprite.svg#icon-profile-hover"></use>
+                <use class="header__auth-icon-fill" href="../resources/svgSprites/svgSprite.svg#icon-profile-fill"></use>
+            </svg>  
+          </button>
+        <nav class="header__favorites-menu" x-bind:class="{ 'active': headerFavoritesMenu === true}" x-data="{items: ['КЦ2-1000','КЦ2-250Н','КЦ2ВН-250','A-700x1000','Если название очень очень очень очень очень очень очень длинное']}">
+            <div class="header__favorites-menu-title-wrapper">
+              <h3 class="header__favorites-menu-title">Избранные проекты</h3>
+              <button type="button" class="header__favorites-menu-close-btn" x-on:click="headerFavoritesMenu = false">
+                  <span></span>
+                  <span></span>
+              </button>
+            </div>
+            <template x-if="items.length === 0">
+                <p class="header__favorites-menu-text">Вы ещё не выбрали проекты</p>
+            </template>
+            <template x-if="items.length >= 1">
+                <ul role="list" class="header__favorites-menu-list">
+                    <template x-for="item in items" :key="item">
+                        <li class="header__favorites-menu-list-item">
+                            <div class="header__favorites-menu-list-item-info">
+                                <img loading="lazy" decoding="async" src="/resources/images/header__favorites-menu-img.png" alt="image" width="80" height="52">
+                                <h4 class="header__favorites-menu-list-title" x-text="item">КЦ2-1000</h4>
+                            </div>
+                            <button type="button" aria-label="button" class="header__favorites-menu-delete-btn" x-on:click="items = items.filter(i => i !== item)">
+                                <svg width="15" height="17">
+                                    <use class="header__favorites-menu-delete-btn-icon" href="../resources/svgSprites/svgSprite.svg#favorites-menu-delete-icon"></use>
+                                    <use class="header__favorites-menu-delete-btn-icon-hover" href="../resources/svgSprites/svgSprite.svg#favorites-menu-delete-icon-hover"></use>
+                                </svg>  
+                            </button>
+                        </li>
+                    </template>
+                  </ul>
+            </template>
+            <button type="button" aria-label="button" class="secondary-btn header__favorites-modal-btn" x-on:click="headerFavoritesModalActive = false; headerFavoritesModal = true"><span>Запросить</span></button>
+        </nav>
+        <nav class="header__search-menu header__search-menu--index-header" x-bind:class="{ 'active': headerSearch === true, 'expanded': headerSearchInput }" x-data="{headerSearchInput:'', headerSearchListItemText:''}">
+            <div class="header__search-input-wrapper" x-bind:class="{ 'active': headerSearchInput }">
+                <input class="header__search-input" type="text" name="headerSearchText" id="headerSearchText" x-model.debounce.350ms="headerSearchInput" placeholder="Введите...">
+                <button type="button" class="header__search-input-clear-btn" x-on:click="headerSearchInput = '';headerSearch = false">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <div class="header__search-list-wrapper" x-bind:class="{ 'active': headerSearchInput }">
+                <ul role="list" class="header__search-list header__search-list--border-right">
+                    <li><h3 class="header__search-list-title">Серии</h3></li>
+                    <li><p class="header__search-list-item" x-on:click="headerSearchInput = 'КЦ2'" x-bind:class="{ 'active': headerSearchInput === 'КЦ2'}">КЦ2</p></li>
+                    <li><p class="header__search-list-item" x-on:click="headerSearchInput = 'КЦ3'" x-bind:class="{ 'active': headerSearchInput === 'КЦ3'}">КЦ3</p></li>
+                   </ul>
+            <ul role="list" class="header__search-list">
+             <li><h3 class="header__search-list-title">Редукторы</h3></li>
+             <li><p class="header__search-list-item" x-on:click="headerSearchInput = 'КЦ2-1000'" x-bind:class="{ 'active': headerSearchInput === 'КЦ2-1000'}">КЦ2-1000</p></li>
+             <li><p class="header__search-list-item" x-on:click="headerSearchInput = 'КЦ2-250H'" x-bind:class="{ 'active': headerSearchInput === 'КЦ2-250H'}">КЦ2-250H</p></li>
+             <li><p class="header__search-list-item" x-on:click="headerSearchInput = 'КЦ2-250H'" x-bind:class="{ 'active': headerSearchInput === 'КЦ2-250H'}">КЦ2-250H</p></li>
+             <li><p class="header__search-list-item" x-on:click="headerSearchInput = 'КЦ2-250H'" x-bind:class="{ 'active': headerSearchInput === 'КЦ2-250H'}">КЦ2-250H</p></li>
+            </ul>
+            <a href="#" class="secondary-btn header__search-more-btn"><span>Смотреть все варианты</span></a>
+           </div>
+        </nav>
+</div>
+<nav class="header__mega-menu" x-bind:class="{ 'active': headerMegaMenu === true }" @mouseover.self="headerMegaMenu = true">
+    <div class="header__mega-menu-left">
+     <h2 class="header__mega-menu-title header__mega-menu-title--left">Редукторы</h2>
+     <ul role="list" class="header__mega-menu-list header__mega-menu-list--left" x-data="{items:['Цилиндрические','Коническо-цилиндрическиe','Червячные','Циклоидальные', 'Специальные редукторы']}">
+         <template x-for="item in items">
+             <li class="header__mega-menu-list-item">
+                 <a href="#" x-text="item"></a>
+             </li>
+         </template>
+     </ul>
+    </div>
+    <div class="header__mega-menu-right">
+     <h2 class="header__mega-menu-title header__mega-menu-title--right">Мотор-редукторы</h2>
+     <ul role="list" class="header__mega-menu-list header__mega-menu-list--right" x-data="{items:['Цилиндрические','Коническо-цилиндрическиe','Червячные','Циклоидальные', 'Специальные редукторы']}">
+         <template x-for="item in items">
+             <li class="header__mega-menu-list-item">
+                 <a href="#" x-text="item"></a>
+             </li>
+         </template>
+     </ul>
+    </div>
+ </nav>
+<nav class="header__mobile-menu" x-bind:class="{ 'active': headerMobileMenu === true }" x-data="{toggleSubList:''}">
+    <ul role="list" class="header__mobile-menu-list">
+        <li class="header__mobile-menu-item header__mobile-menu-item--border-bottom">
+            <div class="header__mobile-menu-item-top" x-on:click="toggleSubList !== 1 ? toggleSubList = 1 : toggleSubList = null">
+                <span class="header__mobile-menu-title" x-bind:class="{ 'active': toggleSubList === 1 }">Проекты</span>
+                <button type="button" aria-label="button" class="header__mobile-menu-toggle-btn" x-bind:class="{ 'active': toggleSubList === 1 }">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            <nav class="header__mobile-menu-sublist-nav" x-data="{items:['Цилиндрические','Коническо-цилиндрическиe','Червячные','Циклоидальные','Специальные редукторы','Редукторы', 'Мотор-редукторы']}" x-ref="mobileSubList1" x-bind:style="toggleSubList === 1 ? 'height: ' + $refs.mobileSubList1.scrollHeight + 'px' : ''" x-bind:class="{'active': toggleSubList === 1}">
+            <ul role="list" class="header__mobile-menu-sublist">
+                <template x-for="item in items">
+                    <li class="header__mobile-menu-sublist-item" x-data="{toggleSubSubList: false}">
+                        <div class="header__mobile-menu-sublist-item-top" x-bind:class="{'active': toggleSubSubList === true}" x-on:click="toggleSubSubList !== true ? toggleSubSubList = true : toggleSubSubList = false">
+                            <a href="#" x-text="item"></a>
+                            <button type="button" aria-label="button" class="header__mobile-menu-toggle-btn header__mobile-menu-toggle-btn--sublist" x-bind:class="{ 'active': toggleSubSubList === true }">
+                                <span></span>
+                                <span></span>
+                            </button>
+                           </div>
+                        <nav class="header__mobile-menu-sublist-nav header__mobile-menu-sublist-nav--sub-sub-list" x-data="{items:['Цилиндрические','Коническо-цилиндрическиe' ]}" x-ref="mobileSubSubList1" x-bind:style="toggleSubSubList === true ? 'height: ' + $refs.mobileSubSubList1.scrollHeight + 'px' : ''" x-bind:class="{'active': toggleSubSubList === true}">
+                           <ul role="list" class="header__mobile-menu-sublist header__mobile-menu-sublist--sub-sub-list">
+                            <template x-for="item in items">
+                                <li class="header__mobile-menu-sublist-item header__mobile-menu-sublist-item--sub-sub-list">
+                                    <a href="#" x-text="item"></a>
+                                </li>
+                            </template>
+                           </ul>
+                        </nav>
+                    </li>
+                </template>
+            </ul>
+            </nav>
+        </li>
+        <li class="header__mobile-menu-item header__mobile-menu-item--border-bottom">
+            <div class="header__mobile-menu-item-top">
+            <a href="#" class="header__mobile-menu-title header__mobile-menu-title--link">Статьи</a>
+        </div>
+        </li>
+        <li class="header__mobile-menu-item header__mobile-menu-item--border-bottom">
+            <div class="header__mobile-menu-item-top" x-on:click="toggleSubList !== 5 ? toggleSubList = 5 : toggleSubList = null">
+            <span class="header__mobile-menu-title" x-bind:class="{ 'active': toggleSubList === 5 }">О компании</span>
+            <button type="button" aria-label="button" class="header__mobile-menu-toggle-btn" x-bind:class="{ 'active': toggleSubList === 5 }">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <nav class="header__mobile-menu-sublist-nav" x-data="{items:['Цилиндрические','Коническо-цилиндрическиe','Червячные','Циклоидальные','Специальные редукторы','Редукторы', 'Мотор-редукторы']}" x-ref="mobileSubList5" x-bind:style="toggleSubList === 5 ? 'height: ' + $refs.mobileSubList5.scrollHeight + 'px' : ''" x-bind:class="{'active': toggleSubList === 5}">
+        <ul role="list" class="header__mobile-menu-sublist">
+            <template x-for="item in items">
+                <li class="header__mobile-menu-sublist-item"><a href="#" x-text="item"></a></li>
+            </template>
+        </ul>
+        </nav>
+        </li>
+        <li class="header__mobile-menu-item header__mobile-menu-item--border-bottom">
+            <div class="header__mobile-menu-item-top">
+            <a href="#" class="header__mobile-menu-title header__mobile-menu-title--link">Контакты</a>
+        </div>
+        </li>
+        <li class="header__mobile-menu-item header__mobile-menu-item--icons">
+          <button class="header__auth-btn" type="button" x-on:click="toggleAuthBtn = !toggleAuthBtn" x-data="{toggleAuthBtn:false}" x-on:click.outside="toggleAuthBtn = false" x-bind:class="{ 'active': toggleAuthBtn === true }">
+            <svg width="32" height="32">
+                <use class="header__auth-icon" href="../resources/svgSprites/svgSprite.svg#icon-profile"></use>
+                <use class="header__auth-icon-hover" href="../resources/svgSprites/svgSprite.svg#icon-profile-hover"></use>
+                <use class="header__auth-icon-fill" href="../resources/svgSprites/svgSprite.svg#icon-profile-fill"></use>
+            </svg>  
+          </button>
+          <div class="header__lang-change-dropdown header__lang-change-dropdown--mobile" x-data="{items:['rus','eng','中国'], headerLangChangeText: 'rus', toggleLangChangeDropdown: false}">
+            <div class="header__lang-change-dropdown-top" x-on:click="toggleLangChangeDropdown = !toggleLangChangeDropdown" x-on:click.outside="toggleLangChangeDropdown = false">
+                <svg width="24" height="24" class="header__lang-icon" x-bind:class="{ 'active': toggleLangChangeDropdown === true }">
+                    <use class="header__lang-icon-unfill" href="../resources/svgSprites/svgSprite.svg#icon-lang"></use>
+                    <use class="header__lang-icon-fill" href="../resources/svgSprites/svgSprite.svg#icon-lang-fill"></use>
+                </svg> 
+            <div class="header__lang-change-dropdown-title">
+                <p x-text="headerLangChangeText" x-bind:class="{ 'active': toggleLangChangeDropdown === true }"></p>
+                <svg class="header__lang-change-expand-icon" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" x-bind:class="{ 'active': toggleLangChangeDropdown === true }">
+                    <path d="M1 1L5 5L9 1" stroke="#0F1937" stroke-linecap="round"/>
+                    </svg>  
+            </div>
+            </div>
+            <nav class="header__lang-change-dropdown-list-nav" x-ref="headerLangChangeDropdownListNav" x-bind:style="toggleLangChangeDropdown === true ? 'height: ' + $refs.headerLangChangeDropdownListNav.scrollHeight + 'px' : ''" x-bind:class="{'active': toggleLangChangeDropdown === true}">
+            <ul role="list" class="header__lang-change-dropdown-list">
+                <template x-for="item in items">
+                    <li class="header__lang-change-dropdown-list-item" x-text="item" x-on:click="headerLangChangeText = item" x-bind:class="{'active': headerLangChangeText === item}"></li>
+                </template>
+            </ul>
+            </nav>
+          </div>
+        </li>
+    </ul>
+</nav>
+</header>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js" defer></script>
+<script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>

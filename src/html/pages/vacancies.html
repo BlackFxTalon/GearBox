@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('../parts/head.html',{
+	"title":"Страница Вакансии"
+	})
+	<body x-data="{headerFavoritesModal: false, headerFavoritesModalActive: false, tawkModal: false, askQuestionModal: false, askQuestionModalActive: false, callbackModal: false, callbackModalActive: false,projectSelectionModal: false, projectSelectionModalActive: false, headerMobileMenu: false, headerSearch: false, headerFavoritesMenu: false, headerMenuSubList: false, headerMegaMenu: false}" x-bind:class="{ 'overflow-hidden': headerFavoritesModal === true || tawkModal === true || headerMobileMenu === true }"  class="off-shadow-header">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+		<script src="js/main.min.js" defer></script>
+		@@include('../parts/header.html')
+        @@include('../parts/breadcrumbs.html')
+		<main>
+           <section class="vacancies-page">
+            <div class="vacancies-page__parallax-img-container">
+                <picture class="vacancies-page__parallax-img-picture">
+                    <img loading="lazy" decoding="async" src="/resources/images/vacancies-page-bg-desktop.png" alt="image" width="683" height="765" class="vacancies-page__parallax-img">
+                </picture>
+            </div>
+            <div class="container vacancies-page__container">
+                <h1 class="vacancies-page__title">Присоединяйтесь к команде</h1>
+                <p class="vacancies-page__cta">
+                    Тут несколько слов о том, какие мы классные, какая наша команда классная.
+Какая у нас миссия классная. Концепция этого блока будет, когда появится текст.
+                </p>
+                <h2 class="vacancies-page__subtitle">Вакансии</h2>
+                <ul role="list" class="vacancies-page__list" x-data="{toggleDropdown:null}">
+                    <template x-for="i in 5">
+                        <li class="vacancies-page__dropdown">
+                            <div class="vacancies-page__dropdown-top" x-on:click="toggleDropdown = i" x-bind:class="{ 'active': toggleDropdown === i }">
+                                <h2 class="vacancies-page__list-dropdown-title" x-bind:class="{ 'active': toggleDropdown === i }">Направление</h2>
+                            </div>
+                            <nav class="vacancies-page__dropdown-list-nav" x-ref="dropdownList" x-bind:style="toggleDropdown === i ? 'height: ' + $refs.dropdownList.scrollHeight + 'px' : ''" >
+                              <div class="vacancies-page__dropdown-slider swiper" :data-index="i">
+                            <ul role="list" class="swiper-wrapper vacancies-page__dropdown-list" x-bind:class="{'active': toggleDropdown === i}">
+                                  <li class="swiper-slide vacancies-page__dropdown-list-item">
+                                    <a href="#" class="vacancies-page__list-link">
+                                        <ul role="list" class="vacancies-page__list-info">
+                                            <li class="vacancies-page__list-info-item">Екатеринбург</li>
+                                            <li class="vacancies-page__list-info-item">Офис</li>
+                                            <li class="vacancies-page__list-info-item">Опыт: 3-6 лет</li>
+                                        </ul>
+                                        <time datetime="2022.05.12" class="vacancies-page__list-datetime">12.05.2022</time>
+                                            <h3 class="vacancies-page__list-title">Инженер  конструктор</h3>
+                                    </a>
+                                  </li> 
+                                  <li class="swiper-slide vacancies-page__dropdown-list-item">
+                                    <a href="#" class="vacancies-page__list-link">
+                                        <ul role="list" class="vacancies-page__list-info">
+                                            <li class="vacancies-page__list-info-item">Екатеринбург</li>
+                                            <li class="vacancies-page__list-info-item">Офис</li>
+                                            <li class="vacancies-page__list-info-item">Опыт: 3-6 лет</li>
+                                        </ul>
+                                        <time datetime="2022.05.12" class="vacancies-page__list-datetime">12.05.2022</time>
+                                            <h3 class="vacancies-page__list-title">Инженер  конструктор</h3>
+                                    </a>
+                                  </li>  
+                                  <li class="swiper-slide vacancies-page__dropdown-list-item">
+                                    <a href="#" class="vacancies-page__list-link">
+                                        <ul role="list" class="vacancies-page__list-info">
+                                            <li class="vacancies-page__list-info-item">Екатеринбург</li>
+                                            <li class="vacancies-page__list-info-item">Офис</li>
+                                            <li class="vacancies-page__list-info-item">Опыт: 3-6 лет</li>
+                                        </ul>
+                                        <time datetime="2022.05.12" class="vacancies-page__list-datetime">12.05.2022</time>
+                                            <h3 class="vacancies-page__list-title">Инженер  конструктор</h3>
+                                    </a>
+                                  </li>  
+                                  <li class="swiper-slide vacancies-page__dropdown-list-item">
+                                    <a href="#" class="vacancies-page__list-link">
+                                        <ul role="list" class="vacancies-page__list-info">
+                                            <li class="vacancies-page__list-info-item">Екатеринбург</li>
+                                            <li class="vacancies-page__list-info-item">Офис</li>
+                                            <li class="vacancies-page__list-info-item">Опыт: 3-6 лет</li>
+                                        </ul>
+                                        <time datetime="2022.05.12" class="vacancies-page__list-datetime">12.05.2022</time>
+                                            <h3 class="vacancies-page__list-title">Инженер  конструктор</h3>
+                                    </a>
+                                  </li>  
+                                  <li class="swiper-slide vacancies-page__dropdown-list-item">
+                                    <a href="#" class="vacancies-page__list-link">
+                                        <ul role="list" class="vacancies-page__list-info">
+                                            <li class="vacancies-page__list-info-item">Екатеринбург</li>
+                                            <li class="vacancies-page__list-info-item">Офис</li>
+                                            <li class="vacancies-page__list-info-item">Опыт: 3-6 лет</li>
+                                        </ul>
+                                        <time datetime="2022.05.12" class="vacancies-page__list-datetime">12.05.2022</time>
+                                            <h3 class="vacancies-page__list-title">Инженер  конструктор</h3>
+                                    </a>
+                                  </li>  
+                                  <li class="swiper-slide vacancies-page__dropdown-list-item">
+                                    <a href="#" class="vacancies-page__list-link">
+                                        <ul role="list" class="vacancies-page__list-info">
+                                            <li class="vacancies-page__list-info-item">Екатеринбург</li>
+                                            <li class="vacancies-page__list-info-item">Офис</li>
+                                            <li class="vacancies-page__list-info-item">Опыт: 3-6 лет</li>
+                                        </ul>
+                                        <time datetime="2022.05.12" class="vacancies-page__list-datetime">12.05.2022</time>
+                                            <h3 class="vacancies-page__list-title">Инженер  конструктор</h3>
+                                    </a>
+                                  </li>   
+                            </ul>
+                            <div class="swiper-scrollbar vacancies-page__dropdown-slider-scrollbar" :data-index="i"></div>
+                            </div>  
+                            </nav>
+                        </li>
+                    </template>
+                </ul>
+                <div class="spinner" data-aos="spinner-fade-out" data-aos-once="true">
+                    <svg width="76" height="66" viewBox="0 0 76 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="33" cy="33" r="32.5" stroke="#364161"/>
+                        <circle cx="66" cy="33" r="10" fill="#C22347"/>
+                        </svg>
+                </div>
+                <ul role="list" class="vacancies-page__list" x-data="{toggleDropdown:null}" data-aos="fade-up" data-aos-once="true">
+                    <template x-for="i in 5">
+                        <li class="vacancies-page__dropdown">
+                            <div class="vacancies-page__dropdown-top" x-on:click="toggleDropdown = i" x-bind:class="{ 'active': toggleDropdown === i }">
+                                <h2 class="vacancies-page__list-dropdown-title" x-bind:class="{ 'active': toggleDropdown === i }">Направление</h2>
+                            </div>
+                            <nav class="vacancies-page__dropdown-list-nav" x-ref="dropdownList" x-bind:style="toggleDropdown === i ? 'height: ' + $refs.dropdownList.scrollHeight + 'px' : ''" >
+                              <div class="vacancies-page__dropdown-slider swiper" :data-index="i">
+                            <ul role="list" class="swiper-wrapper vacancies-page__dropdown-list" x-bind:class="{'active': toggleDropdown === i}">
+                                  <li class="swiper-slide vacancies-page__dropdown-list-item">
+                                    <a href="#" class="vacancies-page__list-link">
+                                        <ul role="list" class="vacancies-page__list-info">
+                                            <li class="vacancies-page__list-info-item">Екатеринбург</li>
+                                            <li class="vacancies-page__list-info-item">Офис</li>
+                                            <li class="vacancies-page__list-info-item">Опыт: 3-6 лет</li>
+                                        </ul>
+                                        <time datetime="2022.05.12" class="vacancies-page__list-datetime">12.05.2022</time>
+                                            <h3 class="vacancies-page__list-title">Инженер  конструктор</h3>
+                                    </a>
+                                  </li> 
+                                  <li class="swiper-slide vacancies-page__dropdown-list-item">
+                                    <a href="#" class="vacancies-page__list-link">
+                                        <ul role="list" class="vacancies-page__list-info">
+                                            <li class="vacancies-page__list-info-item">Екатеринбург</li>
+                                            <li class="vacancies-page__list-info-item">Офис</li>
+                                            <li class="vacancies-page__list-info-item">Опыт: 3-6 лет</li>
+                                        </ul>
+                                        <time datetime="2022.05.12" class="vacancies-page__list-datetime">12.05.2022</time>
+                                            <h3 class="vacancies-page__list-title">Инженер  конструктор</h3>
+                                    </a>
+                                  </li>  
+                                  <li class="swiper-slide vacancies-page__dropdown-list-item">
+                                    <a href="#" class="vacancies-page__list-link">
+                                        <ul role="list" class="vacancies-page__list-info">
+                                            <li class="vacancies-page__list-info-item">Екатеринбург</li>
+                                            <li class="vacancies-page__list-info-item">Офис</li>
+                                            <li class="vacancies-page__list-info-item">Опыт: 3-6 лет</li>
+                                        </ul>
+                                        <time datetime="2022.05.12" class="vacancies-page__list-datetime">12.05.2022</time>
+                                            <h3 class="vacancies-page__list-title">Инженер  конструктор</h3>
+                                    </a>
+                                  </li>  
+                                  <li class="swiper-slide vacancies-page__dropdown-list-item">
+                                    <a href="#" class="vacancies-page__list-link">
+                                        <ul role="list" class="vacancies-page__list-info">
+                                            <li class="vacancies-page__list-info-item">Екатеринбург</li>
+                                            <li class="vacancies-page__list-info-item">Офис</li>
+                                            <li class="vacancies-page__list-info-item">Опыт: 3-6 лет</li>
+                                        </ul>
+                                        <time datetime="2022.05.12" class="vacancies-page__list-datetime">12.05.2022</time>
+                                            <h3 class="vacancies-page__list-title">Инженер  конструктор</h3>
+                                    </a>
+                                  </li>  
+                                  <li class="swiper-slide vacancies-page__dropdown-list-item">
+                                    <a href="#" class="vacancies-page__list-link">
+                                        <ul role="list" class="vacancies-page__list-info">
+                                            <li class="vacancies-page__list-info-item">Екатеринбург</li>
+                                            <li class="vacancies-page__list-info-item">Офис</li>
+                                            <li class="vacancies-page__list-info-item">Опыт: 3-6 лет</li>
+                                        </ul>
+                                        <time datetime="2022.05.12" class="vacancies-page__list-datetime">12.05.2022</time>
+                                            <h3 class="vacancies-page__list-title">Инженер  конструктор</h3>
+                                    </a>
+                                  </li>  
+                                  <li class="swiper-slide vacancies-page__dropdown-list-item">
+                                    <a href="#" class="vacancies-page__list-link">
+                                        <ul role="list" class="vacancies-page__list-info">
+                                            <li class="vacancies-page__list-info-item">Екатеринбург</li>
+                                            <li class="vacancies-page__list-info-item">Офис</li>
+                                            <li class="vacancies-page__list-info-item">Опыт: 3-6 лет</li>
+                                        </ul>
+                                        <time datetime="2022.05.12" class="vacancies-page__list-datetime">12.05.2022</time>
+                                            <h3 class="vacancies-page__list-title">Инженер  конструктор</h3>
+                                    </a>
+                                  </li>   
+                            </ul>
+                            <div class="swiper-scrollbar vacancies-page__dropdown-slider-scrollbar" :data-index="i"></div>
+                            </div>  
+                            </nav>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+           </section>
+		</main>
+        <script type="module">
+            import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js';
+
+            let vacanciesPageDropdownSliders = document.querySelectorAll('.vacancies-page__dropdown-slider');
+
+			for (let i = 0; i < vacanciesPageDropdownSliders.length; i++) {
+
+				
+				let sliders = new Swiper(`.vacancies-page__dropdown-slider[data-index="${i}"]`, {
+            loop: true,
+            loopedSlides: 1,
+            grabCursor: true,
+            slidesPerView: 'auto',
+            observe: true,
+            observeParents: true,
+            mousewheel: true,
+			scrollbar: {
+    el: `.vacancies-page__dropdown-slider-scrollbar[data-index="${i}"]`,
+  },
+          })
+		  }
+
+          (function () {
+// disable animation on disable animation browser settings
+
+  const safeToAnimate = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+ if (!safeToAnimate) return;
+  
+  // Get the elements that we need
+  const parallaxImg = document.querySelector('.vacancies-page__parallax-img');
+  
+  let xPosition;
+  let yPosition;
+
+  let storedXPosition;
+  let storedYPosition;
+
+  // Set up our coordinate mapping with GSAP utils!
+  let mapWidth;
+  let mapHeight;
+
+  function setMaps() {
+    mapWidth = gsap.utils.mapRange(0, innerWidth, -15, 15);
+    mapHeight = gsap.utils.mapRange(0, innerHeight, -15, 15);
+  }
+  window.addEventListener('resize', setMaps);
+  setMaps();
+
+  function movePointer() {
+    // only recalculating if the value changes
+    if (storedXPosition === xPosition && storedYPosition === yPosition) return;
+    
+    gsap.to(parallaxImg, {
+      x: -xPosition,
+      y: yPosition,
+      ease: 'none',
+    //   ease: 'power4.out',
+    //   ease: 'power4.in'
+    })
+
+    // update the stored positions with the current positions
+    storedXPosition = xPosition;
+    storedYPosition = yPosition;
+  }
+  // gsap's RAF, falls back to set timeout
+ gsap.ticker.add(movePointer);
+
+  // updating the mouse coordinates
+  function updateMouseCoords(event) {
+    xPosition = mapWidth(event.clientX);
+    yPosition = mapWidth(event.clientY);
+  }
+  window.addEventListener("mousemove", updateMouseCoords);
+})();
+       </script>
+		@@include('../parts/footer.html')
+	</body>
+</html>

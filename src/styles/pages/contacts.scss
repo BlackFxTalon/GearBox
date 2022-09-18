@@ -1,0 +1,205 @@
+// contacts page styles
+.contacts-page {
+    padding-top: 40px;
+    padding-bottom: 112px;
+
+    @include media-medium() {
+        padding-bottom: 116px;
+    }
+
+    @include media-extra-large() {
+        padding-bottom: 80px;
+        padding-bottom: 52px;
+    }
+
+    &__section-title {
+        margin-bottom: 32px;
+
+        @include media-medium() {
+            margin-bottom: 76px;
+        }
+
+        @include media-extra-large() {
+            margin-bottom: 52px;
+        }
+    }
+
+    &__info {
+        display: grid;
+        gap: 52px;
+        padding-bottom: 16px;
+
+        @include media-medium() {
+            grid-template-columns: repeat(2,1fr);
+            gap: 0;
+            padding-bottom: 32px;
+        }
+
+        @include media-extra-large() {
+            grid-template-columns: 782px 1fr;
+        }
+
+        @include media-Extra-extra-large() {
+            grid-template-columns: 880px 1fr;
+        }
+    }
+
+    &__list {
+        padding: 0;
+        margin: 0;
+        border: 1px solid var(--dark-color-1);
+
+        @include media-medium() {
+            border: none;
+        }
+
+    }
+
+    &__list--1 {
+        @include media-medium() {
+            border: 1px solid var(--dark-color-1);
+        }
+    }
+
+    &__list--2 {
+        @include media-medium() {
+            border-top: 1px solid var(--dark-color-1);
+            border-right: 1px solid var(--dark-color-1);
+            border-bottom: 1px solid var(--dark-color-1);
+        }
+    }
+
+    &__list-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include media-extra-large() {
+            justify-content: flex-start;
+        }
+    }
+
+    &__list-item--media {
+        @include media-extra-large() {
+            justify-content: center;
+        }
+    }
+
+    &__list-item:not(:last-child) {
+        border-bottom: 1px solid var(--dark-color-1);
+    }
+
+    &__link {
+        margin: 24px 0;
+        font-weight: 700;
+font-size: 18px;
+line-height: 20px;
+color: var(--dark-color);
+text-decoration: none;
+transition: .3s ease-in-out;
+
+@include media-medium() {
+    font-size: 22px;
+line-height: 32px;
+}
+
+@include media-extra-large() {
+    font-size: 28px;
+line-height: 32px;
+margin-left: 32px;
+}
+    }
+
+    &__link:hover,
+    &__link:active,
+    &__link:focus {
+        color: var(--accent-color);
+    }
+
+    &__media {
+        padding: 0;
+        margin: 24px 0;
+        display: grid;
+        gap: 24px;
+        align-items: center;
+        justify-content: center;
+        grid-auto-flow: column;
+        grid-auto-columns: max-content;
+
+        @include media-medium() {
+            margin-top: 62px;
+            margin-bottom: 63px;
+        }
+    }
+
+    &__media-item {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        transition: .3s ease-in-out;
+        cursor: pointer;
+    }
+
+    &__media-item--black {
+        background-color: var(--dark-color);
+    }
+
+    &__media-item--black:hover,
+    &__media-item--black:active,
+    &__media-item--black:focus {
+        background-color: var(--accent-color);
+    }
+
+    &__media-item--red {
+        background-color: var(--accent-color);
+    }
+
+    &__media-item--red:hover,
+    &__media-item--red:active,
+    &__media-item--red:focus {
+        background-color: var(--dark-color);
+    }
+
+    address {
+        font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+color: var(--dark-color);
+padding: 16px 20px;
+font-style: normal;
+display: block;
+
+@include media-medium() {
+    padding: 18px 20px;
+    font-size: 18px;
+line-height: 22px;
+}
+
+@include media-extra-large() {
+    max-width: 30ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+    }
+
+    &__map {
+        height: 320px;
+        border: 1px solid var(--dark-color-1);
+        filter: drop-shadow(8px 8px 0px rgba(15, 25, 55, 0.3));
+        border-radius: 30px;
+
+        @include media-extra-large() {
+            height: 348px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+        }
+
+        .ymaps-layers-pane {
+            filter: grayscale(1);
+        }
+    }
+}

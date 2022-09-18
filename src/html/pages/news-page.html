@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('../parts/head.html',{
+	"title":"Страница Новостей"
+	})
+	<body x-data="{headerFavoritesModal: false, headerFavoritesModalActive: false, tawkModal: false, askQuestionModal: false, askQuestionModalActive: false, headerMobileMenu: false, headerSearch: false, headerFavoritesMenu: false, headerMenuSubList: false, headerMegaMenu: false}" x-bind:class="{ 'overflow-hidden': headerFavoritesModal === true || tawkModal === true || headerMobileMenu === true }"  class="off-shadow-header">
+        <script src="https://cdn.jsdelivr.net/npm/sticksy/dist/sticksy.min.js"></script>
+		<script src="js/main.min.js" defer></script>
+		@@include('../parts/header.html')
+        @@include('../parts/breadcrumbs.html')
+        <div class="news-page-top">
+            <div class="container news-page-top__container">
+        @@include('../parts/previous-page-link.html')
+        <time datetime="2022.05.16" class="news-page-top__datetime">16.05.2022</time>
+        </div>
+        </div>
+		<main>
+           <section class="news-page">
+            <div class="container news-page__container">
+                <h1 class="news-page__title news-page__title--mobile">ИСТОРИЯ РЕДУКТОРА ПРИВОДА ПЕРВИЧНОГО СМЕСИТЕЛЯ</h1>
+                <div class="news-page__main">
+                    <aside class="news-page__aside">
+                       <picture class="news-page__picture">
+                        <source media="(min-width: 1440px)" srcset="/resources/images/news-page-img-desktop.jpg">
+                        <source media="(min-width: 768px)" srcset="/resources/images/news-page-img-tablet.jpg">
+                         <img src="/resources/images/news-page-img.jpg" loading="lazy" decoding="async" alt="image" width="433" height="200" class="news-page__img">
+                       </picture>
+                    </aside>
+                    <div class="news-page__info">
+                        <h1 class="news-page__title news-page__title--desktop">ИСТОРИЯ РЕДУКТОРА ПРИВОДА ПЕРВИЧНОГО СМЕСИТЕЛЯ</h1>
+                        <p>Вид блока, если новость будет чуть длиннее обычного с разделением на абзацы.</p>
+                        <p>По данному оборудованию поступил запрос от заказчика на проектирование аналога исходного редуктора, произведенного Уралмашзаводом в СССР 1980-1990 гг.  На момент заказа, у покупателя отсутствовала возможность приобретения оригинального оборудования. </p>
+                        <p>Нам было необходимо спроектировать и изготовить аналог исходного механизма, найти наиболее эффективное и целесообразное решение первоначальных проблем. Вначале был совершен выезд наших специалистов на предприятие заказчика для эскизировки размеров их оборудования, а также для опроса эксплуатанта, анализа условий эксплуатации. </p>
+                        <p> По результатам выезда специалиста, было составлено полное ТЗ, на основании которого были произведены проектные расчеты, разработка конструкторской документации, изготовление, испытание и его дальнейшая отгрузка заказчику. В итоге, заказчик приобрел отличный редуктор от надежного производителя, а также гарантии долгосрочного сотрудничества с нашей компанией. </p>
+                        <a href="#" class="news-page__article-link">Читать статью</a>
+                    </div>
+                </div>
+            </div>
+           </section>
+		</main>
+        <script>
+            const stickyNewsPagePicture = new Sticksy('.news-page__picture', {
+              topSpacing: 70,
+              listen: true, // Listen for the DOM changes in the container
+          })
+  
+          if(window.innerWidth >= 1440) {
+              stickyNewsPageAside.enable();
+          }
+          </script>
+		@@include('../parts/footer.html')
+	</body>
+</html>

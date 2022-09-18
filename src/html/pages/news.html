@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('../parts/head.html',{
+	"title":"Страница категории Новостей"
+	})
+	<body x-data="{headerFavoritesModal: false, headerFavoritesModalActive: false, tawkModal: false, askQuestionModal: false, askQuestionModalActive: false, headerMobileMenu: false, headerSearch: false, headerFavoritesMenu: false, headerMenuSubList: false, headerMegaMenu: false}" x-bind:class="{ 'overflow-hidden': headerFavoritesModal === true || tawkModal === true || headerMobileMenu === true }"  class="off-shadow-header">
+		<script src="js/main.min.js" defer></script>
+		@@include('../parts/header.html')
+        @@include('../parts/breadcrumbs.html')
+		<main>
+           <section class="news-category-page">
+            <div class="container news-category-page__container">
+                <h1 class="section-title news-category-page__section-title">Новости</h1>
+                <ul role="list" class="news-category-page__list" x-data="{activeLink: ''}" x-on:click.outside="activeLink = ''">
+                    <template x-for="i in 4">
+                        <li class="news-category-page__list-item">
+                            <a href="#" class="news-category-page__list-link" x-on:click="activeLink = i" x-bind:class="{ 'active': activeLink === i }">
+                             <div class="news-category-page__list-info">
+                                <time datetime="2022.06.17" class="news-category-page__list-datetime">17.06.2022</time>
+                                <h3 class="news-category-page__list-title">Заголовок новости</h3>
+                             </div>  
+                             <picture class="news-category-page__list-picture">
+                               <img src="/resources/images/news-category-img.jpg" loading="lazy" decoding="async" alt="image" width="448" height="200" class="news-category-page__list-img">
+                             </picture> 
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+                <div class="spinner" data-aos="spinner-fade-out" data-aos-once="true">
+                    <svg width="76" height="66" viewBox="0 0 76 66" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="33" cy="33" r="32.5" stroke="#364161"/>
+                        <circle cx="66" cy="33" r="10" fill="#C22347"/>
+                        </svg>
+                </div>
+                <ul role="list" class="news-category-page__list" x-data="{activeLink: ''}" x-on:click.outside="activeLink = ''">
+                    <template x-for="i in 4">
+                        <li class="news-category-page__list-item">
+                            <a href="#" class="news-category-page__list-link" x-on:click="activeLink = i" x-bind:class="{ 'active': activeLink === i }">
+                             <div class="news-category-page__list-info">
+                                <time datetime="2022.06.17" class="news-category-page__list-datetime">17.06.2022</time>
+                                <h3 class="news-category-page__list-title">Заголовок новости</h3>
+                             </div>  
+                             <picture class="news-category-page__list-picture">
+                               <img src="/resources/images/news-category-img.jpg" loading="lazy" decoding="async" alt="image" width="448" height="200" class="news-category-page__list-img">
+                             </picture> 
+                            </a>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+           </section>
+		</main>
+        <button type="button" aria-label="button" class="to-up-btn" x-on:click="window.scrollTo(0,0)">
+            <svg width="13" height="13">
+              <use class="to-up-btn-icon" href="../resources/svgSprites/svgSprite.svg#icon-pageup"></use>
+              <use class="to-up-btn-icon-hover" href="../resources/svgSprites/svgSprite.svg#icon-pageup-hover"></use>
+             </svg>  
+        </button>
+		@@include('../parts/footer.html')
+	</body>
+</html>

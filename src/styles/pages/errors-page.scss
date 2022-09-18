@@ -1,0 +1,85 @@
+// errors page styles
+.errors-page {
+    padding-top: 92px;
+    
+
+    @include media-medium() {
+        padding-top: 140px;
+    }
+
+    @include media-extra-large() {
+        padding-top: 42px;
+    }
+
+    @include media-Extra-extra-large() {
+        padding-top: 69px;
+    }
+
+    &__info {
+        height: 343px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 32px;
+        padding-top: 2rem;
+        background: url(../resources/images/errors-page-bg.png) no-repeat center/contain;
+
+        @include media-medium() {
+            height: 453px;
+            margin-bottom: 52px;
+            padding-top: 5rem;
+            background: url(../resources/images/errors-page-bg-tablet.png) no-repeat center/contain;
+        }
+
+        @include media-extra-large() {
+                height: 557px;
+                background: url(../resources/images/errors-page-bg-desktop.png) no-repeat center/contain;
+                margin-bottom: 9px;
+        }
+
+        @include media-Extra-extra-large() {
+            height: 575px;
+            background: url(../resources/images/errors-page-bg-desktop-2.png) no-repeat center/contain;
+            margin-bottom: 24px;
+            padding-top: 7rem;
+        }
+
+        h1 {
+            font-family: 'Russo One',sans-serif;
+font-weight: 400;
+font-size: 48px;
+line-height: 52px;
+color: var(--white-color);
+padding-bottom: 10px;
+
+@include media-medium() {
+    font-size: 96px;
+line-height: 96px;
+}
+        }
+
+        p {
+            font-weight: 600;
+font-size: 16px;
+line-height: 24px;
+color: var(--white-color);
+
+@include media-medium() {
+    font-size: 18px;
+line-height: 22px;
+}
+        }
+    }
+
+    &__link {
+        max-width: 155px;
+        height: 56px;
+        font-weight: 500;
+font-size: 16px;
+line-height: 20px;
+color: var(--dark-color);
+margin-left: auto;
+margin-right: auto;
+    }
+}

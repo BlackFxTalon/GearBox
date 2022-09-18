@@ -1,0 +1,19 @@
+<<<<<<< HEAD
+# Файлы и папки операционной системы
+.DS_Store
+Thumbs.db
+
+# Файлы редактора
+.idea
+*.sublime*
+.vscode
+
+# Вспомогательные файлы
+*.log*
+
+# Папка с собранными файлами проекта
+config
+database
+build/
+node_modules
+package-lock.json

@@ -1,0 +1,93 @@
+<div class="filter" x-data="{toggleFilter: false}">
+    <div class="filter__top" x-on:click.self="toggleFilter = !toggleFilter">
+        <div class="container filter__top-container" x-on:click.self="toggleFilter = !toggleFilter">
+        <p class="filter__toggler" x-on:click.self="toggleFilter = !toggleFilter">
+            Фильтры
+            <svg class="filter__toggler-arrow" x-bind:class="{ 'active': toggleFilter === true }" width="14" height="8">
+                <use href="../resources/svgSprites/svgSprite.svg#filter-arrow"></use>
+            </svg> 
+        </p>
+        <div class="filter__clear-filters" x-data="{filtersCount: 2}">
+            <p class="filter__clear-filters-title" x-bind:class="{ 'non-active': filtersCount === null }">
+                Выбрано
+            </p>
+            <p class="filter__clear-filters-count" x-bind:class="{ 'non-active': filtersCount === null }">/<span x-text="filtersCount">2</span>/</p>
+            <button type="button" aria-label="button" class="filter__clear-filters-btn" x-on:click="filtersCount = null">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        </div>
+    </div>
+    <form action="#" method="post" class="filter__main" x-bind:class="{'active': toggleFilter === true}" x-ref="filterMain" x-bind:style="toggleFilter === true ? 'height: ' + $refs.filterMain.scrollHeight + 'px' : ''" >
+        <fieldset class="filter__main-fieldset">
+       <div class="filter__category-dropdown" x-data="{toggleFilterCategoryDropdown: false, inputValue: 'Коническо-цилиндрические мотор-редукторы'}" x-bind:class="{ 'active': toggleFilterCategoryDropdown === true }">
+        <div class="filter__category-dropdown-top" x-on:click="toggleFilterCategoryDropdown = !toggleFilterCategoryDropdown">
+            <input type="text" value="Коническо-цилиндрические мотор-редукторы" class="filter__category-dropdown-input" x-model="inputValue" disabled>
+            <svg class="filter__category-dropdown-arrow" x-bind:class="{ 'active': toggleFilterCategoryDropdown === true }" width="14" height="8">
+                <use href="../resources/svgSprites/svgSprite.svg#filter-arrow-red"></use>
+            </svg> 
+        </div>
+        <nav class="filter__category-dropdown-nav" x-ref="filterCatNav" x-bind:style="toggleFilterCategoryDropdown === true ? 'height: ' + $refs.filterCatNav.scrollHeight + 'px' : ''" x-bind:class="{'active': toggleFilter === true}">
+            <ul role="list" class="filter__category-dropdown-list" x-data="{items:['Цилиндрические редукторы','Коническо-цилиндрические редукторы','Червячные редукторы','Циклоидальные редукторы','Цилиндрический мотор-редуктор','Специальные редукторы', 'Коническо-цилиндрические мотор-редукторы', 'Планетарные мотор-редукторы', 'Червячные мотор-редукторы', 'Циклоидальные мотор-редукторы редукторы']}">
+                <template x-for="item in items">
+                    <li class="filter__category-dropdown-list-item" x-on:click="inputValue = item" x-bind:class="{ 'active': inputValue === item }">
+                        <input type="text" name="item" id="item" class="filter__category-dropdown-list-input" disabled x-bind:value="item">
+                    </li>
+                </template>
+            </ul>
+        </nav>
+       </div>
+       <div class="filter-range-sliders-wrapper">
+       <div class="filter-range-slider__wrapper">
+        <h3 class="filter-range-slider__title">Передаточное число, U</h3>
+        <div class="filter-range-slider__blocks-wrapper">
+            <div class="filter-range-slider__blocks">
+                <div class="filter-range-slider__block-wrapper">
+                    <p class="filter-range-slider__block-text filter-range-slider__block-text-min filter-range-slider__block-text-min--rangeSlider-1"></p>
+                <div class="filter-range-slider__block filter-range-slider__block-1 filter-range-slider__block-1--rangeSlider-1 active">
+                </div>
+                </div>
+                <div class="filter-range-slider__block-wrapper">
+                    <p class="filter-range-slider__block-text filter-range-slider__block-text-max filter-range-slider__block-text-max--rangeSlider-1"></p>
+                <div class="filter-range-slider__block filter-range-slider__block-2 filter-range-slider__block-2--rangeSlider-1 active"></div>
+                </div>
+            </div>
+            <div class="filter-range-slider filter-range-slider--1"></div>
+        </div>
+        <div class="filter-range-slider__input-values">
+            <input type="number" name="inputValueMin1" id="inputValueMin1" class="filter-range-slider__input filter-range-slider__input-min filter-range-slider__input-min--rangeSlider-1">
+            <input type="number" name="inputValueMax1" id="inputValueMax1" class="filter-range-slider__input filter-range-slider__input-max filter-range-slider__input-max--rangeSlider-1">
+        </div>
+       </div>
+       <div class="filter-range-slider__wrapper">
+        <h3 class="filter-range-slider__title">Крутящий момент</h3>
+        <div class="filter-range-slider__blocks-wrapper">
+            <div class="filter-range-slider__blocks">
+                <div class="filter-range-slider__block-wrapper">
+                    <p class="filter-range-slider__block-text filter-range-slider__block-text-min filter-range-slider__block-text-min--rangeSlider-2"></p>
+                <div class="filter-range-slider__block filter-range-slider__block-1 filter-range-slider__block-1--rangeSlider-2 active"></div>
+               </div>
+               <div class="filter-range-slider__block-wrapper">
+                <p class="filter-range-slider__block-text filter-range-slider__block-text-max filter-range-slider__block-text-max--rangeSlider-2"></p>
+                <div class="filter-range-slider__block filter-range-slider__block-2 filter-range-slider__block-2--rangeSlider-2 active"></div>
+            </div>
+            </div>
+            <div class="filter-range-slider filter-range-slider--2"></div>
+        </div>
+        <div class="filter-range-slider__input-values">
+            <input type="number" name="inputValueMin2" id="inputValueMin2" class="filter-range-slider__input filter-range-slider__input-min filter-range-slider__input-min--rangeSlider-2">
+            <input type="number" name="inputValueMax2" id="inputValueMax2" class="filter-range-slider__input filter-range-slider__input-max filter-range-slider__input-max--rangeSlider-2">
+        </div>
+       </div>
+       </div>
+       <button type="button" aria-label="button" class="clear-filters-btn">
+        <div class="clear-filters-btn__clear-filters-icon">
+            <span></span>
+            <span></span>
+        </div>
+        <p>Удалить всё</p>
+       </button>
+       </fieldset>
+    </form>
+ </div>

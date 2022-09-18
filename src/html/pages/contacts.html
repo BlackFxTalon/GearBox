@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('../parts/head.html',{
+	"title":"Страница Контакты"
+	})
+	<body x-data="{headerFavoritesModal: false, headerFavoritesModalActive: false, tawkModal: false, askQuestionModal: false, askQuestionModalActive: false, headerMobileMenu: false, headerSearch: false, headerFavoritesMenu: false, headerMenuSubList: false, headerMegaMenu: false}" x-bind:class="{ 'overflow-hidden': headerFavoritesModal === true || tawkModal === true || headerMobileMenu === true }"  class="off-shadow-header">
+		<script src="js/main.min.js" defer></script>
+		@@include('../parts/header.html')
+        @@include('../parts/breadcrumbs.html')
+		<main>
+           <section class="contacts-page">
+            <div class="container contacts-page__container">
+                <h1 class="section-title contacts-page__section-title">Контакты</h1>
+                <nav class="contacts-page__info">
+                <ul role="list" class="contacts-page__list contacts-page__list--1">
+                    <li class="contacts-page__list-item">
+                        <a class="contacts-page__link" href="mailto:OGK@gearbox.company">OGK@gearbox.company</a>
+                    </li>
+                    <li class="contacts-page__list-item">
+                        <a class="contacts-page__link" href="tel: +7 (343) 385-29-05"> +7 (343) 385-29-05</a>
+                    </li>
+                    <li class="contacts-page__list-item">
+                        <a class="contacts-page__link" href="#">сайт УралРедуктор</a>
+                    </li>
+                </ul>
+                <ul role="list" class="contacts-page__list contacts-page__list--2">
+                    <li class="contacts-page__list-item contacts-page__list-item--media">
+                        <ul role="list" class="contacts-page__media">
+                            <li class="contacts-page__media-item contacts-page__media-item--black"></li>
+                            <li class="contacts-page__media-item contacts-page__media-item--red"></li>
+                            <li class="contacts-page__media-item contacts-page__media-item--black"></li>
+                        </ul>
+                    </li>
+                    <li class="contacts-page__list-item">
+                        <address>620075 Россия г. Екатеринбург, ул. Машиностроителей, 19</address>
+                    </li>
+                </ul>
+               </nav>
+               <div class="contacts-page__map" id="contacts-page__map">
+                <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A16b24d26f7b7e2119617cbf9f7eff21c400747a7f11eb22dc0fb2ca767bfc32d&amp;source=constructor" width="343" height="320" frameborder="0"></iframe>
+               </div>
+               <!-- <script src="https://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU"></script>
+               <script>
+                ymaps.ready(init); 
+                function init(){
+                    var myMap = new ymaps.Map("contacts-page__map",{center: [55.75985606898725,37.61054750000002],zoom: 12});
+                    myMap.controls.add("zoomControl").add("typeSelector").add("mapTools");
+                    var myPlacemark = new ymaps.Placemark([55.75985606898725,37.61054750000002]);
+                    myMap.geoObjects.add(myPlacemark);	
+                }
+                </script> -->
+            </div>
+           </section>
+		</main>
+		@@include('../parts/footer.html')
+	</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('../parts/head.html',{
+	"title":"Страница Ошибки"
+	})
+	<body x-data="{headerFavoritesModal: false, headerFavoritesModalActive: false, tawkModal: false, askQuestionModal: false, askQuestionModalActive: false, headerMobileMenu: false, headerSearch: false, headerFavoritesMenu: false, headerMenuSubList: false, headerMegaMenu: false}" x-bind:class="{ 'overflow-hidden': headerFavoritesModal === true || tawkModal === true || headerMobileMenu === true }"  class="off-shadow-header">
+		<script src="js/main.min.js" defer></script>
+		@@include('../parts/header.html')
+		<main>
+           <section class="errors-page">
+            <div class="container errors-page__container">
+                <div class="errors-page__info">
+                    <h1>404</h1>
+                    <p>Эта страница не найдена </p>
+                </div>
+                <a href="#" class="outline-btn errors-page__link"><span>На главную</span></a>
+            </div>
+           </section>
+		</main>
+		@@include('../parts/footer.html')
+	</body>
+</html>

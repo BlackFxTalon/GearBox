@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('../parts/head.html',{
+	"title":"Статья"
+	})
+	<body x-data="{headerFavoritesModal: false, headerFavoritesModalActive: false, tawkModal: false, askQuestionModal: false, askQuestionModalActive: false, headerMobileMenu: false, headerSearch: false, headerFavoritesMenu: false, headerMenuSubList: false, headerMegaMenu: false}" x-bind:class="{ 'overflow-hidden': headerFavoritesModal === true || tawkModal === true || headerMobileMenu === true }"  class="off-shadow-header">
+		<script type="module">
+            import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js';
+
+            const articlePageModalThumbnailsSlider = new Swiper('.article-page-modal-thumbnails-slider', {
+          })
+
+            const articlePageModalMainSlider = new Swiper('.article-page-modal-main-slider', {
+                slidesPerView: 1,
+                navigation: {
+    nextEl: '.article-page-modal-main-slider__button-next',
+    prevEl: '.article-page-modal-main-slider__button-prev',
+  },
+            thumbs: {
+          swiper: articlePageModalThumbnailsSlider,
+        }
+          })
+
+            const moreArticlesSlider = new Swiper('.more-articles-slider', {
+                init:false,
+                slidesPerView:4,
+                loop: true,
+                observe: true,
+                observeParents: true,
+
+                breakpoints: {
+                    1920: {
+                        mousewheel: true,
+                    }
+                }
+            })
+
+            if(window.innerWidth >= 1440) {
+                moreArticlesSlider.init();
+            }
+       </script>
+		<script src="js/main.min.js" defer></script>
+		@@include('../parts/header.html')
+		@@include('../parts/breadcrumbs.html')
+        <div class="article-page-top">
+            <div class="container article-page-top__container">
+            @@include('../parts/previous-page-link.html')
+           <time datetime="2022.06.16" class="article-page-top__time">16.06.2022</time>
+        </div>
+        </div>
+		<main>
+			<section class="article-page" x-data="{articlePageModal: false }">
+				<div class="container article-page__container">
+                <h1 class="section-title article-page__section-title">РЕДУКТОР ПРИВОДА ПЕРВИЧНОГО СМЕСИТЕЛЯ</h1>
+                <a href="#" class="article-page__reductors-page-link">
+                    <h3 class="article-page__reductors-page-link-title">редуктор A-700x1000</h3>
+                    <svg class="article-page__reductors-page-link-icon" width="24" height="24">
+                        <use href="../resources/svgSprites/svgSprite.svg#icon-link"></use>
+                    </svg> 
+                </a>
+                <div class="article-page-bottom-info">
+                <time datetime="2022.06.16" class="article-page-bottom-info__time">16.06.2022</time>
+                <ul role="list" class="article-page__tags-list">
+                    <li class="article-page__tags-list-item">теги</li>
+                    <li class="article-page__tags-list-item">теги</li>
+                    <li class="article-page__tags-list-item">очень длинные теги тоже</li>
+                </ul>
+               </div>
+			   </div>
+               <div class="article-page-info">
+                <div class="container article-page-info__container">
+                    <ul role="list" class="article-page-info__list">
+                        <li class="article-page-info__list-item article-page-info__list-item--1">
+                            <h2 class="article-page-info__title">Заголовок</h2>
+                            <p class="article-page-info__text">
+                                По данному оборудованию поступил запрос от заказчика на проектирование аналога исходного редуктора, произведенного Уралмашзаводом в СССР 1980-1990 гг.  
+                            </p>
+                            <p class="article-page-info__text">
+                                На момент заказа, у покупателя, отсутствовала возможность приобретения оригинального оборудования. Нам было необходимо спроектировать и изготовить аналог исходного механизма, найти наиболее эффективное и целесообразное решение первоначальных проблем. Вначале был совершен выезд наших специалистов на предприятие заказчика для эскизировки размеров их оборудования, а также для опроса эксплуатанта, анализа условий эксплуатации.   
+                            </p>
+                            <p class="article-page-info__text">
+                                По результатам выезда специалиста, было составлено полное ТЗ, на основании которого были произведены проектные расчеты, разработка конструкторской документации, изготовление, испытание и его дальнейшая отгрузка заказчику. В итоге, заказчик приобрел отличный редуктор от надежного производителя, а также гарантии долгосрочного сотрудничества с нашей компанией. Какими особенностями обладает данный редуктор, расскажем далее. 
+                            </p>
+                            <figure class="article-page-info__figure">
+                                <picture class="article-page-info__picture" x-on:click="articlePageModal = true">
+                                    <source media="(min-width: 1440px)" srcset="/resources/images/article-page-info-list-img-desktop.png">
+                                    <source media="(min-width: 768px)" srcset="/resources/images/article-page-info-list-img-tablet.png">
+                                  <img src="/resources/images/article-page-info-list-img.png" loading="lazy" decoding="async" alt="image" width="342" height="142" class="article-page-info__img">
+                                </picture>
+                                <figcaption class="article-page-info__figcaption">Подпись к картинке, которая будет отображаться при двойном нажатии на картинку.</figcaption>
+                            </figure>
+                        </li>
+                        <li class="article-page-info__list-item article-page-info__list-item--2">
+                            <h2 class="article-page-info__title">Применение</h2>
+                            <p class="article-page-info__text">
+                                Редуктор используется в приводе первичного смесителя на металлургическом производстве. Для него характерно наличие тяжелых условий эксплуатации: наличие непрерывных нагрузок, колоссальный объем перерабатываемой руды, высокая запыленность, наличие высоких температур, конвекционный тип теплообмена. Исходя из этого, редуктор проектировался под конкретные условия работы и обладает повышенной износостойкостью деталей и простотой их технического обслуживания. 
+                            </p>
+                            <p class="article-page-info__text">
+                                Корпус редуктора отлит из чугуна, что обеспечивает прочность и износостойкость деталей. Исходя из результатов расчета нагрузок на редуктор, был выбран монтаж оборудования посредством лап. 
+                            </p>
+                            <figure class="article-page-info__figure">
+                                <picture class="article-page-info__picture" x-on:click="articlePageModal = true">
+                                    <source media="(min-width: 1440px)" srcset="/resources/images/article-page-info-list-img-2-desktop.png">
+                                    <source media="(min-width: 768px)" srcset="/resources/images/article-page-info-list-img-2-tablet.png">
+                                  <img src="/resources/images/article-page-info-list-img-2.png" loading="lazy" decoding="async" alt="image" width="342" height="142" class="article-page-info__img">
+                                </picture>
+                                <figcaption class="article-page-info__figcaption">Подпись к картинке, которая будет отображаться при двойном нажатии на картинку.</figcaption>
+                            </figure>
+                        </li>
+                        <li class="article-page-info__list-item article-page-info__list-item--3">
+                            <h2 class="article-page-info__title">Решение</h2>
+                            <p class="article-page-info__text">
+                                Исходя из передаточного отношения и кинематической схемы было принято решение применить цилиндрическую двухступенчатую передачу. Тихоходный и быстроходные валы – цилиндрические со шпонкой. Шпоночные пазы являются наиболее приемлемым решением в данном случае, по причине высокой технологичности, исходя из передаваемого крутящего момента.
+                            </p>
+                            <figure class="article-page-info__figure article-page-info__figure--pb-36">
+                                <picture class="article-page-info__picture" x-on:click="articlePageModal = true">
+                                    <source media="(min-width: 1440px)" srcset="/resources/images/article-page-info-list-img-3-desktop.png">
+                                    <source media="(min-width: 768px)" srcset="/resources/images/article-page-info-list-img-3-tablet.png">
+                                  <img src="/resources/images/article-page-info-list-img-3.png" loading="lazy" decoding="async" alt="image" width="342" height="142" class="article-page-info__img">
+                                </picture>
+                                <figcaption class="article-page-info__figcaption">Подпись к картинке, которая будет отображаться при двойном нажатии на картинку.</figcaption>
+                            </figure>
+                            <p class="article-page-info__text">
+                                Конструктором были выбраны манжетные уплотнения тихоходного и быстроходного вала, которые снабжены защитными экранами, предотвращающими попадание относительно крупных частиц. Уплотнения обладают высокой стойкостью к тепловому и химическому воздействию. Зубчатые зацепления шевронные, что обеспечивает высокий крутящий момент и плавность работы, отсутствие осевой нагрузки на подшипники.
+                            </p>
+                            <p class="article-page-info__text">
+                                Сферические роликоподшип­ники качения являются самоустанавливающимися и, как следствие, нечувствительными к перекосам вала относительно корпуса подшипника, к отклонениям или изгибам вала, неизбежным при таких высоких нагрузках.
+                            </p>
+                            <p class="article-page-info__text">
+                                Установлена система принудительной смазки: циркуляционная смазка зубчатых зацеплений и подшипниковых узлов. Смазывание редуктора происходит при помощи минеральных масел. Минеральные масла, применяемые в данном редукторе, обладают высокой текучестью и адгезионной способностью, благодаря чему не только обеспечивается отвод тепла, снижение трения и износа, но и происходит вымывание загрязнения из рабочих узлов. Также они обеспечивают уменьшение коррозионного воздействия в зубчатых передачах редуктора.
+                            </p>
+                            <p class="article-page-info__text">
+                                Для редуктора характерна работа в агрессивной среде, следовательно покрытие корпуса должно защищать сталь от коррозии, а также быть устойчивым к механическим повреждениям. Поэтому корпус редуктора покрыт двухкомпонентным грунтом на полиуретановой основе, эпоксидной двухкомпонентной краской, содержащей противокоррозионные пигменты.
+                            </p>
+                            <p class="article-page-info__text article-page-info__text--pb-0">
+                                Таким образом, представленный редуктор проработан с учетом ТЗ заказчика и отвечает всем требованиям современности.
+                            </p>
+                        </li>
+                    </ul>
+                </div>
+               </div>
+               <div class="more-articles">
+                <div class="container more-articles__container">
+                    <h3 class="more-articles__title">
+                        Больше статей
+                    </h3>
+                    <div class="swiper more-articles-slider">
+                    <ul role="list" class="swiper-wrapper more-articles-slider__list">
+                      <li class="swiper-slide more-articles-slider__item">
+                        <a href="#" class="more-articles-slider__list-link">
+                            <ul role="list" class="more-articles-slider__list-tags">
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--very-long">очень длинные теги тоже</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                            </ul>
+                            <time datetime="2022.05.12" class="more-articles-slider__list-datetime">12.05.2022</time>
+                                <h3 class="more-articles-slider__list-title">РЕДУКТОР ПРИВОДА ПЕРВИЧНОГО СМЕСИТЕЛЯ</h3>
+                        </a>
+                      </li>
+                      <li class="swiper-slide more-articles-slider__item">
+                        <a href="#" class="more-articles-slider__list-link">
+                            <ul role="list" class="more-articles-slider__list-tags">
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--very-long">очень длинные теги тоже</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                            </ul>
+                            <time datetime="2022.05.12" class="more-articles-slider__list-datetime">12.05.2022</time>
+                                <h3 class="more-articles-slider__list-title">РЕДУКТОР ПРИВОДА ПЕРВИЧНОГО СМЕСИТЕЛЯ</h3>
+                        </a>
+                      </li>
+                      <li class="swiper-slide more-articles-slider__item">
+                        <a href="#" class="more-articles-slider__list-link">
+                            <ul role="list" class="more-articles-slider__list-tags">
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--very-long">очень длинные теги тоже</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                            </ul>
+                            <time datetime="2022.05.12" class="more-articles-slider__list-datetime">12.05.2022</time>
+                                <h3 class="more-articles-slider__list-title">РЕДУКТОР ПРИВОДА ПЕРВИЧНОГО СМЕСИТЕЛЯ</h3>
+                        </a>
+                      </li>
+                      <li class="swiper-slide more-articles-slider__item">
+                        <a href="#" class="more-articles-slider__list-link">
+                            <ul role="list" class="more-articles-slider__list-tags">
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--very-long">очень длинные теги тоже</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                            </ul>
+                            <time datetime="2022.05.12" class="more-articles-slider__list-datetime">12.05.2022</time>
+                                <h3 class="more-articles-slider__list-title">РЕДУКТОР ПРИВОДА ПЕРВИЧНОГО СМЕСИТЕЛЯ</h3>
+                        </a>
+                      </li>
+                      <li class="swiper-slide more-articles-slider__item">
+                        <a href="#" class="more-articles-slider__list-link">
+                            <ul role="list" class="more-articles-slider__list-tags">
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--very-long">очень длинные теги тоже</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                            </ul>
+                            <time datetime="2022.05.12" class="more-articles-slider__list-datetime">12.05.2022</time>
+                                <h3 class="more-articles-slider__list-title">РЕДУКТОР ПРИВОДА ПЕРВИЧНОГО СМЕСИТЕЛЯ</h3>
+                        </a>
+                      </li>
+                      <li class="swiper-slide more-articles-slider__item">
+                        <a href="#" class="more-articles-slider__list-link">
+                            <ul role="list" class="more-articles-slider__list-tags">
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--very-long">очень длинные теги тоже</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                            </ul>
+                            <time datetime="2022.05.12" class="more-articles-slider__list-datetime">12.05.2022</time>
+                                <h3 class="more-articles-slider__list-title">РЕДУКТОР ПРИВОДА ПЕРВИЧНОГО СМЕСИТЕЛЯ</h3>
+                        </a>
+                      </li>
+                      <li class="swiper-slide more-articles-slider__item">
+                        <a href="#" class="more-articles-slider__list-link">
+                            <ul role="list" class="more-articles-slider__list-tags">
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--very-long">очень длинные теги тоже</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                            </ul>
+                            <time datetime="2022.05.12" class="more-articles-slider__list-datetime">12.05.2022</time>
+                                <h3 class="more-articles-slider__list-title">РЕДУКТОР ПРИВОДА ПЕРВИЧНОГО СМЕСИТЕЛЯ</h3>
+                        </a>
+                      </li>
+                      <li class="swiper-slide more-articles-slider__item">
+                        <a href="#" class="more-articles-slider__list-link">
+                            <ul role="list" class="more-articles-slider__list-tags">
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--very-long">очень длинные теги тоже</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                                <li class="more-articles-slider__list-tag more-articles-slider__list-tag--short">теги</li>
+                            </ul>
+                            <time datetime="2022.05.12" class="more-articles-slider__list-datetime">12.05.2022</time>
+                                <h3 class="more-articles-slider__list-title">РЕДУКТОР ПРИВОДА ПЕРВИЧНОГО СМЕСИТЕЛЯ</h3>
+                        </a>
+                      </li>
+                    </ul>
+                 </div>
+                </div>
+               </div>
+               <div class="modal-alt article-page-modal" x-bind:class="{ 'active': articlePageModal === true }" x-on:click.self="articlePageModal = false">
+                <button type="button" aria-label="button" class="modal-alt__close-btn article-page-modal__close-btn" x-on:click="articlePageModal = false">
+                    <svg class="modal-alt__close-btn-icon" width="18" height="18">
+                        <use href="../resources/svgSprites/svgSprite.svg#product-card-modal-icon-close"></use>
+                    </svg> 
+                    Закрыть
+                </button>
+             <div class="modal-alt__content article-page-modal__content">
+                <div class="article-page-modal-main-slider__container">
+                    <div class="swiper-button-prev article-page-modal-main-slider__button-prev">
+                        <svg width="82" height="24" viewBox="0 0 82 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1 13C0.447715 13 -2.49199e-08 12.5523 0 12C2.49199e-08 11.4477 0.447715 11 1 11L1 13ZM81.191 11.2929C81.5815 11.6834 81.5815 12.3166 81.191 12.7071L74.827 19.0711C74.4365 19.4616 73.8033 19.4616 73.4128 19.0711C73.0223 18.6806 73.0223 18.0474 73.4128 17.6569L79.0697 12L73.4128 6.34316C73.0223 5.95263 73.0223 5.31947 73.4128 4.92894C73.8033 4.53842 74.4365 4.53842 74.827 4.92894L81.191 11.2929ZM1 11L80.4839 11L80.4839 13L1 13L1 11Z" fill="#0F1937"/>
+                            </svg>
+                            
+                    </div>
+               <div class="article-page-modal-main-slider swiper">
+                    <ul role="list" class="swiper-wrapper article-page-modal-main-slider__wrapper">
+                        <li class="swiper-slide article-page-modal-main-slider__slide">
+                            <picture class="article-page-modal-main-slider__picture">
+                                <source media="(min-width: 1440px)" srcset="/resources/images/article-page-info-list-img-desktop.png">
+                                <source media="(min-width: 768px)" srcset="/resources/images/article-page-info-list-img-tablet.png">
+                                <img src="/resources/images/article-page-info-list-img.png" loading="lazy" decoding="async" alt="image" width="342" height="142" class="article-page-modal-main-slider__img">
+                            </picture>
+                        </li>
+                        <li class="swiper-slide article-page-modal-main-slider__slide">
+                            <picture class="article-page-modal-main-slider__picture">
+                                <source media="(min-width: 1440px)" srcset="/resources/images/article-page-info-list-img-desktop.png">
+                                <source media="(min-width: 768px)" srcset="/resources/images/article-page-info-list-img-tablet.png">
+                                <img src="/resources/images/article-page-info-list-img.png" loading="lazy" decoding="async" alt="image" width="342" height="142" class="article-page-modal-main-slider__img">
+                            </picture>
+                        </li>
+                        <li class="swiper-slide article-page-modal-main-slider__slide">
+                            <picture class="article-page-modal-main-slider__picture">
+                                <source media="(min-width: 1440px)" srcset="/resources/images/article-page-info-list-img-2-desktop.png">
+                                <source media="(min-width: 768px)" srcset="/resources/images/article-page-info-list-img-2-tablet.png">
+                                <img src="/resources/images/article-page-info-list-img-2.png" loading="lazy" decoding="async" alt="image" width="342" height="142" class="article-page-modal-main-slider__img">
+                            </picture>
+                        </li>
+                        <li class="swiper-slide article-page-modal-main-slider__slide">
+                            <picture class="article-page-modal-main-slider__picture">
+                                <source media="(min-width: 1440px)" srcset="/resources/images/article-page-info-list-img-2-desktop.png">
+                                <source media="(min-width: 768px)" srcset="/resources/images/article-page-info-list-img-2-tablet.png">
+                                <img src="/resources/images/article-page-info-list-img-2.png" loading="lazy" decoding="async" alt="image" width="342" height="142" class="article-page-modal-main-slider__img">
+                            </picture>
+                        </li>
+                        <li class="swiper-slide article-page-modal-main-slider__slide">
+                            <picture class="article-page-modal-main-slider__picture">
+                                <source media="(min-width: 1440px)" srcset="/resources/images/article-page-info-list-img-3-desktop.png">
+                                <source media="(min-width: 768px)" srcset="/resources/images/article-page-info-list-img-3-tablet.png">
+                                <img src="/resources/images/article-page-info-list-img-3.png" loading="lazy" decoding="async" alt="image" width="342" height="142" class="article-page-modal-main-slider__img">
+                            </picture>
+                        </li>
+                        <li class="swiper-slide article-page-modal-main-slider__slide">
+                            <picture class="article-page-modal-main-slider__picture">
+                                <source media="(min-width: 1440px)" srcset="/resources/images/article-page-info-list-img-3-desktop.png">
+                                <source media="(min-width: 768px)" srcset="/resources/images/article-page-info-list-img-3-tablet.png">
+                                <img src="/resources/images/article-page-info-list-img-3.png" loading="lazy" decoding="async" alt="image" width="342" height="142" class="article-page-modal-main-slider__img">
+                            </picture>
+                        </li>
+                    </ul>
+               </div>
+               <div class="swiper-button-next article-page-modal-main-slider__button-next">
+                <svg width="82" height="24" viewBox="0 0 82 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 13C0.447715 13 -2.49199e-08 12.5523 0 12C2.49199e-08 11.4477 0.447715 11 1 11L1 13ZM81.191 11.2929C81.5815 11.6834 81.5815 12.3166 81.191 12.7071L74.827 19.0711C74.4365 19.4616 73.8033 19.4616 73.4128 19.0711C73.0223 18.6806 73.0223 18.0474 73.4128 17.6569L79.0697 12L73.4128 6.34316C73.0223 5.95263 73.0223 5.31947 73.4128 4.92894C73.8033 4.53842 74.4365 4.53842 74.827 4.92894L81.191 11.2929ZM1 11L80.4839 11L80.4839 13L1 13L1 11Z" fill="#0F1937"/>
+                    </svg>
+                    
+               </div>
+               </div>
+               <p class="article-page-modal__text">Общий вид редуктора</p>
+               <div class="article-page-modal-thumbnails-slider swiper">
+                <ul role="list" class="swiper-wrapper article-page-modal-thumbnails-slider__wrapper">
+                    <li class="swiper-slide article-page-modal-thumbnails-slider__slide">
+                        <picture class="article-page-modal-thumbnails-slider__picture">
+                            <source media="(min-width: 1440px)" srcset="/resources/images/article-page-info-list-img-desktop.png">
+                            <source media="(min-width: 768px)" srcset="/resources/images/article-page-info-list-img-tablet.png">
+                            <img src="/resources/images/article-page-info-list-img.png" loading="lazy" decoding="async" alt="image" width="342" height="142" class="article-page-modal-thumbnails-slider__img">
+                        </picture>
+                    </li>
+                    <li class="swiper-slide article-page-modal-thumbnails-slider__slide">
+                        <picture class="article-page-modal-thumbnails-slider__picture">
+                            <source media="(min-width: 1440px)" srcset="/resources/images/article-page-info-list-img-desktop.png">
+                            <source media="(min-width: 768px)" srcset="/resources/images/article-page-info-list-img-tablet.png">
+                            <img src="/resources/images/article-page-info-list-img.png" loading="lazy" decoding="async" alt="image" width="342" height="142" class="article-page-modal-thumbnails-slider__img">
+                        </picture>
+                    </li>
+                    <li class="swiper-slide article-page-modal-thumbnails-slider__slide">
+                        <picture class="article-page-modal-thumbnails-slider__picture">
+                            <source media="(min-width: 1440px)" srcset="/resources/images/article-page-info-list-img-2-desktop.png">
+                            <source media="(min-width: 768px)" srcset="/resources/images/article-page-info-list-img-2-tablet.png">
+                            <img src="/resources/images/article-page-info-list-img-2.png" loading="lazy" decoding="async" alt="image" width="342" height="142" class="article-page-modal-thumbnails-slider__img">
+                        </picture>
+                    </li>
+                    <li class="swiper-slide article-page-modal-thumbnails-slider__slide">
+                        <picture class="article-page-modal-thumbnails-slider__picture">
+                            <source media="(min-width: 1440px)" srcset="/resources/images/article-page-info-list-img-2-desktop.png">
+                            <source media="(min-width: 768px)" srcset="/resources/images/article-page-info-list-img-2-tablet.png">
+                            <img src="/resources/images/article-page-info-list-img-2.png" loading="lazy" decoding="async" alt="image" width="342" height="142" class="article-page-modal-thumbnails-slider__img">
+                        </picture>
+                    </li>
+                    <li class="swiper-slide article-page-modal-thumbnails-slider__slide">
+                        <picture class="article-page-modal-thumbnails-slider__picture">
+                            <source media="(min-width: 1440px)" srcset="/resources/images/article-page-info-list-img-3-desktop.png">
+                            <source media="(min-width: 768px)" srcset="/resources/images/article-page-info-list-img-3-tablet.png">
+                            <img src="/resources/images/article-page-info-list-img-3.png" loading="lazy" decoding="async" alt="image" width="342" height="142" class="article-page-modal-thumbnails-slider__img">
+                        </picture>
+                    </li>
+                    <li class="swiper-slide article-page-modal-thumbnails-slider__slide">
+                        <picture class="article-page-modal-thumbnails-slider__picture">
+                            <source media="(min-width: 1440px)" srcset="/resources/images/article-page-info-list-img-3-desktop.png">
+                            <source media="(min-width: 768px)" srcset="/resources/images/article-page-info-list-img-3-tablet.png">
+                            <img src="/resources/images/article-page-info-list-img-3.png" loading="lazy" decoding="async" alt="image" width="342" height="142" class="article-page-modal-thumbnails-slider__img">
+                        </picture>
+                    </li>
+                </ul>
+           </div>
+             </div>
+            </div>
+			</section>
+		</main>
+		@@include('../parts/footer.html')
+	</body>
+</html>
