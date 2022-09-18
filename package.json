@@ -6,6 +6,7 @@
     "type": "module",
     "dependencies": {
         "alpinejs": "^3.9.5",
+        "atropos": "^1.0.2",
         "gulp-cli": "^2.3.0"
     },
     "devDependencies": {
