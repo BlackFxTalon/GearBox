@@ -12,8 +12,6 @@ Thumbs.db
 *.log*
 
 # Папка с собранными файлами проекта
-config
-database
 build/
 node_modules
 package-lock.json

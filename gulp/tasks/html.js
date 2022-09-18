@@ -10,7 +10,6 @@ export const html = () => {
         }))
     )
         .pipe(fileInclude())
-        .pipe(app.plugins.replace(/@img\//g, 'resources/images/'))
         .pipe(app.gulp.dest(app.path.build.html))
         .pipe(app.plugins.browsersync.stream());
 };
