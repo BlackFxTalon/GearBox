@@ -8,6 +8,7 @@
         "alpinejs": "^3.9.5",
         "aos": "^2.3.4",
         "atropos": "^1.0.2",
+        "gul": "^1.0.0",
         "gulp-cli": "^2.3.0"
     },
     "devDependencies": {

@@ -100,7 +100,7 @@ function simpleClientSideFormValidation(form) {
     }); 
   
   el.addEventListener('submit',function(event){
-      event.preventDefault();
+      // event.preventDefault();
       inputs.forEach(input => {
         const parentEl = input.parentElement;
 
