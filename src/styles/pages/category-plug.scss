@@ -1,0 +1,57 @@
+// category-plug page styles
+.no-filter-results {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    gap: 16px;
+    padding-top: 42px;
+    padding-bottom: 73px;
+
+    @include media-medium() {
+        padding-top: 176px;
+        padding-bottom: 310px;
+        gap: 24px;
+    }
+
+    @include media-extra-large() {
+        padding-top: 124px;
+        gap: 32px;
+    }
+
+    @include media-custom(1920px) {
+        padding-top: 200px;
+        padding-bottom: 348px;
+        gap: 40px;
+    }
+
+    &__title {
+        font-family: 'Inter',sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 24px;
+        color: var(--grey-1);
+
+        @include media-medium() {
+            font-size: 26px;
+line-height: 32px;
+        }
+
+        @include media-custom(1920px) {
+            font-size: 32px;
+line-height: 36px;
+        }
+    }
+
+    &__text {
+        font-family: 'Inter',sans-serif;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+color: var(--grey-1);
+
+@include media-medium() {
+    font-size: 18px;
+    line-height: 22px;
+}
+    }
+}

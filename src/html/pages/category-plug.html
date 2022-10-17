@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+	@@include('../parts/head.html',{
+	"title":"страница (заглушка для серии)"
+	})
+	<body x-data="{headerFavoritesModal: false, headerFavoritesModalActive: false, tawkModal: false, askQuestionModal: false, askQuestionModalActive: false, callbackModal: false, callbackModalActive: false,projectSelectionModal: false, projectSelectionModalActive: false, headerMobileMenu: false, headerSearch: false, headerFavoritesMenu: false, headerMenuSubList: false, headerMegaMenu: false}" x-bind:class="{ 'overflow-hidden': headerFavoritesModal === true || tawkModal === true || headerMobileMenu === true }"  class="off-shadow-header">
+		<link rel="stylesheet" href="https://simeydotme.github.io/jQuery-ui-Slider-Pips/dist/css/jqueryui.min.css">
+		<link rel="stylesheet" href="https://simeydotme.github.io/jQuery-ui-Slider-Pips/dist/css/jquery-ui-slider-pips.min.css">
+		<script src="https://simeydotme.github.io/jQuery-ui-Slider-Pips/dist/js/jquery-plus-ui.min.js"></script>
+        <script src="https://simeydotme.github.io/jQuery-ui-Slider-Pips/dist/js/jquery-ui-slider-pips.js"></script>
+		<script src="js/main.min.js" defer></script>
+		@@include('../parts/header.html')
+		@@include('../parts/breadcrumbs.html')
+		 @@include('../parts/filter.html')
+		 @@include('../parts/previous-page-link.html')
+		<main>
+			<section class="special-reductors-page">
+				<div class="container special-reductors-page__container">
+                <h1 class="section-title special-reductors-page__section-title">Коническо-цилиндрические мотор-редукторы</h1>
+				<div class="no-filter-results">
+                    <h3 class="no-filter-results__title">Нет результатов по указанным параметрам.</h3>
+                    <p class="no-filter-results__text">Попробуйте ввести иные значения фильтра</p>
+                </div>
+			</section>
+		</main>
+		<script>
+function rangeSlider1() {
+
+    let filterRangeSlider = $(".filter-range-slider--1");
+    let filterRangeSliderBlock1 = $('.filter-range-slider__block-1--rangeSlider-1');
+    let filterRangeSliderBlock2 = $('.filter-range-slider__block-2--rangeSlider-1');
+	let filterRangeSliderBlockTextMin = $('.filter-range-slider__block-text-min--rangeSlider-1');
+	let filterRangeSliderBlockTextMax = $('.filter-range-slider__block-text-max--rangeSlider-1');
+    
+    
+    filterRangeSlider.slider({
+max: 5000,
+min: 0,
+step:100,
+range: true,
+values: [800, 4200],
+slide: (e, ui) => {
+    let minSlideValue = $(".filter-range-slider--1 .ui-slider-pip-selected-1 .ui-slider-label").data('value');
+    let maxSlideValue = $(".filter-range-slider--1 .ui-slider-pip-selected-2 .ui-slider-label").data('value');
+    $('.filter-range-slider__input-min--rangeSlider-1').val(minSlideValue);
+    $('.filter-range-slider__input-max--rangeSlider-1').val(maxSlideValue);
+    filterRangeSliderBlock1.addClass('active');
+    filterRangeSliderBlock2.addClass('active');
+	filterRangeSliderBlockTextMin.text(minSlideValue);
+    filterRangeSliderBlockTextMax.text(maxSlideValue);
+}
+})
+.slider("pips", {
+first: "pip",
+last: "pip",
+});
+
+let filterRangeSliderInputMin = $('.filter-range-slider__input-min--rangeSlider-1');
+let filterRangeSliderInputMax = $('.filter-range-slider__input-max--rangeSlider-1');
+
+let minValue = filterRangeSlider.slider("values")[0];
+let maxValue = filterRangeSlider.slider("values")[1];
+
+filterRangeSliderInputMin.val(minValue);
+filterRangeSliderInputMax.val(maxValue);
+filterRangeSliderBlockTextMin.text(minValue);
+filterRangeSliderBlockTextMax.text(maxValue);
+
+filterRangeSliderInputMin.on('change',function() {
+let filterRangeSliderInputMinValue = $(this).val();
+ 
+filterRangeSlider.slider('values', '0', parseInt(filterRangeSliderInputMinValue));
+filterRangeSliderBlockTextMin.text(filterRangeSliderInputMinValue);
+filterRangeSliderBlock1.addClass('active');
+filterRangeSlider.slider("pips", "refresh");
+});
+
+filterRangeSliderInputMax.on('change',function() {
+let filterRangeSliderInputMaxValue = $(this).val();
+ 
+filterRangeSlider.slider('values', '1', parseInt(filterRangeSliderInputMaxValue));
+filterRangeSliderBlockTextMax.text(filterRangeSliderInputMaxValue);
+filterRangeSliderBlock2.addClass('active');
+filterRangeSlider.slider("pips", "refresh");
+});
+
+filterRangeSliderBlock1.on('click', function () {
+filterRangeSlider.slider('values','0',parseInt(800));
+filterRangeSlider.slider("pips", "refresh");
+filterRangeSliderInputMin.val(800);
+filterRangeSliderBlockTextMin.text(800);
+$(this).removeClass('active');
+});
+
+filterRangeSliderBlock2.on('click', function () {
+filterRangeSlider.slider('values','1',parseInt(4200));
+filterRangeSlider.slider("pips", "refresh");
+filterRangeSliderInputMax.val(4200);
+filterRangeSliderBlockTextMax.text(4200);
+$(this).removeClass('active');
+});
+};
+
+function rangeSlider2() {
+			let filterRangeSlider = $(".filter-range-slider--2");
+			let filterRangeSliderBlock1 = $('.filter-range-slider__block-1--rangeSlider-2');
+			let filterRangeSliderBlock2 = $('.filter-range-slider__block-2--rangeSlider-2');
+			let filterRangeSliderBlockTextMin = $('.filter-range-slider__block-text-min--rangeSlider-2');
+	        let filterRangeSliderBlockTextMax = $('.filter-range-slider__block-text-max--rangeSlider-2');
+			
+			
+		filterRangeSlider.slider({
+			max: 5000,
+min: 0,
+step:100,
+range: true,
+values: [800, 4200],
+        slide: (e, ui) => {
+			let minSlideValue = $(".filter-range-slider--2 .ui-slider-pip-selected-1 .ui-slider-label").data('value');
+			let maxSlideValue = $(".filter-range-slider--2 .ui-slider-pip-selected-2 .ui-slider-label").data('value');
+			$('.filter-range-slider__input-min--rangeSlider-2').val(minSlideValue);
+			$('.filter-range-slider__input-max--rangeSlider-2').val(maxSlideValue);
+			filterRangeSliderBlockTextMin.text(minSlideValue);
+            filterRangeSliderBlockTextMax.text(maxSlideValue);
+			filterRangeSliderBlock1.addClass('active');
+            filterRangeSliderBlock2.addClass('active');
+		}
+    })
+    .slider("pips", {
+        first: "pip",
+        last: "pip",
+    });
+
+	let filterRangeSliderInputMin = $('.filter-range-slider__input-min--rangeSlider-2');
+    let filterRangeSliderInputMax = $('.filter-range-slider__input-max--rangeSlider-2');
+
+	let minValue = filterRangeSlider.slider("values")[0];
+	let maxValue = filterRangeSlider.slider("values")[1];
+
+	filterRangeSliderInputMin.val(minValue);
+	filterRangeSliderInputMax.val(maxValue);
+	filterRangeSliderBlockTextMin.text(minValue);
+    filterRangeSliderBlockTextMax.text(maxValue);
+
+	filterRangeSliderInputMin.on('change',function() {
+		let filterRangeSliderInputMinValue = $(this).val();
+		 
+		filterRangeSlider.slider('values', '0', parseInt(filterRangeSliderInputMinValue));
+		filterRangeSliderBlockTextMin.text(filterRangeSliderInputMinValue);
+		filterRangeSliderBlock1.addClass('active');
+		filterRangeSlider.slider("pips", "refresh");
+	});
+
+	filterRangeSliderInputMax.on('change',function() {
+		let filterRangeSliderInputMaxValue = $(this).val();
+		 
+		filterRangeSlider.slider('values', '1', parseInt(filterRangeSliderInputMaxValue));
+		filterRangeSliderBlockTextMax.text(filterRangeSliderInputMaxValue);
+		filterRangeSliderBlock2.addClass('active');
+		filterRangeSlider.slider("pips", "refresh");
+	});
+
+	filterRangeSliderBlock1.on('click', function () {
+		filterRangeSlider.slider('values','0',parseInt(800));
+		filterRangeSlider.slider("pips", "refresh");
+		filterRangeSliderInputMin.val(800);
+		filterRangeSliderBlockTextMin.text(800);
+		$(this).removeClass('active');
+	});
+
+	filterRangeSliderBlock2.on('click', function () {
+		filterRangeSlider.slider('values','1',parseInt(4200));
+		filterRangeSlider.slider("pips", "refresh");
+		filterRangeSliderInputMax.val(4200);
+		filterRangeSliderBlockTextMax.text(4200);
+		$(this).removeClass('active');
+	});
+	  }
+
+	rangeSlider1();
+	rangeSlider2();
+
+$('.clear-filters-btn').on('click', function () {
+	let filterRangeSliders = $('.filter-range-slider');
+	let filterRangeSliderInputsMin = $('.filter-range-slider__input-min');
+	let filterRangeSliderInputsMax = $('.filter-range-slider__input-max');
+	let filterRangeSliderBlockTextsMin = $('.filter-range-slider__block-text-min');
+	let filterRangeSliderBlockTextsMax = $('.filter-range-slider__block-text-max');
+
+	let filterRangeSliderBlock1 = $('.filter-range-slider__block-1');
+	let filterRangeSliderBlock2 = $('.filter-range-slider__block-2');
+
+
+	filterRangeSliders.each(function () {
+		$(this).slider('values','0',parseInt(0));
+		$(this).slider('values','1',parseInt(5000));
+		filterRangeSliders.slider("pips", "refresh");
+	});
+	filterRangeSliderInputsMin.each(function () {
+		$(this).val(0);
+	});
+	filterRangeSliderInputsMax.each(function () {
+		$(this).val(5000);
+	});
+
+	filterRangeSliderBlock1.each(function () {
+		$(this).removeClass('active');
+	});
+
+	filterRangeSliderBlock2.each(function () {
+		$(this).removeClass('active');
+	});
+
+	filterRangeSliderBlockTextsMin.each(function () {
+		$(this).text(0);
+	});
+
+	filterRangeSliderBlockTextsMax.each(function () {
+		$(this).text(5000);
+	});
+})		
+
+		</script>
+		@@include('../parts/footer.html')
+	</body>
+</html>
