@@ -134,12 +134,20 @@
                     <span></span>
                 </button>
             </div>
-            <div class="header__search-list-wrapper" x-bind:class="{ 'active': headerSearchInput }">
+            <div class="header__search-list-wrapper" x-show="headerSearchInput" x-collapse.duration.750ms>
+                <p class="header__search-no-results-text">Ничего не найдено</p>
+                <div class="header__search-list-wrapper-left">
                 <ul role="list" class="header__search-list header__search-list--border-right">
                     <li><h3 class="header__search-list-title">Серии</h3></li>
                     <li><p class="header__search-list-item" x-on:click="headerSearchInput = 'КЦ2'" x-bind:class="{ 'active': headerSearchInput === 'КЦ2'}">КЦ2</p></li>
                     <li><p class="header__search-list-item" x-on:click="headerSearchInput = 'КЦ3'" x-bind:class="{ 'active': headerSearchInput === 'КЦ3'}">КЦ3</p></li>
                    </ul>
+                   <ul role="list" class="header__search-list header__search-list--border-right header__search-list--border-top">
+                    <li><h3 class="header__search-list-title">Специальные редукторы</h3></li>
+                    <li><p class="header__search-list-item" x-on:click="headerSearchInput = 'Редуктор привода первичного смесителя A-700x1000'" x-bind:class="{ 'active': headerSearchInput === 'КЦ2-1000'}">Редуктор привода первичного смесителя A-700x1000</p></li>
+                    <li><p class="header__search-list-item" x-on:click="headerSearchInput = 'КЦ2-250H'" x-bind:class="{ 'active': headerSearchInput === 'Редуктор привода транспортера шахтного конвейер КЦ2Фа'}">Редуктор привода транспортера шахтного конвейер КЦ2Фа</p></li>
+                   </ul>
+                </div>
             <ul role="list" class="header__search-list">
              <li><h3 class="header__search-list-title">Редукторы</h3></li>
              <li><p class="header__search-list-item" x-on:click="headerSearchInput = 'КЦ2-1000'" x-bind:class="{ 'active': headerSearchInput === 'КЦ2-1000'}">КЦ2-1000</p></li>
