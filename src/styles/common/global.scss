@@ -3582,18 +3582,9 @@ color: var(--dark-color);
   }
 
   &__tag {
-    border: 1px solid var(--dark-color-1);
-    border-radius: 30px;
     width: 100%;
-    display: none;
-    align-items: center;
-    grid-template-columns: 1fr max-content;
-    padding: 10px 16px;
     transition: .3s ease-in-out;
-  }
-
-  &__tag.active {
-    display: grid;
+    position: relative;
   }
 
   &__tag--very-wide {
@@ -3614,42 +3605,85 @@ color: var(--dark-color);
     max-width: 177px;
   }
 
-  &__tag:hover {
-   background-color: var(--dark-color-1);
+  &__tag-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: none;
+    border-radius: 30px;
+    background-color: transparent;
+    width: 100%;
+height: 100%;
+opacity: 0;
+margin: 0;
+cursor: pointer;
+  }
 
-   .filter__tag-icon {
-    fill: white;
-    transform: rotate(180deg);
-   }
+  &__tag-input:checked + .filter__tag-btn {
+     background-color: var(--dark-color-1);
+  }
 
-   .filter__tag-input {
+  &__tag-input:checked + .filter__tag-btn .filter__tag-text {
     color: var(--background-color);
-   }
+  }
 
-   .filter__tag-clear-btn {
-    transform: rotate(135deg);
-   }
-   .filter__tag-clear-btn span {
+  &__tag-input:checked + .filter__tag-btn .filter__tag-icon span {
     background-color: var(--background-color);
     border-color: var(--background-color);
    }
+
+  &__tag-input:checked + .filter__tag-btn .filter__tag-icon span:first-child {
+    transform: rotate(140deg);
+  } 
+
+  &__tag-input:checked + .filter__tag-btn .filter__tag-icon span:last-child {
+    transform: rotate(40deg);
+  } 
+
+  &__tag:hover {
+
+    .filter__tag-btn {
+      background-color: var(--dark-color-1);
+    }
+
+    .filter__tag-text {
+      color: var(--background-color);
+    }
+
+   .filter__tag-icon span {
+    background-color: var(--background-color);
+    border-color: var(--background-color);
+   }
+
+   .filter__tag-icon span:first-child {
+    transform: rotate(140deg);
   }
 
-  &__tag-clear-btn {
-    border: none;
+  .filter__tag-icon span:last-child {
+    transform: rotate(40deg);
+  }
+  }
+
+  &__tag-btn {
+    border: 1px solid var(--dark-color-1);
+    border-radius: 30px;
     background-color: transparent;
-    padding: 0;
+    padding: 10px 16px;
     margin: 0;
-    display: flex;
+    display: grid;
     align-items: center;
-    justify-content: center;
-    width: 18px;
-    height: 18px;
-    position: relative;
+    justify-content: space-between;
+    grid-template-columns: repeat(2,max-content);
     transition: .3s ease-in-out;
+    width: 100%;
   }
 
-  &__tag-clear-btn span {
+  &__tag-icon {
+    transition: .3s ease-in-out;
+    margin-right: 16px;
+  }
+
+  &__tag-icon span {
     background-color: var(--dark-color);
     border-radius: 1px;
     position: absolute;
@@ -3659,34 +3693,19 @@ color: var(--dark-color);
     transition: .3s ease-in-out;
   }
 
-  &__tag-clear-btn span:first-child {
+  &__tag-icon span:first-child {
     transform: rotate(180deg);
   }
 
-  &__tag-clear-btn span:last-child {
+  &__tag-icon span:last-child {
     transform: rotate(90deg);
   }
 
-  &__tag-input {
-    border: none;
-    background-color: transparent;
-    width: 100%;
+  &__tag-text {
     font-weight: 500;
-font-size: 18px;
-line-height: 24px;
-color: var(--dark-color);
-transition: .3s ease-in-out;
-max-width: 30ch;
-overflow: hidden;
-text-overflow: ellipsis;
-  }
-  &__tag-input:focus,
-  &__tag-input:focus-visible,
-  &__tag-input:focus-within {
-    outline: transparent;
-  }
-
-  &__tag-icon {
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--dark-color);
     transition: .3s ease-in-out;
   }
 
