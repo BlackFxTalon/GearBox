@@ -28,13 +28,14 @@
 								<div class="swiper sub-category-section__dropdown-slider" x-bind:class="{'active': toggleDropdown === i}" :data-index="i">
                                 <ul role="list" class="swiper-wrapper sub-category-section__dropdown-list">
                                     <li class="swiper-slide sub-category-section__dropdown-list-item">
-										<figure class="sub-category-section__dropdown-list-card" x-data="{addToFavorites: false}" x-on:click="addToFavorites = !addToFavorites">
+										<figure class="sub-category-section__dropdown-list-card" x-data="{addToFavorites: false}">
+											<a href="#" class="sub-category-section__dropdown-list-link"></a>
 										  <picture class="sub-category-section__dropdown-list-picture">
 											<img class="sub-category-section__dropdown-list-img" src="/resources/images/sub-category-section-img.png" loading="lazy" decoding="async" alt="image" width="320" height="254">
 										  </picture>
 										  <figcaption class="sub-category-section__dropdown-list-figcaption">
 											<h4 class="sub-category-section__dropdown-list-title">1Ц2У-100</h4>
-											<svg class="sub-category-section__dropdown-list-star" width="32" height="32" x-bind:class="{ 'active': addToFavorites === true }">
+											<svg class="sub-category-section__dropdown-list-star" width="32" height="32" x-bind:class="{ 'active': addToFavorites === true }" x-on:click="addToFavorites = !addToFavorites">
 												<use class="sub-category-section__list-star-icon" href="../resources/svgSprites/svgSprite.svg#icon-star"></use>
 												<use class="sub-category-section__list-star-icon-active" href="../resources/svgSprites/svgSprite.svg#icon-star-active"></use>
 											</svg> 

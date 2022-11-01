@@ -375,6 +375,8 @@ color: var(--dark-color);
         width: 620px;
         height: 670px;
         margin-bottom: 40px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     @include media-extra-large() {
@@ -418,7 +420,7 @@ color: var(--dark-color);
 opacity: 0;
 transition: .5s ease-in-out;
 max-width: 24ch;
-margin-left: 70px;
+margin-left: 150px;
 
 @include media-medium() {
     max-width: 30ch;
@@ -457,7 +459,7 @@ transition: .3s ease-in-out;
         width: 88px;
         height: 80px;
         position: absolute;
-        transition: .5s ease-in-out;
+        transition: .1s ease-in-out;
 
         @include media-medium() {
             left: 7rem;
@@ -465,11 +467,10 @@ transition: .3s ease-in-out;
 
         @include media-extra-large() {
             left: 0;
-            transition: .3s ease-in-out;
         }
 
         path,rect {
-            transition: .5s ease-in-out;
+            transition: .1s ease-in-out;
         }
     }
     &__project-icon.active {
@@ -498,7 +499,7 @@ transition: .3s ease-in-out;
         position: absolute;
         right: 70px;
         top: 3rem;
-        transition: .5s ease-in-out;
+        transition: .1s ease-in-out;
 
         @include media-medium() {
             right: 1rem;
@@ -507,11 +508,10 @@ transition: .3s ease-in-out;
 
         @include media-extra-large() {
             right: 12rem;
-            transition: .3s ease-in-out;
         }
 
         path,rect {
-            transition: .5s ease-in-out;
+            transition: .1s ease-in-out;
         }
     }
 
@@ -548,7 +548,7 @@ transition: .3s ease-in-out;
         position: absolute;
         right: -7px;
         top: 17rem;
-        transition: .5s ease-in-out;
+        transition: .1s ease-in-out;
 
         @include media-medium() {
             right: unset;
@@ -560,11 +560,10 @@ transition: .3s ease-in-out;
         @include media-extra-large() {
             bottom: -2rem;
             left: 9.6rem;
-            transition: .3s ease-in-out;
         }
 
         path,rect {
-            transition: .5s ease-in-out;
+            transition: .1s ease-in-out;
         }
     }
 
@@ -587,7 +586,7 @@ transition: .3s ease-in-out;
         position: absolute;
         right: 0;
         top: 30rem;
-        transition: .5s ease-in-out;
+        transition: .1s ease-in-out;
 
         @include media-medium() {
             right: -3rem;
@@ -597,11 +596,10 @@ transition: .3s ease-in-out;
         @include media-extra-large() {
             right: 6rem;
             top: 26rem;
-            transition: .3s ease-in-out;
         }
 
         path {
-            transition: .5s ease-in-out;
+            transition: .1s ease-in-out;
         }
     }
 
@@ -635,7 +633,7 @@ transition: .3s ease-in-out;
         position: absolute;
         left: 0;
         bottom: 0;
-        transition: .5s ease-in-out;
+        transition: .1s ease-in-out;
 
         @include media-medium() {
             left: 3rem;
@@ -645,11 +643,10 @@ transition: .3s ease-in-out;
         @include media-extra-large() {
             left: -6rem;
             bottom: 5rem;
-            transition: .3s ease-in-out;
         }
 
         path {
-            transition: .5s ease-in-out;
+            transition: .1s ease-in-out;
         }
     }
 

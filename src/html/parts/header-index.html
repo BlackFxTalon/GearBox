@@ -177,7 +177,7 @@
      </ul>
     </div>
  </nav>
-<nav class="header__mobile-menu" x-bind:class="{ 'active': headerMobileMenu === true }" x-data="{toggleSubList:''}">
+<nav class="header__mobile-menu" x-data="{toggleSubList:''}" x-show="headerMobileMenu === true" x-collapse.duration.750ms>
     <ul role="list" class="header__mobile-menu-list">
         <li class="header__mobile-menu-item header__mobile-menu-item--border-bottom">
             <div class="header__mobile-menu-item-top" x-on:click="toggleSubList !== 1 ? toggleSubList = 1 : toggleSubList = null">
@@ -187,7 +187,7 @@
                     <span></span>
                 </button>
             </div>
-            <nav class="header__mobile-menu-sublist-nav" x-data="{items:['Цилиндрические','Коническо-цилиндрическиe','Червячные','Циклоидальные','Специальные редукторы','Редукторы', 'Мотор-редукторы']}" x-ref="mobileSubList1" x-bind:style="toggleSubList === 1 ? 'height: ' + $refs.mobileSubList1.scrollHeight + 'px' : ''" x-bind:class="{'active': toggleSubList === 1}">
+            <nav class="header__mobile-menu-sublist-nav" x-data="{items:['Цилиндрические','Коническо-цилиндрическиe','Червячные','Циклоидальные','Специальные редукторы','Редукторы', 'Мотор-редукторы']}" x-show="toggleSubList === 1" x-collapse.duration.750ms>
             <ul role="list" class="header__mobile-menu-sublist">
                 <template x-for="item in items">
                     <li class="header__mobile-menu-sublist-item" x-data="{toggleSubSubList: false}">
@@ -198,7 +198,7 @@
                                 <span></span>
                             </button>
                            </div>
-                        <nav class="header__mobile-menu-sublist-nav header__mobile-menu-sublist-nav--sub-sub-list" x-data="{items:['Цилиндрические','Коническо-цилиндрическиe' ]}" x-ref="mobileSubSubList1" x-bind:style="toggleSubSubList === true ? 'height: ' + $refs.mobileSubSubList1.scrollHeight + 'px' : ''" x-bind:class="{'active': toggleSubSubList === true}">
+                        <nav class="header__mobile-menu-sublist-nav header__mobile-menu-sublist-nav--sub-sub-list" x-data="{items:['Цилиндрические','Коническо-цилиндрическиe' ]}" x-show="toggleSubSubList === true" x-collapse.duration.750ms>
                            <ul role="list" class="header__mobile-menu-sublist header__mobile-menu-sublist--sub-sub-list">
                             <template x-for="item in items">
                                 <li class="header__mobile-menu-sublist-item header__mobile-menu-sublist-item--sub-sub-list">

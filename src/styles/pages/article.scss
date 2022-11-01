@@ -359,11 +359,11 @@ line-height: 36px;
 
        @include media-extra-large() {
         overflow: unset;
-        padding-left: 59px;
+        // padding-left: 59px;
        }
 
        @include media-Extra-extra-large() {
-        padding-left: 403px;
+        // padding-left: 403px;
        }
     }
 

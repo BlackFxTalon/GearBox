@@ -3,7 +3,7 @@
 	@@include('../parts/head.html',{
 	"title":"Главная"
 	})
-	<body x-data="{headerFavoritesModal: false, headerFavoritesModalActive: false, tawkModal: false, askQuestionModal: false, askQuestionModalActive: false, callbackModal: false, callbackModalActive: false,projectSelectionModal: false, projectSelectionModalActive: false, headerMobileMenu: false, headerSearch: false, headerFavoritesMenu: false, headerMenuSubList: false, headerMegaMenu: false}" x-bind:class="{ 'overflow-hidden': headerFavoritesModal === true || tawkModal === true || headerMobileMenu === true }" class="loader-is-active">
+	<body x-data="{headerFavoritesModal: false, headerFavoritesModalActive: false, tawkModal: false, askQuestionModal: false, askQuestionModalActive: false, formCompleteModal: false, formCompleteModalActive: false, callbackModal: false, callbackModalActive: false,projectSelectionModal: false, projectSelectionModalActive: false, headerMobileMenu: false, headerSearch: false, headerFavoritesMenu: false, headerMenuSubList: false, headerMegaMenu: false}" x-bind:class="{ 'overflow-hidden': headerFavoritesModal === true || tawkModal === true || headerMobileMenu === true }" class="loader-is-active">
 		<script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 		<script src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js" defer></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
@@ -18,7 +18,7 @@
             slidesPerView: 1,
 			autoHeight: true,
 			allowTouchMove: false,
-			 navigation: {
+			 navigation: {	
     nextEl: '.index-page-desktop-wrapper__button-next',
     prevEl: '.index-page-desktop-wrapper__button-prev',
   },
@@ -28,7 +28,7 @@
 				const wizardDevForm = new Swiper('.wizard-dev-form', {
 				slidesPerView: 1,
 				allowTouchMove: false,
-				autoHeight:true,
+				// autoHeight:true,
 				pagination: {
 					el: '.wizard-dev-form__pagination',
 					clickable: true,
@@ -285,32 +285,50 @@ window.addEventListener('load', () => {
 					</div>
 					<div class="cta__advantages">
 						<img loading="lazy" decoding="async" src="resources/images/cta-bg-desktop.png" alt="image" width="1324" height="745" class="cta__advantages-img">
-						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--1" x-on:click="stateAppearPointBtnModal1 = true" x-bind:class="{ 'active': stateAppearPointBtnModal1 === true }">
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--1" x-on:click="stateAppearPointBtnModal2 = false; stateLeavePointBtnModal2 = true;stateAppearPointBtnModal3 = false; stateLeavePointBtnModal3 = true;
+						stateAppearPointBtnModal4 = false; stateLeavePointBtnModal4 = true;
+						stateAppearPointBtnModal5 = false; stateLeavePointBtnModal5 = true;
+						stateAppearPointBtnModal6 = false; stateLeavePointBtnModal6 = true;stateAppearPointBtnModal1 = true" x-bind:class="{ 'active': stateAppearPointBtnModal1 === true }">
 							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
 								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
 							</svg> 
 						</button>
-						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--2" x-on:click="stateAppearPointBtnModal2 = true" x-bind:class="{ 'active': stateAppearPointBtnModal2 === true }">
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--2" x-on:click="stateAppearPointBtnModal1 = false; stateLeavePointBtnModal1 = true;stateAppearPointBtnModal3 = false; stateLeavePointBtnModal3 = true;
+						stateAppearPointBtnModal4 = false; stateLeavePointBtnModal4 = true;
+						stateAppearPointBtnModal5 = false; stateLeavePointBtnModal5 = true;
+						stateAppearPointBtnModal6 = false; stateLeavePointBtnModal6 = true;stateAppearPointBtnModal2 = true" x-bind:class="{ 'active': stateAppearPointBtnModal2 === true }">
 							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
 								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
 							</svg> 
 						</button>
-						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--3" x-on:click="stateAppearPointBtnModal3 = true" x-bind:class="{ 'active': stateAppearPointBtnModal3 === true }">
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--3" x-on:click="stateAppearPointBtnModal1 = false; stateLeavePointBtnModal1 = true;stateAppearPointBtnModal2 = false; stateLeavePointBtnModal2 = true;
+						stateAppearPointBtnModal4 = false; stateLeavePointBtnModal4 = true;
+						stateAppearPointBtnModal5 = false; stateLeavePointBtnModal5 = true;
+						stateAppearPointBtnModal6 = false; stateLeavePointBtnModal6 = true;stateAppearPointBtnModal3 = true" x-bind:class="{ 'active': stateAppearPointBtnModal3 === true }">
 							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
 								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
 							</svg> 
 						</button>
-						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--4" x-on:click="stateAppearPointBtnModal4 = true"  x-bind:class="{ 'active': stateAppearPointBtnModal4 === true }">
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--4" x-on:click="stateAppearPointBtnModal1 = false; stateLeavePointBtnModal1 = true;stateAppearPointBtnModal2 = false; stateLeavePointBtnModal2 = true;
+						stateAppearPointBtnModal3 = false; stateLeavePointBtnModal3 = true;
+						stateAppearPointBtnModal5 = false; stateLeavePointBtnModal5 = true;
+						stateAppearPointBtnModal6 = false; stateLeavePointBtnModal6 = true;stateAppearPointBtnModal4 = true"  x-bind:class="{ 'active': stateAppearPointBtnModal4 === true }">
 							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
 								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
 							</svg> 
 						</button>
-						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--5" x-on:click="stateAppearPointBtnModal5 = true"  x-bind:class="{ 'active': stateAppearPointBtnModal5 === true }">
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--5" x-on:click="stateAppearPointBtnModal1 = false; stateLeavePointBtnModal1 = true;stateAppearPointBtnModal2 = false; stateLeavePointBtnModal2 = true;
+						stateAppearPointBtnModal3 = false; stateLeavePointBtnModal3 = true;
+						stateAppearPointBtnModal4 = false; stateLeavePointBtnModal4 = true;
+						stateAppearPointBtnModal6 = false; stateLeavePointBtnModal6 = true;stateAppearPointBtnModal5 = true"  x-bind:class="{ 'active': stateAppearPointBtnModal5 === true }">
 							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
 								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
 							</svg> 
 						</button>
-						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--6" x-on:click="stateAppearPointBtnModal6 = true"  x-bind:class="{ 'active': stateAppearPointBtnModal6 === true }">
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--6" x-on:click="stateAppearPointBtnModal1 = false; stateLeavePointBtnModal1 = true;stateAppearPointBtnModal2 = false; stateLeavePointBtnModal2 = true;
+						stateAppearPointBtnModal3 = false; stateLeavePointBtnModal3 = true;
+						stateAppearPointBtnModal4 = false; stateLeavePointBtnModal4 = true;
+						stateAppearPointBtnModal5 = false; stateLeavePointBtnModal5 = true;stateAppearPointBtnModal6 = true"  x-bind:class="{ 'active': stateAppearPointBtnModal6 === true }">
 							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
 								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
 							</svg> 
@@ -615,32 +633,50 @@ window.addEventListener('load', () => {
 							<source media="(min-width:1920px)" srcset="resources/images/cta-bg-desktop-2.png">
 							<img loading="lazy" decoding="async" src="resources/images/cta-bg-desktop.png" alt="image" width="1324" height="745" class="cta__advantages-img">
 						</picture>
-						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--1" x-on:click="stateAppearPointBtnModal1 = true" x-bind:class="{ 'active': stateAppearPointBtnModal1 === true }">
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--1" x-on:click="stateAppearPointBtnModal2 = false; stateLeavePointBtnModal2 = true;stateAppearPointBtnModal3 = false; stateLeavePointBtnModal3 = true;
+						stateAppearPointBtnModal4 = false; stateLeavePointBtnModal4 = true;
+						stateAppearPointBtnModal5 = false; stateLeavePointBtnModal5 = true;
+						stateAppearPointBtnModal6 = false; stateLeavePointBtnModal6 = true;stateAppearPointBtnModal1 = true" x-bind:class="{ 'active': stateAppearPointBtnModal1 === true }">
 							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
 								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
 							</svg> 
 						</button>
-						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--2" x-on:click="stateAppearPointBtnModal2 = true" x-bind:class="{ 'active': stateAppearPointBtnModal2 === true }">
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--2" x-on:click="stateAppearPointBtnModal1 = false; stateLeavePointBtnModal1 = true;stateAppearPointBtnModal3 = false; stateLeavePointBtnModal3 = true;
+						stateAppearPointBtnModal4 = false; stateLeavePointBtnModal4 = true;
+						stateAppearPointBtnModal5 = false; stateLeavePointBtnModal5 = true;
+						stateAppearPointBtnModal6 = false; stateLeavePointBtnModal6 = true;stateAppearPointBtnModal2 = true" x-bind:class="{ 'active': stateAppearPointBtnModal2 === true }">
 							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
 								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
 							</svg> 
 						</button>
-						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--3" x-on:click="stateAppearPointBtnModal3 = true" x-bind:class="{ 'active': stateAppearPointBtnModal3 === true }">
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--3" x-on:click="stateAppearPointBtnModal1 = false; stateLeavePointBtnModal1 = true;stateAppearPointBtnModal2 = false; stateLeavePointBtnModal2 = true;
+						stateAppearPointBtnModal4 = false; stateLeavePointBtnModal4 = true;
+						stateAppearPointBtnModal5 = false; stateLeavePointBtnModal5 = true;
+						stateAppearPointBtnModal6 = false; stateLeavePointBtnModal6 = true;stateAppearPointBtnModal3 = true" x-bind:class="{ 'active': stateAppearPointBtnModal3 === true }">
 							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
 								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
 							</svg> 
 						</button>
-						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--4" x-on:click="stateAppearPointBtnModal4 = true" x-bind:class="{ 'active': stateAppearPointBtnModal4 === true }">
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--4" x-on:click="stateAppearPointBtnModal1 = false; stateLeavePointBtnModal1 = true;stateAppearPointBtnModal2 = false; stateLeavePointBtnModal2 = true;
+						stateAppearPointBtnModal3 = false; stateLeavePointBtnModal3 = true;
+						stateAppearPointBtnModal5 = false; stateLeavePointBtnModal5 = true;
+						stateAppearPointBtnModal6 = false; stateLeavePointBtnModal6 = true;stateAppearPointBtnModal4 = true"  x-bind:class="{ 'active': stateAppearPointBtnModal4 === true }">
 							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
 								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
 							</svg> 
 						</button>
-						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--5" x-on:click="stateAppearPointBtnModal5 = true"  x-bind:class="{ 'active': stateAppearPointBtnModal5 === true }">
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--5" x-on:click="stateAppearPointBtnModal1 = false; stateLeavePointBtnModal1 = true;stateAppearPointBtnModal2 = false; stateLeavePointBtnModal2 = true;
+						stateAppearPointBtnModal3 = false; stateLeavePointBtnModal3 = true;
+						stateAppearPointBtnModal4 = false; stateLeavePointBtnModal4 = true;
+						stateAppearPointBtnModal6 = false; stateLeavePointBtnModal6 = true;stateAppearPointBtnModal5 = true"  x-bind:class="{ 'active': stateAppearPointBtnModal5 === true }">
 							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
 								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
 							</svg> 
 						</button>
-						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--6" x-on:click="stateAppearPointBtnModal6 = true"  x-bind:class="{ 'active': stateAppearPointBtnModal6 === true }">
+						<button type="button" aria-label="button" class="cta__advantages-point-btn cta__advantages-point-btn--6" x-on:click="stateAppearPointBtnModal1 = false; stateLeavePointBtnModal1 = true;stateAppearPointBtnModal2 = false; stateLeavePointBtnModal2 = true;
+						stateAppearPointBtnModal3 = false; stateLeavePointBtnModal3 = true;
+						stateAppearPointBtnModal4 = false; stateLeavePointBtnModal4 = true;
+						stateAppearPointBtnModal5 = false; stateLeavePointBtnModal5 = true;stateAppearPointBtnModal6 = true"  x-bind:class="{ 'active': stateAppearPointBtnModal6 === true }">
 							<svg class="cta__advantages-point-btn-icon" width="10" height="10">
 								<use href="../resources/svgSprites/svgSprite.svg#point-btn-icon"></use>
 							</svg> 
@@ -1122,7 +1158,7 @@ window.addEventListener('load', () => {
 						<span></span>
 					</button>
 				  </div>
-				   <form action="#" method="post" class="modal__form ask-question-modal__form">
+				   <form action="#" method="post" class="modal__form ask-question-modal__form" @submit.prevent="askQuestionModalActive = true;askQuestionModal = false;formCompleteModal = true;formCompleteModalActive = false">
 					  <fieldset class="ask-question-modal__fieldset">
 						<div class="form-controls-wrapper ask-question-modal__form-controls-wrapper">
 						  <input type="text" name="askQuestionModalName" id="askQuestionModalName">
@@ -1226,6 +1262,21 @@ window.addEventListener('load', () => {
 				  <h3 class="modal__title project-selection-modal__title">Подбор проекта</h3>
 				   <p class="project-selection-modal__text">Стандартную разработку вы можете подобрать в нашем порфтолио проектов по ссылке ниже.</p>
 				   <a href="#" class="primary-btn project-selection-modal__link-btn"><span>Смотреть проекты</span></a>
+			</div>
+		  </div>
+		  </div>
+		  <div class="modal form-complete-modal" x-bind:class="{ 'active': formCompleteModal === true, 'out': formCompleteModalActive === true}">
+			<div class="modal-background" x-on:click.self="formCompleteModalActive = true">
+			  <div class="modal-content project-selection-modal__content">
+				<div class="modal__title-wrapper project-selection-modal__title-wrapper">
+					<button type="button" aria-label="button" class="modal__close-btn project-selection-modal__close-btn" x-on:click="formCompleteModalActive = true">
+						<span></span>
+						<span></span>
+					</button>
+				  </div>
+				  <h3 class="modal__title project-selection-modal__title">Заявка отправлена</h3>
+				   <p class="project-selection-modal__text">С вами свяжется наш специалист.</p>
+				   <a href="/" class="outline-btn form-complete-modal__link-btn"><span>Ок</span></a>
 			</div>
 		  </div>
 		  </div>

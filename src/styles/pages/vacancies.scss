@@ -1,25 +1,20 @@
 // vacancies page styles
 .vacancies-page {
-    background: url(../resources/images/vacancies-page-bg.png) no-repeat center 230px/contain;
-    padding-bottom: 64px;
+    // background: url(../resources/images/vacancies-page-bg.png) no-repeat center 499px/contain;
+    // padding-bottom: 64px;
 
-    @include media-medium() {
-        background: url(../resources/images/vacancies-page-bg-tablet.png) no-repeat right 120px/508px;
-    }
+    // @include media-medium() {
+    //     background: url(../resources/images/vacancies-page-bg-tablet.png) no-repeat right 120px/508px;
+    // }
 
-    @include media-extra-large() {
-        background: none;
-    }
-
-    // @include media-Extra-extra-large() {
-    //     background: url(../resources/images/vacancies-page-bg-desktop.png) no-repeat 1140px top/682px;
+    // @include media-extra-large() {
+    //     background: none;
     // }
 
     &__parallax-img-container {
         position: absolute;
         width: 100%;
         height: 100%;
-        display: none;
 
         @include media-extra-large() {
             display: block;
@@ -28,9 +23,15 @@
 
     &__parallax-img {
         position: absolute;
+        object-fit: contain;
+        top: 21rem;
         right: 1rem;
         width: 683px;
         z-index: -1;
+
+        @include media-custom(1041px) {
+            top: 0;
+        }
     }
 
     &__title {

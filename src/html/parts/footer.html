@@ -206,6 +206,21 @@
   </div>
 </div>
 </div>
+<div class="modal form-complete-modal" x-bind:class="{ 'active': formCompleteModal === true, 'out': formCompleteModalActive === true}">
+  <div class="modal-background" x-on:click.self="formCompleteModalActive = true">
+    <div class="modal-content project-selection-modal__content">
+      <div class="modal__title-wrapper project-selection-modal__title-wrapper">
+          <button type="button" aria-label="button" class="modal__close-btn project-selection-modal__close-btn" x-on:click="formCompleteModalActive = true">
+              <span></span>
+              <span></span>
+          </button>
+        </div>
+        <h3 class="modal__title project-selection-modal__title">Заявка отправлена</h3>
+         <p class="project-selection-modal__text">С вами свяжется наш специалист.</p>
+         <a href="/" class="primary-btn form-complete-modal__link-btn"><span>Ок</span></a>
+  </div>
+</div>
+</div>
 <div class="tawk-modal" x-bind:class="{ 'active': tawkModal === true }">
   <div class="tawk-modal__content">
     <div class="tawk-modal__top">
